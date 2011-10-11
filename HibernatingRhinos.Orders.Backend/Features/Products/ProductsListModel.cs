@@ -1,4 +1,6 @@
-﻿using HibernatingRhinos.Orders.Backend.Infrastructure;
+﻿using System.Windows.Input;
+using HibernatingRhinos.Orders.Backend.Commands;
+using HibernatingRhinos.Orders.Backend.Infrastructure;
 using Raven.Client.Linq;
 
 namespace HibernatingRhinos.Orders.Backend.Features.Products
@@ -13,5 +15,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Products
         }
 
         public BindableCollection<Product> Products { get; set; }
+        public ICommand Delete { get { return new DeleteProductCommand(Session); } }
+
     }
 }

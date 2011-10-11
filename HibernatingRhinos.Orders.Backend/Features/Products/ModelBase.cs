@@ -10,5 +10,12 @@ namespace HibernatingRhinos.Orders.Backend.Features.Products
         {
             get { return session ?? (session = RavenStoreHolder.Store.OpenAsyncSession()); }
         }
+
+        protected void InitializeSession()
+        {
+            if (session == null)
+                return;
+            session = null;
+        }
     }
 }

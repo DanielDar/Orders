@@ -7,11 +7,18 @@ namespace HibernatingRhinos.Orders.Backend.Features.Products
     {
         public AddProductsModel()
         {
+            Initialize();
+        }
+
+        public void Initialize()
+        {
+            InitializeSession();
             Product = new Product();
         }
 
         public Product Product { get; private set; }
 
         public ICommand Save { get { return new SaveProductCommand(Session); } }
+        public ICommand Cancel { get { return new CancleProductCommand(); } }
     }
 }

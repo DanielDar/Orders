@@ -29,16 +29,18 @@
                        Width="Auto"
                        HorizontalAlignment="Stretch" 
                        Margin="5,0,5,0" NavigateUri="/products/add" />
-      
-      <HyperlinkButton Grid.Column="1"
-                       Content="Delete"
-                       FontSize="14"
-                       Width="Auto"
-                       HorizontalAlignment="Stretch" 
-                       Margin="5,0,5,0"
-                       IsEnabled="{Binding Path=SelectedItem, ElementName=dataGrid1, Converter={StaticResource NullToBool}}"/>
-      
-      <sdk:DataPager Grid.Column="2" 
+
+        <HyperlinkButton Grid.Column="1"
+                         Content="Delete"
+                         FontSize="14"
+                         Width="Auto"
+                         HorizontalAlignment="Stretch"
+                         Margin="5,0,5,0"
+                         IsEnabled="{Binding Path=SelectedItem, ElementName=dataGrid1, Converter={StaticResource NullToBool}}"
+                         Command="{Binding Delete}"
+                         CommandParameter="{Binding Path=SelectedItem, ElementName=dataGrid1}" />
+
+        <sdk:DataPager Grid.Column="2" 
                      Source="{Binding Products}" 
                      HorizontalAlignment="Right"                     
                      Height="26"
