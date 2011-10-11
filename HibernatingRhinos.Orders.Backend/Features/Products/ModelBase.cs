@@ -1,9 +1,9 @@
-using System;
+using HibernatingRhinos.Orders.Backend.Infrastructure;
 using Raven.Client;
 
 namespace HibernatingRhinos.Orders.Backend.Features.Products
 {
-    public class ModelBase
+    public class ModelBase : NotifyPropertyChangedBase
     {
         private IAsyncDocumentSession session;
         protected IAsyncDocumentSession Session

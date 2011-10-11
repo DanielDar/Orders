@@ -111,6 +111,7 @@
     <Compile Include="Infrastructure\Command.cs" />
     <Compile Include="Infrastructure\InvocationExtentions.cs" />
     <Compile Include="Infrastructure\ModelResolver.cs" />
+    <Compile Include="Infrastructure\NotifyPropertyChangedBase.cs" />
     <Compile Include="Infrastructure\PrimaryKeyComparer.cs" />
     <Compile Include="RavenStoreHolder.cs" />
     <Compile Include="Views\ErrorWindow.xaml.cs">

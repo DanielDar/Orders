@@ -50,30 +50,26 @@
                  HorizontalAlignment="Left" 
                  FontSize="16"/>
       
-    	<TextBox Name="IdTextBox" 
-               Grid.Column="1" 
+    	<TextBox Grid.Column="1" 
                Text="{Binding Path=Product.Id, Mode=TwoWay}"
                Margin="30,18,24,0" 
                TextWrapping="Wrap" 
                VerticalAlignment="Top"/>
       
-    	<TextBox Name="TitleTextBox" 
-               Grid.Column="1" 
+    	<TextBox Grid.Column="1" 
                Text="{Binding Path=Product.Title, Mode=TwoWay}" 
                Margin="30,61,24,0" 
                TextWrapping="Wrap" 
                VerticalAlignment="Top"/>
       
-    	<TextBox Name="SroteIdTextBox" 
-               Grid.Column="1" 
+    	<TextBox Grid.Column="1" 
                Text="{Binding Path=Product.StoreId, Converter={StaticResource ListToMultiString}, Mode=TwoWay}"                
                Margin="30,145,24,139" 
                TextWrapping="Wrap" 
                AcceptsReturn="True" 
                MaxHeight="150" VerticalAlignment="Top"/>
 
-        <ComboBox Name="TypeComboBox"
-                  SelectedItem="{Binding ProductType, Converter={StaticResource StringToProductType}, Mode=TwoWay}"
+        <ComboBox SelectedValue="{Binding Path=Product.ProductType, Converter={StaticResource StringToProductType}, Mode=TwoWay}"
                   Grid.Column="1"
                   Margin="30,108,24,0"
                   VerticalAlignment="Top">

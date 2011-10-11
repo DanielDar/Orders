@@ -16,6 +16,17 @@ namespace HibernatingRhinos.Orders.Backend.Features.Products
             Product = new Product();
         }
 
+        private ProductTypes productType;
+        public ProductTypes ProductType
+        {
+            get { return productType; }
+            set
+            {
+                productType = value;
+                OnPropertyChanged();
+            }
+        }
+
         public Product Product { get; private set; }
 
         public ICommand Save { get { return new SaveProductCommand(Session); } }
