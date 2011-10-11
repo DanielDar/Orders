@@ -11,6 +11,7 @@
            Infrastructure:ModelResolver.AttachModel="AddProductsModel"
            d:DesignWidth="640" d:DesignHeight="480"
            Title="Products Page">
+  
     <Grid x:Name="LayoutRoot">
     	<Grid.RowDefinitions>
     		<RowDefinition Height="0.902*"/>
@@ -50,7 +51,8 @@
                  FontSize="16"/>
       
     	<TextBox Name="IdTextBox" 
-               Grid.Column="1" Text="{Binding Path=Product.Id, Mode=TwoWay}"
+               Grid.Column="1" 
+               Text="{Binding Path=Product.Id, Mode=TwoWay}"
                Margin="30,18,24,0" 
                TextWrapping="Wrap" 
                VerticalAlignment="Top"/>
@@ -62,21 +64,27 @@
                TextWrapping="Wrap" 
                VerticalAlignment="Top"/>
       
-    	<TextBox Name="SroteIdTextBox" Grid.Column="1" 
-               Margin="30,146,24,138" 
+    	<TextBox Name="SroteIdTextBox" 
+               Grid.Column="1" 
+               Text="{Binding Path=Product.StoreId, Converter={StaticResource ListToMultiString}, Mode=TwoWay}"                
+               Margin="30,145,24,139" 
                TextWrapping="Wrap" 
                AcceptsReturn="True" 
-               MaxHeight="150"/>
-      
-    	<ComboBox Name="TypeComboBox" 
-                Grid.Column="1" 
-                Margin="30,108,24,0" 
-                VerticalAlignment="Top"/>
-      
-    	<HyperlinkButton Content="Save" 
-                       Grid.Column="1" 
+               MaxHeight="150" VerticalAlignment="Top"/>
+
+        <ComboBox Name="TypeComboBox"
+                  SelectedItem="{Binding ProductType, Converter={StaticResource StringToProductType}, Mode=TwoWay}"
+                  Grid.Column="1"
+                  Margin="30,108,24,0"
+                  VerticalAlignment="Top">
+            <ComboBoxItem Content="Lifetime" />
+            <ComboBoxItem Content="Monthly" />
+            <ComboBoxItem Content="Yearly" />
+        </ComboBox>
+
+            <HyperlinkButton Content="Save" 
                        HorizontalAlignment="Left" 
-                       Margin="50,8,0,19" 
+                       Margin="8,8,0,19" 
                        Grid.Row="1" 
                        d:LayoutOverrides="Height" 
                        Command="{Binding Save}"
@@ -84,21 +92,11 @@
                        FontSize="18.667"/>
       
     	<HyperlinkButton Content="Cancel" 
-                       Grid.Column="1" 
-                       HorizontalAlignment="Left" 
-                       Margin="147,8,0,19" 
+                       Margin="71,8,21,19" 
                        Grid.Row="1" 
                        FontSize="18.667" 
-                       d:LayoutOverrides="Height" 
+                       d:LayoutOverrides="Width, Height"
+                       Command="{Binding Cancel}"
                        RenderTransformOrigin="1.254,0.455"/>
-      
-    	<HyperlinkButton Content="Save and add another" 
-                       Grid.Column="1" 
-                       Margin="0,8,24,19" 
-                       Grid.Row="1" 
-                       FontSize="18.667" 
-                       CommandParameter="{Binding}"
-                       d:LayoutOverrides="Height" 
-                       HorizontalAlignment="Right"/>
     </Grid>
 </navigation:Page>
