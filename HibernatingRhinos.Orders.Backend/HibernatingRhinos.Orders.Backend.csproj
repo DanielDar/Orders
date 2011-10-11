@@ -93,6 +93,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Commands\CancelProductCommand.cs" />
+    <Compile Include="Commands\EditProductCommand.cs" />
     <Compile Include="Commands\DeleteProductCommand.cs" />
     <Compile Include="Commands\SaveProductCommand.cs" />
     <Compile Include="Converters\ArrayListToMultiLineStringConverter.cs" />
@@ -103,15 +104,22 @@
       <DependentUpon>Add.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Products\AddProductsModel.cs" />
+    <Compile Include="Features\Products\EditProductsModel.cs" />
+    <Compile Include="Features\Products\Edit.xaml.cs">
+      <DependentUpon>Edit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Features\Products\ModelBase.cs" />
     <Compile Include="Features\Products\Product.cs" />
     <Compile Include="Features\Products\ProductTypes.cs" />
     <Compile Include="Features\Products\ProductsListModel.cs" />
+    <Compile Include="Infrastructure\ApplicationModel.cs" />
     <Compile Include="Infrastructure\BindableCollection.cs" />
+    <Compile Include="Infrastructure\IObservable.cs" />
     <Compile Include="Infrastructure\Command.cs" />
     <Compile Include="Infrastructure\InvocationExtentions.cs" />
     <Compile Include="Infrastructure\ModelResolver.cs" />
     <Compile Include="Infrastructure\NotifyPropertyChangedBase.cs" />
+    <Compile Include="Infrastructure\Observable.cs" />
     <Compile Include="Infrastructure\PrimaryKeyComparer.cs" />
     <Compile Include="RavenStoreHolder.cs" />
     <Compile Include="Views\ErrorWindow.xaml.cs">
@@ -141,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Features\Products\Add.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Features\Products\Edit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

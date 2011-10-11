@@ -18,9 +18,10 @@
       </Grid.RowDefinitions>
 
       <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="Auto"/>
-        <ColumnDefinition Width="Auto"/>
-        <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
 
       <HyperlinkButton Grid.Column="0" 
@@ -28,7 +29,7 @@
                        FontSize="14"
                        Width="Auto"
                        HorizontalAlignment="Stretch" 
-                       Margin="5,0,5,0" NavigateUri="/products/add" />
+                       Margin="5,0,5,0" NavigateUri="/products/edit" />
 
         <HyperlinkButton Grid.Column="1"
                          Content="Delete"
@@ -36,11 +37,21 @@
                          Width="Auto"
                          HorizontalAlignment="Stretch"
                          Margin="5,0,5,0"
-                         IsEnabled="{Binding Path=SelectedItem, ElementName=dataGrid1, Converter={StaticResource NullToBool}}"
+                         IsEnabled="{Binding Path=SelectedItem, ElementName=ProductsGrid, Converter={StaticResource NullToBool}}"
                          Command="{Binding Delete}"
-                         CommandParameter="{Binding Path=SelectedItem, ElementName=dataGrid1}" />
+                         CommandParameter="{Binding Path=SelectedItem, ElementName=ProductsGrid}" />
 
-        <sdk:DataPager Grid.Column="2" 
+        <HyperlinkButton Grid.Column="2"
+                         Content="Edit"
+                         FontSize="14"
+                         Width="Auto"
+                         HorizontalAlignment="Stretch"
+                         Margin="5,0,5,0"
+                         IsEnabled="{Binding Path=SelectedItem, ElementName=ProductsGrid, Converter={StaticResource NullToBool}}"
+                         Command="{Binding Edit}"
+                         CommandParameter="{Binding Path=SelectedItem, ElementName=ProductsGrid}" />
+
+        <sdk:DataPager Grid.Column="3" 
                      Source="{Binding Products}" 
                      HorizontalAlignment="Right"                     
                      Height="26"
@@ -48,19 +59,31 @@
                      PageSize="3"
                      Width="200" />
       
-      <toolkit:DockPanel Grid.Row="1" Grid.ColumnSpan="3">
+      <toolkit:DockPanel Grid.Row="1" Grid.ColumnSpan="4">
         <sdk:DataGrid ItemsSource="{Binding Products}"
+                       IsReadOnly="True"
                       AutoGenerateColumns="false"
                       CanUserSortColumns="true"
-                      Name="dataGrid1">
+                      Name="ProductsGrid"
+                      >
            
           <sdk:DataGrid.Columns>
-            <sdk:DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+            <sdk:DataGridTextColumn Header="Id" Binding="{Binding Id, Mode=TwoWay}"/>
             <sdk:DataGridTextColumn Header="Title" Binding="{Binding Title}"/>
-            <sdk:DataGridTextColumn Header="Store IDs" Binding="{Binding StoreId, Converter={StaticResource ListToMultiString}}"/>
+            <sdk:DataGridTextColumn Header="Store Ids" Binding="{Binding StoreId, Converter={StaticResource ListToMultiString}}"/>
             <sdk:DataGridTextColumn Header="License Type" Binding="{Binding ProductType}"/>
+              <sdk:DataGridTemplateColumn Header="">
+                  <sdk:DataGridTemplateColumn.CellTemplate>
+                      <DataTemplate>
+                          <HyperlinkButton Content="Edit" 
+                                           VerticalAlignment="Center"
+                                           IsEnabled="True"
+                                           NavigateUri="{Binding Path=Id, StringFormat='/products/edit?id={0}'}" />
+                      </DataTemplate>
+                  </sdk:DataGridTemplateColumn.CellTemplate>
+              </sdk:DataGridTemplateColumn> 
           </sdk:DataGrid.Columns>
         </sdk:DataGrid>
-        </toolkit:DockPanel>
+      </toolkit:DockPanel>
     </Grid>
 </navigation:Page>
