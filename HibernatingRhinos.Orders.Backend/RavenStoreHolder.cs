@@ -3,9 +3,9 @@ using Raven.Client.Document;
 
 namespace HibernatingRhinos.Orders.Backend
 {
-    public static class RavenDB
+    public static class RavenStoreHolder
     {
-        static RavenDB()
+        static RavenStoreHolder()
         {
             Store = new DocumentStore
             {

@@ -16,7 +16,7 @@
                 <navigation:Frame.UriMapper>
                   <uriMapper:UriMapper>
                     <uriMapper:UriMapping Uri="" MappedUri="/Views/Home.xaml"/>
-                    <uriMapper:UriMapping Uri="/{feature}/{action}" MappedUri="/Features/{feature}/{feature}{action}.xaml"/>
+                    <uriMapper:UriMapping Uri="/{feature}/{action}" MappedUri="/Features/{feature}/{action}.xaml"/>
                   </uriMapper:UriMapper>
                 </navigation:Frame.UriMapper>
             </navigation:Frame>

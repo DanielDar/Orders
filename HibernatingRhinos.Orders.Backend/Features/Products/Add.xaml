@@ -1,0 +1,102 @@
+﻿<navigation:Page x:Class="HibernatingRhinos.Orders.Backend.Features.Products.Add" 
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+           xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           mc:Ignorable="d"
+           xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+           DataContext="{Binding Source={StaticResource AddProductsModel}}"
+           d:DesignWidth="640" d:DesignHeight="480"
+           Title="Products Page">
+    <Grid x:Name="LayoutRoot">
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="0.902*"/>
+    		<RowDefinition Height="0.098*"/>
+    	</Grid.RowDefinitions>
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="0.248*"/>
+    		<ColumnDefinition Width="0.752*"/>
+    	</Grid.ColumnDefinitions>
+      
+    	<TextBlock Margin="18,19,0,0" 
+                 TextWrapping="Wrap" 
+                 Text="Product ID:" 
+                 VerticalAlignment="Top" 
+                 HorizontalAlignment="Left" 
+                 FontSize="16"/>
+      
+    	<TextBlock Margin="18,62,0,0" 
+                 TextWrapping="Wrap" 
+                 Text="Product Name:" 
+                 VerticalAlignment="Top" 
+                 HorizontalAlignment="Left" 
+                 FontSize="16"/>
+      
+    	<TextBlock Margin="36,145,0,0" 
+                 TextWrapping="Wrap" 
+                 Text="Store ID:" 
+                 HorizontalAlignment="Left" 
+                 FontSize="16" 
+                 VerticalAlignment="Top"/>
+      
+    	<TextBlock Margin="18,105,0,0" 
+                 TextWrapping="Wrap" 
+                 Text="Licence Type:" 
+                 VerticalAlignment="Top" 
+                 HorizontalAlignment="Left" 
+                 FontSize="16"/>
+      
+    	<TextBox Name="IdTextBox" 
+               Grid.Column="1" Text="{Binding Path=Product.Id, Mode=TwoWay}"
+               Margin="30,18,24,0" 
+               TextWrapping="Wrap" 
+               VerticalAlignment="Top"/>
+      
+    	<TextBox Name="TitleTextBox" 
+               Grid.Column="1" 
+               Margin="30,61,24,0" 
+               TextWrapping="Wrap" 
+               VerticalAlignment="Top"/>
+      
+    	<TextBox Name="SroteIdTextBox" Grid.Column="1" 
+               Margin="30,146,24,138" 
+               TextWrapping="Wrap" 
+               AcceptsReturn="True" 
+               MaxHeight="150"/>
+      
+    	<ComboBox Name="TypeComboBox" 
+                Grid.Column="1" 
+                Margin="30,108,24,0" 
+                VerticalAlignment="Top"/>
+      
+    	<HyperlinkButton Content="Save" 
+                       Grid.Column="1" 
+                       HorizontalAlignment="Left" 
+                       Margin="50,8,0,19" 
+                       Grid.Row="1" 
+                       d:LayoutOverrides="Height" 
+                       Command="{Binding Save}"
+                       CommandParameter="{Binding Product}"
+                       FontSize="18.667"/>
+      
+    	<HyperlinkButton Content="Cancel" 
+                       Grid.Column="1" 
+                       HorizontalAlignment="Left" 
+                       Margin="147,8,0,19" 
+                       Grid.Row="1" 
+                       FontSize="18.667" 
+                       d:LayoutOverrides="Height" 
+                       RenderTransformOrigin="1.254,0.455"/>
+      
+    	<HyperlinkButton Content="Save and add another" 
+                       Grid.Column="1" 
+                       Margin="0,8,24,19" 
+                       Grid.Row="1" 
+                       FontSize="18.667" 
+                       CommandParameter="{Binding}"
+                       d:LayoutOverrides="Height" 
+                       HorizontalAlignment="Right"/>
+    </Grid>
+</navigation:Page>

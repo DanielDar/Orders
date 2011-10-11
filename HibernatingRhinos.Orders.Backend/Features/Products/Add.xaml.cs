@@ -3,9 +3,9 @@ using System.Windows.Navigation;
 
 namespace HibernatingRhinos.Orders.Backend.Features.Products
 {
-    public partial class Products : Page
+    public partial class Add : Page
     {
-        public Products()
+        public Add()
         {
             InitializeComponent();
         }
@@ -14,5 +14,6 @@ namespace HibernatingRhinos.Orders.Backend.Features.Products
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
         }
+
     }
 }
