@@ -92,9 +92,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Commands\CancelProductCommand.cs" />
+    <Compile Include="Commands\DeleteProductCommand.cs" />
     <Compile Include="Commands\SaveProductCommand.cs" />
     <Compile Include="Converters\ArrayListToMultiLineStringConverter.cs" />
     <Compile Include="Converters\ArrayListToStringConverter.cs" />
+    <Compile Include="Converters\StringToProductsTypesEnumConverter.cs" />
     <Compile Include="Converters\NullToBoolConverter.cs" />
     <Compile Include="Features\Products\Add.xaml.cs">
       <DependentUpon>Add.xaml</DependentUpon>
@@ -105,6 +108,7 @@
     <Compile Include="Features\Products\ProductTypes.cs" />
     <Compile Include="Features\Products\ProductsListModel.cs" />
     <Compile Include="Infrastructure\BindableCollection.cs" />
+    <Compile Include="Infrastructure\Command.cs" />
     <Compile Include="Infrastructure\InvocationExtentions.cs" />
     <Compile Include="Infrastructure\ModelResolver.cs" />
     <Compile Include="Infrastructure\PrimaryKeyComparer.cs" />
