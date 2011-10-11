@@ -14,6 +14,5 @@ namespace HibernatingRhinos.Orders.Backend.Features.Products
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
         }
-
     }
 }
