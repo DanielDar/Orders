@@ -7,7 +7,8 @@
            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
            mc:Ignorable="d"
            xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
-           DataContext="{Binding Source={StaticResource AddProductsModel}}"
+           xmlns:Infrastructure="clr-namespace:HibernatingRhinos.Orders.Backend.Infrastructure"
+           Infrastructure:ModelResolver.AttachModel="AddProductsModel"
            d:DesignWidth="640" d:DesignHeight="480"
            Title="Products Page">
     <Grid x:Name="LayoutRoot">
@@ -56,6 +57,7 @@
       
     	<TextBox Name="TitleTextBox" 
                Grid.Column="1" 
+               Text="{Binding Path=Product.Title, Mode=TwoWay}" 
                Margin="30,61,24,0" 
                TextWrapping="Wrap" 
                VerticalAlignment="Top"/>

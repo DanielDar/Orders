@@ -106,6 +106,7 @@
     <Compile Include="Features\Products\ProductsListModel.cs" />
     <Compile Include="Infrastructure\BindableCollection.cs" />
     <Compile Include="Infrastructure\InvocationExtentions.cs" />
+    <Compile Include="Infrastructure\ModelResolver.cs" />
     <Compile Include="Infrastructure\PrimaryKeyComparer.cs" />
     <Compile Include="RavenStoreHolder.cs" />
     <Compile Include="Views\ErrorWindow.xaml.cs">
@@ -131,10 +132,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Converters\Converters.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Features\ViewModels.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
