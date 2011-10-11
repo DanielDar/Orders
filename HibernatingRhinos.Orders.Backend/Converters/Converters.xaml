@@ -5,5 +5,6 @@
 
   <Converters:ArrayListToMultiLineStringConverter x:Key="ListToMultiString"/>
   <Converters:ArrayListToStringConverter x:Key="ListToString"/>
+  <Converters:NullToBoolConverter x:Key="NullToBool"/>
   
 </ResourceDictionary>

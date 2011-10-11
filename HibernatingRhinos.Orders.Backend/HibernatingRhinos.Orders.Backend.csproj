@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="Converters\ArrayListToMultiLineStringConverter.cs" />
     <Compile Include="Converters\ArrayListToStringConverter.cs" />
+    <Compile Include="Converters\NullToBoolConverter.cs" />
     <Compile Include="Features\Products\AddProducts.xaml.cs">
       <DependentUpon>AddProducts.xaml</DependentUpon>
     </Compile>
