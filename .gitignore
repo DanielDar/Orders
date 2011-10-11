@@ -69,3 +69,5 @@ ClientBin/
 StyleCop.Cache
 /Raven.Studio/Settings.dat
 *.vs10x
+/packages/RavenDB*/server/Data
+/packages/RavenDB*/server/Logs
