@@ -7,12 +7,6 @@ namespace HibernatingRhinos.Orders.Backend.Features.Products
     {
         public AddProductsModel()
         {
-            Initialize();
-        }
-
-        public void Initialize()
-        {
-            InitializeSession();
             Product = new Product();
         }
 
