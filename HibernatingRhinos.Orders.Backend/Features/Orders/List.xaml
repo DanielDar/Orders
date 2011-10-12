@@ -1,0 +1,95 @@
+﻿<navigation:Page x:Class="HibernatingRhinos.Orders.Backend.Features.Orders.List"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 mc:Ignorable="d"
+                 xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+                 xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+                 xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+                 xmlns:Infrastructure="clr-namespace:HibernatingRhinos.Orders.Backend.Infrastructure"
+                 d:DesignWidth="640"
+                 d:DesignHeight="480"
+                 Infrastructure:ModelResolver.AttachModel="OrdersListModel"
+                 Title="List Page">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <HyperlinkButton Grid.Column="0"
+                         Content="Add"
+                         FontSize="14"
+                         Width="Auto"
+                         HorizontalAlignment="Stretch"
+                         Margin="5,0,5,0"
+                         NavigateUri="/orders/edit" />
+
+        <HyperlinkButton Grid.Column="1"
+                         Content="Delete"
+                         FontSize="14"
+                         Width="Auto"
+                         HorizontalAlignment="Stretch"
+                         Margin="5,0,5,0"
+                         IsEnabled="{Binding Path=SelectedItem, ElementName=OrdersGrid, Converter={StaticResource NullToBool}}"
+                         Command="{Binding Delete}"
+                         CommandParameter="{Binding Path=SelectedItem, ElementName=OrdersGrid}"/>
+
+        <sdk:DataPager Grid.Column="3"
+                       Source="{Binding Orders}"
+                       HorizontalAlignment="Right"
+                       Height="26"
+                       PageSize="3"
+                       Width="200" />
+
+        <toolkit:DockPanel Grid.Row="1"
+                           Grid.ColumnSpan="4">
+            <sdk:DataGrid ItemsSource="{Binding Orders}"
+                          IsReadOnly="True"
+                          AutoGenerateColumns="false"
+                          CanUserSortColumns="true"
+                          Name="OrdersGrid">
+
+                <sdk:DataGrid.Columns>
+                    <sdk:DataGridTextColumn Header="Order Number"
+                                            Binding="{Binding OrderNumber}" />
+                    <sdk:DataGridTextColumn Header="Quantity"
+                                            Binding="{Binding Quantity}" />
+                    <sdk:DataGridTextColumn Header="Product Id"
+                                            Binding="{Binding ProductId}" />
+                    <sdk:DataGridTextColumn Header="First Name"
+                                            Binding="{Binding FirstName}" />
+                    <sdk:DataGridTextColumn Header="Last Name"
+                                            Binding="{Binding LastName}" />
+                    <sdk:DataGridTextColumn Header="Company Name"
+                                            Binding="{Binding CompanyName}" />
+                    <sdk:DataGridTextColumn Header="Email"
+                                            Binding="{Binding Email}" />
+                    <sdk:DataGridTextColumn Header="Address"
+                                            Binding="{Binding Address, Converter={StaticResource AddressToMultiString}}"/>
+                    <sdk:DataGridTextColumn Header="Log"
+                                            Binding="{Binding Log, Converter={StaticResource ListToMultiString}}" />
+                    <sdk:DataGridTemplateColumn Header="">
+                        <sdk:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <HyperlinkButton Content="Edit"
+                                                 VerticalAlignment="Center"
+                                                 IsEnabled="True"
+                                                 NavigateUri="{Binding Path=Id, StringFormat='/products/edit?id={0}'}" />
+                            </DataTemplate>
+                        </sdk:DataGridTemplateColumn.CellTemplate>
+                    </sdk:DataGridTemplateColumn>
+                </sdk:DataGrid.Columns>
+            </sdk:DataGrid>
+        </toolkit:DockPanel>
+    </Grid>
+</navigation:Page>
