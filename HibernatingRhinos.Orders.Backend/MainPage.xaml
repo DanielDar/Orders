@@ -49,6 +49,11 @@
 
                   <HyperlinkButton x:Name="Link3" Style="{StaticResource LinkStyle}"
                                    NavigateUri="/Products/List" TargetName="ContentFrame" Content="products"/>
+                    
+                    <Rectangle x:Name="Divider3" Style="{StaticResource DividerStyle}"/>
+
+                  <HyperlinkButton x:Name="Link4" Style="{StaticResource LinkStyle}"
+                                   NavigateUri="/Orders/List" TargetName="ContentFrame" Content="orders"/>
 
                 </StackPanel>
             </Border>

@@ -98,8 +98,19 @@
     <Compile Include="Commands\SaveProductCommand.cs" />
     <Compile Include="Converters\ArrayListToMultiLineStringConverter.cs" />
     <Compile Include="Converters\ArrayListToStringConverter.cs" />
+    <Compile Include="Converters\AddressToMultiLineStringConverter.cs" />
     <Compile Include="Converters\StringToProductsTypesEnumConverter.cs" />
     <Compile Include="Converters\NullToBoolConverter.cs" />
+    <Compile Include="Features\Orders\Address.cs" />
+    <Compile Include="Features\Orders\Edit.xaml.cs">
+      <DependentUpon>Edit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Orders\EditOrdersModel.cs" />
+    <Compile Include="Features\Orders\List.xaml.cs">
+      <DependentUpon>List.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Orders\Order.cs" />
+    <Compile Include="Features\Orders\OrdersListModel.cs" />
     <Compile Include="Features\Products\EditProductsModel.cs" />
     <Compile Include="Features\Products\Edit.xaml.cs">
       <DependentUpon>Edit.xaml</DependentUpon>
@@ -141,6 +152,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Converters\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Orders\Edit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Features\Orders\List.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
