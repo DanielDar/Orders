@@ -41,21 +41,10 @@
                          Command="{Binding Delete}"
                          CommandParameter="{Binding Path=SelectedItem, ElementName=ProductsGrid}" />
 
-        <HyperlinkButton Grid.Column="2"
-                         Content="Edit"
-                         FontSize="14"
-                         Width="Auto"
-                         HorizontalAlignment="Stretch"
-                         Margin="5,0,5,0"
-                         IsEnabled="{Binding Path=SelectedItem, ElementName=ProductsGrid, Converter={StaticResource NullToBool}}"
-                         Command="{Binding Edit}"
-                         CommandParameter="{Binding Path=SelectedItem, ElementName=ProductsGrid}" />
-
         <sdk:DataPager Grid.Column="3" 
                      Source="{Binding Products}" 
                      HorizontalAlignment="Right"                     
                      Height="26"
-                     Name="dataPager1"
                      PageSize="3"
                      Width="200" />
       
@@ -64,8 +53,7 @@
                        IsReadOnly="True"
                       AutoGenerateColumns="false"
                       CanUserSortColumns="true"
-                      Name="ProductsGrid"
-                      >
+                      Name="ProductsGrid">
            
           <sdk:DataGrid.Columns>
             <sdk:DataGridTextColumn Header="Id" Binding="{Binding Id, Mode=TwoWay}"/>

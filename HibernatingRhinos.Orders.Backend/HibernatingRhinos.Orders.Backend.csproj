@@ -100,10 +100,6 @@
     <Compile Include="Converters\ArrayListToStringConverter.cs" />
     <Compile Include="Converters\StringToProductsTypesEnumConverter.cs" />
     <Compile Include="Converters\NullToBoolConverter.cs" />
-    <Compile Include="Features\Products\Add.xaml.cs">
-      <DependentUpon>Add.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Features\Products\AddProductsModel.cs" />
     <Compile Include="Features\Products\EditProductsModel.cs" />
     <Compile Include="Features\Products\Edit.xaml.cs">
       <DependentUpon>Edit.xaml</DependentUpon>
@@ -147,10 +143,6 @@
     <Page Include="Converters\Converters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Features\Products\Add.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Features\Products\Edit.xaml">
       <Generator>MSBuild:Compile</Generator>
