@@ -12,7 +12,6 @@ namespace HibernatingRhinos.Orders.Backend.Infrastructure
             Application.Current.Host.NavigationStateChanged +=
                 (sender, args) =>
                 {
-                    MessageBox.Show(args.NewNavigationState);
                     threadSafeNavigationState = args.NewNavigationState;
                 };
         }
