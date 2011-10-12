@@ -6,6 +6,7 @@
     <Converters:ArrayListToMultiLineStringConverter x:Key="ListToMultiString"/>
     <Converters:ArrayListToStringConverter x:Key="ListToString"/>
     <Converters:NullToBoolConverter x:Key="NullToBool" />
-    <Converters:StringToProductsTypesEnumConverter x:Key="StringToProductType"/>
+    <Converters:StringToProductsTypesEnumConverter x:Key="StringToProductType" />
+    <Converters:AddressToMultiLineStringConverter x:Key="AddressToMultiString"/>
   
 </ResourceDictionary>
