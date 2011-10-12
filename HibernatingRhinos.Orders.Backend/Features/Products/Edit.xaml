@@ -22,28 +22,28 @@
     		<ColumnDefinition Width="0.752*"/>
     	</Grid.ColumnDefinitions>
       
-    	<TextBlock Margin="18,19,0,0" 
+    	<TextBlock Margin="20,20,0,0" 
                  TextWrapping="Wrap" 
                  Text="Product ID:" 
                  VerticalAlignment="Top" 
                  HorizontalAlignment="Left" 
                  FontSize="16"/>
       
-    	<TextBlock Margin="18,62,0,0" 
+    	<TextBlock Margin="20,65,0,0" 
                  TextWrapping="Wrap" 
                  Text="Product Name:" 
                  VerticalAlignment="Top" 
                  HorizontalAlignment="Left" 
                  FontSize="16"/>
       
-    	<TextBlock Margin="36,145,0,0" 
+    	<TextBlock Margin="20,150,0,0" 
                  TextWrapping="Wrap" 
                  Text="Store ID:" 
                  HorizontalAlignment="Left" 
                  FontSize="16" 
                  VerticalAlignment="Top"/>
       
-    	<TextBlock Margin="18,105,0,0" 
+    	<TextBlock Margin="20,105,0,0" 
                  TextWrapping="Wrap" 
                  Text="Licence Type:" 
                  VerticalAlignment="Top" 
@@ -52,26 +52,26 @@
       
     	<TextBox Grid.Column="1" 
                Text="{Binding Path=Product.Value.Id, Mode=TwoWay}"
-               Margin="30,18,24,0" 
+               Margin="20,20,20,0" 
                TextWrapping="Wrap" 
                VerticalAlignment="Top"/>
       
     	<TextBox Grid.Column="1"
                  Text="{Binding Path=Product.Value.Title, Mode=TwoWay}" 
-               Margin="30,61,24,0" 
+               Margin="20,65,20,0" 
                TextWrapping="Wrap" 
                VerticalAlignment="Top"/>
       
     	<TextBox Grid.Column="1"
                  Text="{Binding Path=Product.Value.StoreId, Converter={StaticResource ListToMultiString}, Mode=TwoWay}"                
-               Margin="30,145,24,139" 
+               Margin="20,150,20,0" 
                TextWrapping="Wrap" 
                AcceptsReturn="True" 
-               MaxHeight="150" VerticalAlignment="Top"/>
+               MaxHeight="250" VerticalAlignment="Top" MinHeight="50"/>
 
         <ComboBox SelectedValue="{Binding Path=Product.Value.ProductType, Converter={StaticResource StringToProductType}, Mode=TwoWay}"
                   Grid.Column="1"
-                  Margin="30,108,24,0"
+                  Margin="20,105,20,0"
                   VerticalAlignment="Top">
             <ComboBoxItem Content="Lifetime" />
             <ComboBoxItem Content="Monthly" />
