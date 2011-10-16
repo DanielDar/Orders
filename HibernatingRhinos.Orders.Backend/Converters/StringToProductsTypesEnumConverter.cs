@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Linq;
 using HibernatingRhinos.Orders.Backend.Features.Products;
 
 namespace HibernatingRhinos.Orders.Backend.Converters
@@ -25,8 +23,8 @@ namespace HibernatingRhinos.Orders.Backend.Converters
             {
                 return item.Content.ToString();
             }
-            return "None";
 
+            return "None";
         }
     }
 }

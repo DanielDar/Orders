@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using HibernatingRhinos.Orders.Backend.Commands;
 using HibernatingRhinos.Orders.Backend.Infrastructure;
 

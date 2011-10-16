@@ -15,6 +15,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Products
         }
 
         public BindableCollection<Product> Products { get; set; }
+
         public ICommand Delete { get { return new DeleteProductCommand(Session); } }
         public ICommand Edit { get { return new EditProductCommand(Session); } }
 
