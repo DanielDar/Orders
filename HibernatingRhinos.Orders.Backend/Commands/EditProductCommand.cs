@@ -27,7 +27,7 @@ namespace HibernatingRhinos.Orders.Backend.Commands
         {
             product = parameter as Product;
             session.SaveChangesAsync()
-                .ContinueOnSuccessInTheUIThread(() => Application.Current.Host.NavigationState = "/products/edit");
+                .ContinueOnSuccessInTheUiThread(() => Application.Current.Host.NavigationState = "/products/edit");
         }
 
         public event EventHandler CanExecuteChanged = delegate {};

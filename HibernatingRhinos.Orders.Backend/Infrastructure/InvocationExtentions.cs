@@ -23,7 +23,7 @@ namespace HibernatingRhinos.Orders.Backend.Infrastructure
             }).Unwrap();
         }
 
-        public static Task ContinueOnSuccessInTheUIThread(this Task parent, Action action)
+        public static Task ContinueOnSuccessInTheUiThread(this Task parent, Action action)
         {
             return parent.ContinueOnSuccess(() =>
             {
