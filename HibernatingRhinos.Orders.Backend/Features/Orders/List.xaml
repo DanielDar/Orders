@@ -86,7 +86,7 @@
                                 <HyperlinkButton Content="Edit"
                                                  VerticalAlignment="Center"
                                                  IsEnabled="True"
-                                                 NavigateUri="{Binding Path=Id, StringFormat='/orders/edit?id={0}'}" />
+                                                 NavigateUri="{Binding Path=OrderNumber, StringFormat='/orders/edit?orderNumber={0}'}" />
                             </DataTemplate>
                         </sdk:DataGridTemplateColumn.CellTemplate>
                     </sdk:DataGridTemplateColumn>

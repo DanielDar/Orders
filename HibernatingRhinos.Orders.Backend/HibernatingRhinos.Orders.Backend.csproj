@@ -94,6 +94,8 @@
     </Compile>
     <Compile Include="Commands\CancelProductCommand.cs" />
     <Compile Include="Commands\CancelOrderCommand.cs" />
+    <Compile Include="Commands\AddMonthCommand.cs" />
+    <Compile Include="Commands\AddYearCommand.cs" />
     <Compile Include="Commands\SaveOrderCommand.cs" />
     <Compile Include="Commands\EditProductCommand.cs" />
     <Compile Include="Commands\DeleteProductCommand.cs" />

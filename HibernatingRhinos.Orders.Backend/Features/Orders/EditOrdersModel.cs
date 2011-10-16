@@ -10,7 +10,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
         public EditOrdersModel()
         {
             Order = new Observable<Order>();
-            var id = GetQueryParam("id");
+            var id = GetQueryParam("orderNumber");
             if (id == null)
             {
                 Order.Value = new Order();
