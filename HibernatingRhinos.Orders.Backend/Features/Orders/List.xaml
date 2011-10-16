@@ -74,6 +74,8 @@
                                             Binding="{Binding CompanyName}" />
                     <sdk:DataGridTextColumn Header="Email"
                                             Binding="{Binding Email}" />
+                    <sdk:DataGridTextColumn Header="License End Date"
+                                            Binding="{Binding LicenseEndDate}" />
                     <sdk:DataGridTextColumn Header="Address"
                                             Binding="{Binding Address, Converter={StaticResource AddressToMultiString}}"/>
                     <sdk:DataGridTextColumn Header="Log"
@@ -84,7 +86,27 @@
                                 <HyperlinkButton Content="Edit"
                                                  VerticalAlignment="Center"
                                                  IsEnabled="True"
-                                                 NavigateUri="{Binding Path=Id, StringFormat='/products/edit?id={0}'}" />
+                                                 NavigateUri="{Binding Path=Id, StringFormat='/orders/edit?id={0}'}" />
+                            </DataTemplate>
+                        </sdk:DataGridTemplateColumn.CellTemplate>
+                    </sdk:DataGridTemplateColumn>
+                    <sdk:DataGridTemplateColumn Header="">
+                        <sdk:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <HyperlinkButton Content="Extend Month"
+                                                 VerticalAlignment="Center"
+                                                 IsEnabled="True"
+                                                 NavigateUri="{Binding Path=Id, StringFormat='/orders/edit?id={0}'}" />
+                            </DataTemplate>
+                        </sdk:DataGridTemplateColumn.CellTemplate>
+                    </sdk:DataGridTemplateColumn>
+                    <sdk:DataGridTemplateColumn Header="">
+                        <sdk:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <HyperlinkButton Content="Extend Year"
+                                                 VerticalAlignment="Center"
+                                                 IsEnabled="True"
+                                                 NavigateUri="{Binding Path=Id, StringFormat='/orders/edit?id={0}'}" />
                             </DataTemplate>
                         </sdk:DataGridTemplateColumn.CellTemplate>
                     </sdk:DataGridTemplateColumn>

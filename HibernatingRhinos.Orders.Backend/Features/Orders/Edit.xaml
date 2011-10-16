@@ -260,7 +260,7 @@
                          Grid.Row="10"
                          d:LayoutOverrides="Height"
                          Command="{Binding Save}"
-                         CommandParameter="{Binding Product.Value}"
+                         CommandParameter="{Binding Order.Value}"
                          FontSize="18.667"
                          VerticalAlignment="Bottom" />
         <HyperlinkButton Content="Cancel"

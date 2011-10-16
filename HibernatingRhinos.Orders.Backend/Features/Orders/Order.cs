@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace HibernatingRhinos.Orders.Backend.Features.Orders
 {
@@ -23,6 +24,8 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
         public Address Address { get; set; }
 
         public List<string> Log { get; set; }
+
+        public DateTime LicenseEndDate { get; set; }
     }
 
     

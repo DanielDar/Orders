@@ -1,4 +1,6 @@
-﻿using HibernatingRhinos.Orders.Backend.Features.Products;
+﻿using System.Windows.Input;
+using HibernatingRhinos.Orders.Backend.Commands;
+using HibernatingRhinos.Orders.Backend.Features.Products;
 using HibernatingRhinos.Orders.Backend.Infrastructure;
 
 namespace HibernatingRhinos.Orders.Backend.Features.Orders
@@ -22,7 +24,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
 
         public Observable<Order> Order { get; set; }
 
-        //public ICommand Save { get { return new SaveProductCommand(Session); } }
-        //public ICommand Cancel { get { return new CancleProductCommand(); } }
+        public ICommand Save { get { return new SaveOrderCommand(Session); } }
+        public ICommand Cancel { get { return new CancleOrderCommand(); } }
     }
 }
