@@ -17,7 +17,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
             }
             else
             {
-                Session.LoadAsync<Order>(orderNumber)
+                Session.LoadAsync<Order>("orders/" + orderNumber)
                 .ContinueOnSuccess(order => Order.Value = order);
             }
         }
