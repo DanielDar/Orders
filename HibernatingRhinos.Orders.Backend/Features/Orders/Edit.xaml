@@ -198,7 +198,7 @@
                      VerticalAlignment="Center" />
         </Grid>
         <TextBox Grid.Column="1"
-                 Text="{Binding Path=Order.Value.OrderNumver, Mode=TwoWay}"
+                 Text="{Binding Order.Value.OrderNumber, Mode=TwoWay}"
                  Margin="8,5,8,5"
                  TextWrapping="Wrap"
                  d:LayoutOverrides="Height" />

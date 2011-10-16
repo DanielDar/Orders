@@ -96,7 +96,8 @@
                                 <HyperlinkButton Content="Extend Month"
                                                  VerticalAlignment="Center"
                                                  IsEnabled="True"
-                                                 NavigateUri="{Binding Path=Id, StringFormat='/orders/edit?id={0}'}" />
+                                                 Command="{Binding AddMonth}"
+                                                 CommandParameter="{Binding Path=SelectedItem, ElementName=OrdersGrid}" />
                             </DataTemplate>
                         </sdk:DataGridTemplateColumn.CellTemplate>
                     </sdk:DataGridTemplateColumn>
@@ -106,7 +107,8 @@
                                 <HyperlinkButton Content="Extend Year"
                                                  VerticalAlignment="Center"
                                                  IsEnabled="True"
-                                                 NavigateUri="{Binding Path=Id, StringFormat='/orders/edit?id={0}'}" />
+                                                 Command="{Binding AddYear}"
+                                                 CommandParameter="{Binding Path=SelectedItem, ElementName=OrdersGrid}" />
                             </DataTemplate>
                         </sdk:DataGridTemplateColumn.CellTemplate>
                     </sdk:DataGridTemplateColumn>
