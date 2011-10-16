@@ -26,6 +26,12 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
         public List<string> Log { get; set; }
 
         public DateTime LicenseEndDate { get; set; }
+
+        public Order()
+        {
+            Address = new Address();
+            LicenseEndDate = DateTime.Today;
+        }
     }
 
     
