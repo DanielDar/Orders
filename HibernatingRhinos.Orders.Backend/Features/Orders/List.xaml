@@ -86,7 +86,7 @@
                                 <HyperlinkButton Content="Edit"
                                                  VerticalAlignment="Center"
                                                  IsEnabled="True"
-                                                 NavigateUri="{Binding Path=OrderNumber, StringFormat='/orders/edit?orderNumber={0}'}" />
+                                                 NavigateUri="{Binding OrderNumber, StringFormat='/orders/edit?orderNumber={0}'}" />
                             </DataTemplate>
                         </sdk:DataGridTemplateColumn.CellTemplate>
                     </sdk:DataGridTemplateColumn>
@@ -97,7 +97,7 @@
                                                  VerticalAlignment="Center"
                                                  IsEnabled="True"
                                                  Command="{Binding AddMonth}"
-                                                 CommandParameter="{Binding Path=SelectedItem, ElementName=OrdersGrid}" />
+                                                 CommandParameter="{Binding SelectedItem, ElementName=OrdersGrid}" />
                             </DataTemplate>
                         </sdk:DataGridTemplateColumn.CellTemplate>
                     </sdk:DataGridTemplateColumn>

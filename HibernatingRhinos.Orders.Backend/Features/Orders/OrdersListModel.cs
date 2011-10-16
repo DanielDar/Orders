@@ -18,8 +18,8 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
         public BindableCollection<Order> Orders { get; set; }
         public ICommand Delete { get { return new DeleteOrderCommand(Session); } }
         public ICommand Edit { get { return new EditOrderCommand(Session); } }
-        public ICommand AddMonth { get { return new AddMonthCommand(); } }
-        public ICommand AddYear { get { return new AddYearCommand(); } }
+        public ICommand AddMonth { get { return new AddMonthCommand(Session); } }
+        public ICommand AddYear { get { return new AddYearCommand(Session); } }
 
     }
 }
