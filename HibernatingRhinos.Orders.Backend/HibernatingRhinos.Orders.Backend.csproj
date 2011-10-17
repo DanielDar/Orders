@@ -96,6 +96,12 @@
     <Compile Include="Commands\CancelOrderCommand.cs" />
     <Compile Include="Commands\AddMonthCommand.cs" />
     <Compile Include="Commands\AddYearCommand.cs" />
+    <Compile Include="Commands\AddWeekCommand.cs" />
+    <Compile Include="Commands\Add2WeeksCommand.cs" />
+    <Compile Include="Commands\CancelTrialCommand.cs" />
+    <Compile Include="Commands\EditTrialCommand.cs" />
+    <Compile Include="Commands\DeleteTrialCommand.cs" />
+    <Compile Include="Commands\SaveTrialCommand.cs" />
     <Compile Include="Commands\EditOrderCommand.cs" />
     <Compile Include="Commands\DeleteOrderCommand.cs" />
     <Compile Include="Commands\SaveOrderCommand.cs" />
@@ -128,6 +134,15 @@
     <Compile Include="Features\Search\List.xaml.cs">
       <DependentUpon>List.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Features\Trials\Edit.xaml.cs">
+      <DependentUpon>Edit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Trials\EditTrialsModel.cs" />
+    <Compile Include="Features\Trials\List.xaml.cs">
+      <DependentUpon>List.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Trials\TrialsListModel.cs" />
+    <Compile Include="Features\Trials\Trial.cs" />
     <Compile Include="Infrastructure\ApplicationModel.cs" />
     <Compile Include="Infrastructure\BindableCollection.cs" />
     <Compile Include="Infrastructure\IObservable.cs" />
@@ -185,6 +200,14 @@
       <SubType>Designer</SubType>
     </Resource>
     <Page Include="Features\Search\List.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Trials\Edit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Trials\List.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

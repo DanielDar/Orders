@@ -1,61 +1,101 @@
-﻿<UserControl
-    x:Class="HibernatingRhinos.Orders.Backend.MainPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation" 
-    xmlns:uriMapper="clr-namespace:System.Windows.Navigation;assembly=System.Windows.Controls.Navigation"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    mc:Ignorable="d" d:DesignWidth="640" d:DesignHeight="480">
+﻿<UserControl x:Class="HibernatingRhinos.Orders.Backend.MainPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+             xmlns:uriMapper="clr-namespace:System.Windows.Navigation;assembly=System.Windows.Controls.Navigation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignWidth="640"
+             d:DesignHeight="480">
 
-    <Grid x:Name="LayoutRoot" Style="{StaticResource LayoutRootGridStyle}">
+    <Grid x:Name="LayoutRoot"
+          Style="{StaticResource LayoutRootGridStyle}">
 
-        <Border x:Name="ContentBorder" Style="{StaticResource ContentBorderStyle}">
+        <Border x:Name="ContentBorder"
+                Style="{StaticResource ContentBorderStyle}">
 
-            <navigation:Frame x:Name="ContentFrame" Style="{StaticResource ContentFrameStyle}" 
-                              Source="/Products/List" Navigated="ContentFrame_Navigated" NavigationFailed="ContentFrame_NavigationFailed">
+            <navigation:Frame x:Name="ContentFrame"
+                              Style="{StaticResource ContentFrameStyle}"
+                              Source="/Products/List"
+                              Navigated="ContentFrame_Navigated"
+                              NavigationFailed="ContentFrame_NavigationFailed">
                 <navigation:Frame.UriMapper>
-                  <uriMapper:UriMapper>
-                    <uriMapper:UriMapping Uri="" MappedUri="/Views/Home.xaml"/>
-                    <uriMapper:UriMapping Uri="/{feature}/{action}" MappedUri="/Features/{feature}/{action}.xaml"/>
-                  </uriMapper:UriMapper>
+                    <uriMapper:UriMapper>
+                        <uriMapper:UriMapping Uri=""
+                                              MappedUri="/Views/Home.xaml" />
+                        <uriMapper:UriMapping Uri="/{feature}/{action}"
+                                              MappedUri="/Features/{feature}/{action}.xaml" />
+                    </uriMapper:UriMapper>
                 </navigation:Frame.UriMapper>
             </navigation:Frame>
         </Border>
 
-        <Grid x:Name="NavigationGrid" Style="{StaticResource NavigationGridStyle}">
+        <Grid x:Name="NavigationGrid"
+              Style="{StaticResource NavigationGridStyle}">
 
-            <Border x:Name="BrandingBorder" Style="{StaticResource BrandingBorderStyle}">
-                <StackPanel x:Name="BrandingStackPanel" Style="{StaticResource BrandingStackPanelStyle}">
+            <Border x:Name="BrandingBorder"
+                    Style="{StaticResource BrandingBorderStyle}">
+                <StackPanel x:Name="BrandingStackPanel"
+                            Style="{StaticResource BrandingStackPanelStyle}">
 
-                    <ContentControl Style="{StaticResource LogoIcon}"/>
-                    <TextBlock x:Name="ApplicationNameTextBlock" Style="{StaticResource ApplicationNameStyle}" 
-                               Text="Application Name"/>
+                    <ContentControl Style="{StaticResource LogoIcon}" />
+                    <TextBlock x:Name="ApplicationNameTextBlock"
+                               Style="{StaticResource ApplicationNameStyle}"
+                               Text="Application Name" />
 
                 </StackPanel>
             </Border>
 
-            <Border x:Name="LinksBorder" Style="{StaticResource LinksBorderStyle}">
-                <StackPanel x:Name="LinksStackPanel" Style="{StaticResource LinksStackPanelStyle}">
+            <Border x:Name="LinksBorder"
+                    Style="{StaticResource LinksBorderStyle}">
+                <StackPanel x:Name="LinksStackPanel"
+                            Style="{StaticResource LinksStackPanelStyle}">
 
-                    <HyperlinkButton x:Name="Link1" Style="{StaticResource LinkStyle}" 
-                                     NavigateUri="/Home" TargetName="ContentFrame" Content="home"/>
-									 
-                    <Rectangle x:Name="Divider1" Style="{StaticResource DividerStyle}"/>
-					
-                    <HyperlinkButton x:Name="Link2" Style="{StaticResource LinkStyle}" 
-                                     NavigateUri="/About" TargetName="ContentFrame" Content="about"/>
+                    <HyperlinkButton x:Name="Link1"
+                                     Style="{StaticResource LinkStyle}"
+                                     NavigateUri="/Home"
+                                     TargetName="ContentFrame"
+                                     Content="home" />
 
-                  <Rectangle x:Name="Divider2" Style="{StaticResource DividerStyle}"/>
+                    <Rectangle x:Name="Divider1"
+                               Style="{StaticResource DividerStyle}" />
 
-                  <HyperlinkButton x:Name="Link3" Style="{StaticResource LinkStyle}"
-                                   NavigateUri="/Products/List" TargetName="ContentFrame" Content="products"/>
-                    
-                    <Rectangle x:Name="Divider3" Style="{StaticResource DividerStyle}"/>
+                    <HyperlinkButton x:Name="Link2"
+                                     Style="{StaticResource LinkStyle}"
+                                     NavigateUri="/About"
+                                     TargetName="ContentFrame"
+                                     Content="about" />
 
-                  <HyperlinkButton x:Name="Link4" Style="{StaticResource LinkStyle}"
-                                   NavigateUri="/Orders/List" TargetName="ContentFrame" Content="orders"/>
-                    <HyperlinkButton x:Name="Link5" Style="{StaticResource LinkStyle}"
-                                     NavigateUri="/Search/List" TargetName="ContentFrame" Content="search" />
+                    <Rectangle x:Name="Divider2"
+                               Style="{StaticResource DividerStyle}" />
+
+                    <HyperlinkButton x:Name="Link3"
+                                     Style="{StaticResource LinkStyle}"
+                                     NavigateUri="/Products/List"
+                                     TargetName="ContentFrame"
+                                     Content="products" />
+
+                    <Rectangle x:Name="Divider3"
+                               Style="{StaticResource DividerStyle}" />
+
+                    <HyperlinkButton x:Name="Link4"
+                                     Style="{StaticResource LinkStyle}"
+                                     NavigateUri="/Orders/List"
+                                     TargetName="ContentFrame"
+                                     Content="orders" />
+
+                    <HyperlinkButton x:Name="Link5"
+                                     Style="{StaticResource LinkStyle}"
+                                     NavigateUri="/Trials/List"
+                                     TargetName="ContentFrame"
+                                     Content="trials" />
+
+                    <HyperlinkButton x:Name="Link6"
+                                     Style="{StaticResource LinkStyle}"
+                                     NavigateUri="/Search/List"
+                                     TargetName="ContentFrame"
+                                     Content="search" />
 
                 </StackPanel>
             </Border>
