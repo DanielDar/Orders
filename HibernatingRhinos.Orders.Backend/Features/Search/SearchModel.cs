@@ -21,26 +21,23 @@ namespace HibernatingRhinos.Orders.Backend.Features.Search
             else
             {
                 searchValue = searchValue.Split('?')[0];
+                Orders = new BindableCollection<Order>(new PrimaryKeyComparer<Order>(x => x.OrderNumber));
 
                 switch (_searchParameter)
                 {
                     case "Email":
-                        Orders = new BindableCollection<Order>(new PrimaryKeyComparer<Order>(x => x.OrderNumber));
                         Session.Query<Order>().Where(x => x.Email == searchValue).ToListAsync()
                             .ContinueOnSuccess(orders => Orders.Match(orders));
                         break;
                     case "Name":
-                        Orders = new BindableCollection<Order>(new PrimaryKeyComparer<Order>(x => x.OrderNumber));
                         Session.Query<Order>().Where(x => x.FirstName == searchValue).ToListAsync()
                             .ContinueOnSuccess(orders => Orders.Match(orders));
                         break;
                     case "Order Number":
-                        Orders = new BindableCollection<Order>(new PrimaryKeyComparer<Order>(x => x.OrderNumber));
                         Session.Query<Order>().Where(x => x.OrderNumber == searchValue).ToListAsync()
                             .ContinueOnSuccess(orders => Orders.Match(orders));
                         break;
                     case "Product Id":
-                        Orders = new BindableCollection<Order>(new PrimaryKeyComparer<Order>(x => x.OrderNumber));
                         Session.Query<Order>().Where(x => x.ProductId == searchValue).ToListAsync()
                             .ContinueOnSuccess(orders => Orders.Match(orders));
                         break;
