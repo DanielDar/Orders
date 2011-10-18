@@ -34,7 +34,7 @@ namespace HibernatingRhinos.Orders.Backend.Commands
             }
 
             session.SaveChangesAsync()
-                .ContinueOnSuccessInTheUiThread(() => Application.Current.Host.NavigationState = "/orders/list?" + Guid.NewGuid());
+                .ContinueOnSuccessInTheUiThread(() => Application.Current.Host.NavigationState += "?" + Guid.NewGuid());
         }
 
         public event EventHandler CanExecuteChanged = delegate { };

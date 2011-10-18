@@ -12,7 +12,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Search
         public SearchModel()
         {
             var searchValue = GetQueryParam("search");
-            if (searchValue == null)
+            if (searchValue == null || searchValue == "")
             {
                 Orders = new BindableCollection<Order>(new PrimaryKeyComparer<Order>(x => x.OrderNumber));
                 Session.Query<Order>().ToListAsync()
@@ -20,6 +20,8 @@ namespace HibernatingRhinos.Orders.Backend.Features.Search
             }
             else
             {
+                searchValue = searchValue.Split('?')[0];
+
                 switch (_searchParameter)
                 {
                     case "Email":
