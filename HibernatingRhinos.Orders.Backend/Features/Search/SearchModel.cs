@@ -67,9 +67,9 @@ namespace HibernatingRhinos.Orders.Backend.Features.Search
 
         public BindableCollection<Order> Orders { get; set; }
 
-        //public Observable<Product> Product { get; set; }
-
-        //public ICommand Save { get { return new SaveProductCommand(Session); } }
-        //public ICommand Cancel { get { return new CancleProductCommand(); } }
+        public ICommand Delete { get { return new DeleteOrderCommand(Session); } }
+        public ICommand Edit { get { return new EditOrderCommand(Session); } }
+        public ICommand AddMonth { get { return new AddMonthCommand(Session); } }
+        public ICommand AddYear { get { return new AddYearCommand(Session); } }
     }
 }
