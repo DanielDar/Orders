@@ -111,6 +111,7 @@
     <Compile Include="Converters\ArrayListToMultiLineStringConverter.cs" />
     <Compile Include="Converters\ArrayListToStringConverter.cs" />
     <Compile Include="Converters\AddressToMultiLineStringConverter.cs" />
+    <Compile Include="Converters\ComboBoxItemToStringConverter.cs" />
     <Compile Include="Converters\StringToProductsTypesEnumConverter.cs" />
     <Compile Include="Converters\NullToBoolConverter.cs" />
     <Compile Include="Features\Orders\Address.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Features\Products\Product.cs" />
     <Compile Include="Features\Products\ProductTypes.cs" />
     <Compile Include="Features\Products\ProductsListModel.cs" />
+    <Compile Include="Features\Search\SearchModel.cs" />
     <Compile Include="Features\Search\List.xaml.cs">
       <DependentUpon>List.xaml</DependentUpon>
     </Compile>

@@ -7,16 +7,19 @@
                  xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
                  xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
                  xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+                 xmlns:Infrastructure="clr-namespace:HibernatingRhinos.Orders.Backend.Infrastructure"
+                 Infrastructure:ModelResolver.AttachModel="SearchModel"
                  d:DesignWidth="640"
                  d:DesignHeight="480"
                  Title="List Page">
-    <Grid x:Name="LayoutRoot">
+    <Grid x:Name="SearchGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
@@ -34,24 +37,36 @@
                    HorizontalAlignment="Stretch"
                    Margin="5,0,5,0" />
 
-        <ComboBox Grid.Column="1"
+        <ComboBox SelectedValue="{Binding SearchParameter, Mode=TwoWay, Converter={StaticResource ComboBoxItemToString}}"
+                  Grid.Column="1"
                   FontSize="14"
                   Width="Auto"
                   HorizontalAlignment="Stretch"
                   Margin="5,0,5,0">
+            
             <ComboBoxItem Content="Email" />
             <ComboBoxItem Content="Name" />
             <ComboBoxItem Content="Order Number" />
-            <ComboBoxItem Content="License Number" />
+            <ComboBoxItem Content="Product Id" />
         </ComboBox>
 
-        <TextBox Grid.Column="2"
+        <TextBox Name="SearchBlock"
+                 Text="{Binding Search, Mode=TwoWay}"
+                 Grid.Column="2"
                  FontSize="14"
                  Width="200"
                  HorizontalAlignment="Stretch"
                  Margin="5,0,5,0" />
-
+        
         <HyperlinkButton Grid.Column="3"
+                         Content="Go"
+                         FontSize="14"
+                         Width="Auto"
+                         HorizontalAlignment="Stretch"
+                         Margin="5,0,5,0"
+                         NavigateUri="{Binding Search, StringFormat='/search/list?search={0}'}" />
+
+        <HyperlinkButton Grid.Column="4"
                          Content="Delete"
                          FontSize="14"
                          Width="Auto"
@@ -61,7 +76,7 @@
                          Command="{Binding Delete}"
                          CommandParameter="{Binding Path=SelectedItem, ElementName=OrdersGrid}" />
 
-        <HyperlinkButton Grid.Column="4"
+        <HyperlinkButton Grid.Column="5"
                          Content="Extend By a Month"
                          FontSize="14"
                          Width="Auto"
@@ -71,7 +86,7 @@
                          Command="{Binding AddMonth}"
                          CommandParameter="{Binding Path=SelectedItem, ElementName=OrdersGrid}" />
 
-        <HyperlinkButton Grid.Column="5"
+        <HyperlinkButton Grid.Column="6"
                          Content="Extend By a Year"
                          FontSize="14"
                          Width="Auto"
@@ -81,7 +96,7 @@
                          Command="{Binding AddYear}"
                          CommandParameter="{Binding Path=SelectedItem, ElementName=OrdersGrid}" />
 
-        <sdk:DataPager Grid.Column="7"
+        <sdk:DataPager Grid.Column="8"
                        Source="{Binding Orders}"
                        HorizontalAlignment="Right"
                        Height="26"
@@ -89,7 +104,7 @@
                        Width="200" />
 
         <toolkit:DockPanel Grid.Row="1"
-                           Grid.ColumnSpan="8">
+                           Grid.ColumnSpan="9">
             <sdk:DataGrid ItemsSource="{Binding Orders}"
                           IsReadOnly="True"
                           AutoGenerateColumns="false"

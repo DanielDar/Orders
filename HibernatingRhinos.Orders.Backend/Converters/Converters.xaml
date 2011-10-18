@@ -7,6 +7,7 @@
     <Converters:ArrayListToStringConverter x:Key="ListToString"/>
     <Converters:NullToBoolConverter x:Key="NullToBool" />
     <Converters:StringToProductsTypesEnumConverter x:Key="StringToProductType" />
-    <Converters:AddressToMultiLineStringConverter x:Key="AddressToMultiString"/>
+    <Converters:AddressToMultiLineStringConverter x:Key="AddressToMultiString" />
+    <Converters:ComboBoxItemToStringConverter x:Key="ComboBoxItemToString"/>
   
 </ResourceDictionary>
