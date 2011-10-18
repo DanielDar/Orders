@@ -10,7 +10,6 @@ namespace HibernatingRhinos.Orders.Backend.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-           // var str = value as string;
             ProductTypes result;
             Enum.TryParse(value.ToString(), out result);
             return result;
@@ -18,8 +17,8 @@ namespace HibernatingRhinos.Orders.Backend.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            ComboBoxItem item = value as ComboBoxItem;
-            if(item!= null)
+            var item = value as ComboBoxItem;
+            if (item != null)
             {
                 return item.Content.ToString();
             }

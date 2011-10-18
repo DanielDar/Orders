@@ -34,8 +34,5 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
             Address = new Address();
             LicenseEndDate = DateTime.Today;
         }
-
     }
-
-    
 }

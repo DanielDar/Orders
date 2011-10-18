@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Windows.Controls;
 using System.Windows.Data;
-using HibernatingRhinos.Orders.Backend.Features.Products;
 
 namespace HibernatingRhinos.Orders.Backend.Converters
 {
@@ -22,7 +21,7 @@ namespace HibernatingRhinos.Orders.Backend.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            ComboBoxItem item = value as ComboBoxItem;
+            var item = value as ComboBoxItem;
             if (item != null)
             {
                 return item.Content.ToString();

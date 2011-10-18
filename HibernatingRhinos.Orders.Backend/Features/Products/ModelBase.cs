@@ -34,8 +34,8 @@ namespace HibernatingRhinos.Orders.Backend.Features.Products
 
             return (from option in options
                     where option.StartsWith(name) && option.Length > name.Length && option[name.Length] == '='
-                    select option.Substring(name.Length + 1)
-                    ).FirstOrDefault();
+                    select option.Substring(name.Length + 1))
+                    .FirstOrDefault();
         }
     }
 }

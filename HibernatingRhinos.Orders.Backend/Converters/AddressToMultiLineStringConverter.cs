@@ -24,7 +24,7 @@ Country: {5}", address.Address1, address.Address2, address.City, address.State, 
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return ((string) value).Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries).ToList();
+            return ((string)value).Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
         }
     }
 }

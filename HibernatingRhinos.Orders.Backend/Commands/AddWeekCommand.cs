@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
-using HibernatingRhinos.Orders.Backend.Features.Orders;
 using HibernatingRhinos.Orders.Backend.Features.Trials;
 using HibernatingRhinos.Orders.Backend.Infrastructure;
 using Raven.Client;
@@ -27,7 +26,7 @@ namespace HibernatingRhinos.Orders.Backend.Commands
         public void Execute(object parameter)
         {
             trial = parameter as Trial;
-            if(trial != null)
+            if (trial != null)
             {
                 trial.LicenseEndDate = DateTime.Today;
                 trial.LicenseEndDate = trial.LicenseEndDate.AddDays(7);
@@ -37,6 +36,6 @@ namespace HibernatingRhinos.Orders.Backend.Commands
                 .ContinueOnSuccessInTheUiThread(() => Application.Current.Host.NavigationState += "?" + Guid.NewGuid());
         }
 
-        public event EventHandler CanExecuteChanged = delegate {};
+        public event EventHandler CanExecuteChanged = delegate { };
     }
 }

@@ -12,12 +12,12 @@ namespace HibernatingRhinos.Orders.Backend.Converters
         {
             if (value == null)
                 return null;
-            return string.Join(Environment.NewLine, (IEnumerable<string>) value);
+            return string.Join(Environment.NewLine, (IEnumerable<string>)value);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return ((string) value).Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries).ToList();
+            return ((string)value).Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
         }
     }
 }

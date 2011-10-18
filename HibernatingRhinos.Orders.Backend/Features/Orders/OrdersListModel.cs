@@ -21,6 +21,5 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
         public ICommand Edit { get { return new EditOrderCommand(Session); } }
         public ICommand AddMonth { get { return new AddMonthCommand(Session); } }
         public ICommand AddYear { get { return new AddYearCommand(Session); } }
-
     }
 }

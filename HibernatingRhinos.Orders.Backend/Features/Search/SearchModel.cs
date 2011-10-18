@@ -12,7 +12,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Search
         public SearchModel()
         {
             var searchValue = GetQueryParam("search");
-            if (searchValue == null || searchValue == "")
+            if (string.IsNullOrEmpty(searchValue))
             {
                 Orders = new BindableCollection<Order>(new PrimaryKeyComparer<Order>(x => x.OrderNumber));
                 Session.Query<Order>().ToListAsync()
@@ -45,15 +45,18 @@ namespace HibernatingRhinos.Orders.Backend.Features.Search
                             .ContinueOnSuccess(orders => Orders.Match(orders));
                         break;
                 }
-                
             }
         }
 
         private string search;
-        public string Search { 
+        public string Search
+        {
             get { return search; }
-            set { search = value; 
-            OnPropertyChanged();}
+            set
+            {
+                search = value;
+                OnPropertyChanged();
+            }
         }
 
         private static string _searchParameter;

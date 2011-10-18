@@ -13,13 +13,12 @@
                  d:DesignHeight="480"
                  Infrastructure:ModelResolver.AttachModel="OrdersListModel"
                  Title="List Page">
-    
+
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
@@ -28,7 +27,6 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-
         <HyperlinkButton Grid.Column="0"
                          Content="Add"
                          FontSize="14"
@@ -36,7 +34,6 @@
                          HorizontalAlignment="Stretch"
                          Margin="5,0,5,0"
                          NavigateUri="/orders/edit" />
-
         <HyperlinkButton Grid.Column="1"
                          Content="Delete"
                          FontSize="14"
@@ -46,7 +43,6 @@
                          IsEnabled="{Binding Path=SelectedItem, ElementName=OrdersGrid, Converter={StaticResource NullToBool}}"
                          Command="{Binding Delete}"
                          CommandParameter="{Binding Path=SelectedItem, ElementName=OrdersGrid}" />
-
         <HyperlinkButton Grid.Column="2"
                          Content="Extend By a Month"
                          FontSize="14"
@@ -56,7 +52,6 @@
                          IsEnabled="{Binding Path=SelectedItem, ElementName=OrdersGrid, Converter={StaticResource NullToBool}}"
                          Command="{Binding AddMonth}"
                          CommandParameter="{Binding Path=SelectedItem, ElementName=OrdersGrid}" />
-
         <HyperlinkButton Grid.Column="3"
                          Content="Extend By a Year"
                          FontSize="14"
@@ -66,14 +61,12 @@
                          IsEnabled="{Binding Path=SelectedItem, ElementName=OrdersGrid, Converter={StaticResource NullToBool}}"
                          Command="{Binding AddYear}"
                          CommandParameter="{Binding Path=SelectedItem, ElementName=OrdersGrid}" />
-
         <sdk:DataPager Grid.Column="5"
                        Source="{Binding Orders}"
                        HorizontalAlignment="Right"
                        Height="26"
                        PageSize="3"
                        Width="200" />
-
         <toolkit:DockPanel Grid.Row="1"
                            Grid.ColumnSpan="6">
             <sdk:DataGrid ItemsSource="{Binding Orders}"
@@ -81,7 +74,6 @@
                           AutoGenerateColumns="false"
                           CanUserSortColumns="true"
                           Name="OrdersGrid">
-
                 <sdk:DataGrid.Columns>
                     <sdk:DataGridTextColumn Header="Order Number"
                                             Binding="{Binding OrderNumber}" />
@@ -113,7 +105,6 @@
                             </DataTemplate>
                         </sdk:DataGridTemplateColumn.CellTemplate>
                     </sdk:DataGridTemplateColumn>
-
                 </sdk:DataGrid.Columns>
             </sdk:DataGrid>
         </toolkit:DockPanel>

@@ -26,7 +26,7 @@ namespace HibernatingRhinos.Orders.Backend.Commands
         public void Execute(object parameter)
         {
             order = parameter as Order;
-            if(order != null)
+            if (order != null)
             {
                 order.LicenseEndDate = DateTime.Today;
                 order.LicenseEndDate = order.LicenseEndDate.AddMonths(1);
@@ -37,6 +37,6 @@ namespace HibernatingRhinos.Orders.Backend.Commands
                 .ContinueOnSuccessInTheUiThread(() => Application.Current.Host.NavigationState += "?" + Guid.NewGuid());
         }
 
-        public event EventHandler CanExecuteChanged = delegate {};
+        public event EventHandler CanExecuteChanged = delegate { };
     }
 }
