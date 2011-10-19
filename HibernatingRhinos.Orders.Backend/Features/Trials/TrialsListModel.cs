@@ -19,7 +19,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Trials
 
         public ICommand Delete { get { return new DeleteTrialCommand(Session); } }
         public ICommand Edit { get { return new EditTrialCommand(Session); } }
-        public ICommand AddWeek { get { return new AddWeekCommand(Session); } }
-        public ICommand Add2Weeks { get { return new Add2WeeksCommand(Session); } }
+        public ICommand AddWeek { get { return new AddTimeCommand(Session, typeof (Trial), 0, 0, 1, 0); } }
+        public ICommand Add2Weeks { get { return new AddTimeCommand(Session, typeof (Trial), 0, 0, 2, 0); } }
     }
 }

@@ -92,12 +92,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Commands\AddTimeCommand.cs" />
     <Compile Include="Commands\CancelProductCommand.cs" />
     <Compile Include="Commands\CancelOrderCommand.cs" />
-    <Compile Include="Commands\AddMonthCommand.cs" />
-    <Compile Include="Commands\AddYearCommand.cs" />
-    <Compile Include="Commands\AddWeekCommand.cs" />
-    <Compile Include="Commands\Add2WeeksCommand.cs" />
     <Compile Include="Commands\CancelTrialCommand.cs" />
     <Compile Include="Commands\EditTrialCommand.cs" />
     <Compile Include="Commands\DeleteTrialCommand.cs" />
