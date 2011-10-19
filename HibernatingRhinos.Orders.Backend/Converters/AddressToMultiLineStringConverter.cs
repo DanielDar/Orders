@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Data;
-using System.Linq;
 using HibernatingRhinos.Orders.Backend.Features.Orders;
 
 namespace HibernatingRhinos.Orders.Backend.Converters
@@ -24,10 +23,7 @@ Country: {5}", address.Address1, address.Address2, address.City, address.State, 
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var addressList =
-                ((string) value).Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries).ToList();
-
-            return ((string)value).Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            throw new NotImplementedException();
         }
     }
 }
