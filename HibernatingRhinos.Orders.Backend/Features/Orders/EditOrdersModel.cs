@@ -25,6 +25,6 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
         public Observable<Order> Order { get; set; }
 
         public ICommand Save { get { return new SaveOrderCommand(Session); } }
-        public ICommand Cancel { get { return new CancleOrderCommand(); } }
+        public ICommand Cancel { get { return new CancleCommand("/orders/list"); } }
     }
 }

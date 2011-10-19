@@ -93,9 +93,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Commands\AddTimeCommand.cs" />
-    <Compile Include="Commands\CancelProductCommand.cs" />
-    <Compile Include="Commands\CancelOrderCommand.cs" />
-    <Compile Include="Commands\CancelTrialCommand.cs" />
+    <Compile Include="Commands\CancelCommand.cs" />
     <Compile Include="Commands\EditTrialCommand.cs" />
     <Compile Include="Commands\DeleteTrialCommand.cs" />
     <Compile Include="Commands\SaveTrialCommand.cs" />

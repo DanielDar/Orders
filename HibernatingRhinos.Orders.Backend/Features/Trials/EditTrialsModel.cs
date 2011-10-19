@@ -25,6 +25,6 @@ namespace HibernatingRhinos.Orders.Backend.Features.Trials
         public Observable<Trial> Trial { get; set; }
 
         public ICommand Save { get { return new SaveTrialCommand(Session); } }
-        public ICommand Cancel { get { return new CancleTrialCommand(); } }
+        public ICommand Cancel { get { return new CancleCommand("/trials/list"); } }
     }
 }

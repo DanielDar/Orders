@@ -36,6 +36,6 @@ namespace HibernatingRhinos.Orders.Backend.Features.Products
         public Observable<Product> Product { get; set; }
 
         public ICommand Save { get { return new SaveProductCommand(Session); } }
-        public ICommand Cancel { get { return new CancleProductCommand(); } }
+        public ICommand Cancel { get { return new CancleCommand("/products/list"); } }
     }
 }
