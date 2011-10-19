@@ -7,6 +7,8 @@ namespace HibernatingRhinos.Orders.Backend.Features.Products
 {
     public class ProductsListModel : ModelBase
     {
+        private const string Location = "/products/list";
+
         public ProductsListModel()
         {
             Products = new BindableCollection<Product>(new PrimaryKeyComparer<Product>(x => x.Id));
@@ -17,6 +19,6 @@ namespace HibernatingRhinos.Orders.Backend.Features.Products
         public BindableCollection<Product> Products { get; set; }
 
         public ICommand Delete { get { return new DeleteCommand(Session); } }
-        public ICommand Edit { get { return new EditProductCommand(Session); } }
+        public ICommand Edit { get { return new EditCommand(Session, Location); } }
     }
 }

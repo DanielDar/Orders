@@ -8,6 +8,8 @@ namespace HibernatingRhinos.Orders.Backend.Features.Trials
 {
     public class TrialsListModel : ModelBase
     {
+        private const string Location = "/trials/list";
+
         public TrialsListModel()
         {
             Trials = new BindableCollection<Trial>(new PrimaryKeyComparer<Trial>(x => x.Id));
@@ -18,7 +20,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Trials
         public BindableCollection<Trial> Trials { get; set; }
 
         public ICommand Delete { get { return new DeleteCommand(Session); } }
-        public ICommand Edit { get { return new EditTrialCommand(Session); } }
+        public ICommand Edit { get { return new EditCommand(Session, Location); } }
         public ICommand AddWeek { get { return new AddTimeCommand(Session, typeof (Trial), 0, 0, 1, 0); } }
         public ICommand Add2Weeks { get { return new AddTimeCommand(Session, typeof (Trial), 0, 0, 2, 0); } }
     }
