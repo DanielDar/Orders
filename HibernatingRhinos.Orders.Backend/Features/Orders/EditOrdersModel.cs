@@ -7,6 +7,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
 {
     public class EditOrdersModel : ModelBase
     {
+        private const string Location = "/orders/list";
         public EditOrdersModel()
         {
             Order = new Observable<Order>();
@@ -24,7 +25,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
 
         public Observable<Order> Order { get; set; }
 
-        public ICommand Save { get { return new SaveOrderCommand(Session); } }
-        public ICommand Cancel { get { return new CancleCommand("/orders/list"); } }
+        public ICommand Save { get { return new SaveCommand(Session, Location ); } }
+        public ICommand Cancel { get { return new CancleCommand(Location); } }
     }
 }

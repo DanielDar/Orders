@@ -94,13 +94,11 @@
     </Compile>
     <Compile Include="Commands\AddTimeCommand.cs" />
     <Compile Include="Commands\CancelCommand.cs" />
+    <Compile Include="Commands\SaveCommand.cs" />
     <Compile Include="Commands\DeleteCommand.cs" />
     <Compile Include="Commands\EditTrialCommand.cs" />
-    <Compile Include="Commands\SaveTrialCommand.cs" />
     <Compile Include="Commands\EditOrderCommand.cs" />
-    <Compile Include="Commands\SaveOrderCommand.cs" />
     <Compile Include="Commands\EditProductCommand.cs" />
-    <Compile Include="Commands\SaveProductCommand.cs" />
     <Compile Include="Converters\ArrayListToMultiLineStringConverter.cs" />
     <Compile Include="Converters\ArrayListToStringConverter.cs" />
     <Compile Include="Converters\AddressToMultiLineStringConverter.cs" />

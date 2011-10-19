@@ -6,6 +6,8 @@ namespace HibernatingRhinos.Orders.Backend.Features.Products
 {
     public class EditProductsModel : ModelBase
     {
+        private const string Location = "/products/list";
+
         public EditProductsModel()
         {
             Product = new Observable<Product>();
@@ -35,7 +37,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Products
 
         public Observable<Product> Product { get; set; }
 
-        public ICommand Save { get { return new SaveProductCommand(Session); } }
-        public ICommand Cancel { get { return new CancleCommand("/products/list"); } }
+        public ICommand Save { get { return new SaveCommand(Session, Location); } }
+        public ICommand Cancel { get { return new CancleCommand(Location); } }
     }
 }
