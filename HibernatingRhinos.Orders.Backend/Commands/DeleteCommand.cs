@@ -23,8 +23,9 @@ namespace HibernatingRhinos.Orders.Backend.Commands
         public void Execute(object parameter)
         {
             session.Delete(parameter);
-            session.SaveChangesAsync()
-                .ContinueOnSuccessInTheUiThread(() => Application.Current.Host.NavigationState += "?" + Guid.NewGuid());
+            session
+                .SaveChangesAsync()
+                .Reload();
         }
 
         public event EventHandler CanExecuteChanged = delegate { };

@@ -23,6 +23,13 @@ namespace HibernatingRhinos.Orders.Backend.Infrastructure
             }).Unwrap();
         }
 
+        public static Task Reload(this Task parent)
+        {
+            return
+                parent.ContinueOnSuccessInTheUiThread(
+                    () => Application.Current.Host.NavigationState += "?" + Guid.NewGuid());
+        }
+
         public static Task ContinueOnSuccessInTheUiThread(this Task parent, Action action)
         {
             return parent.ContinueOnSuccess(() =>

@@ -1,8 +1,9 @@
 ﻿using System;
+using HibernatingRhinos.Orders.Backend.Features.Orders;
 
 namespace HibernatingRhinos.Orders.Backend.Features.Trials
 {
-    public class Trial
+    public class Trial : IEnd
     {
         public string Id { get; set; }
         
@@ -10,6 +11,8 @@ namespace HibernatingRhinos.Orders.Backend.Features.Trials
 
         public string Company { get; set; }
 
-        public DateTime LicenseEndDate { get; set; }
+        public DateTime EndsAt { get; set; }
+
+        public DateTime StartedAt { get; set; }
     }
 }

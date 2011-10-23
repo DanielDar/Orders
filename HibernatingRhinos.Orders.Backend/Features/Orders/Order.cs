@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace HibernatingRhinos.Orders.Backend.Features.Orders
 {
-    public class Order
+    public class Order : IEnd
     {
-        public string Id { get { return "orders/" + OrderNumber; } }
+        public string Id { get; set; }
 
         public string OrderNumber { get; set; }
 
@@ -27,12 +27,15 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
 
         public List<string> Log { get; set; }
 
-        public DateTime LicenseEndDate { get; set; }
+        public DateTime EndsAt { get; set; }
+
+        public DateTime OrderedAt { get; set; }
+
+        public string LicenseFor { get; set; }
 
         public Order()
         {
             Address = new Address();
-            LicenseEndDate = DateTime.Today;
         }
     }
 }
