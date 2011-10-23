@@ -139,6 +139,7 @@
     </Compile>
     <Compile Include="Features\Trials\TrialsListModel.cs" />
     <Compile Include="Features\Trials\Trial.cs" />
+    <Compile Include="Indexes\Trials_Search.cs" />
     <Compile Include="Indexes\Orders_Search.cs" />
     <Compile Include="Infrastructure\ApplicationModel.cs" />
     <Compile Include="Infrastructure\BindableCollection.cs" />

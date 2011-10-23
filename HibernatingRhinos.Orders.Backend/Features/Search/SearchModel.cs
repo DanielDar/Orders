@@ -38,7 +38,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Search
 
         public BindableCollection<Order> Orders { get; set; }
 
-        public ICommand Delete { get { return new DeleteCommand(Session); } }
+        public ICommand Delete { get { return new DeleteCommand(Session, Location); } }
         public ICommand Edit { get { return new EditCommand(Session, Location); } }
     }
 }

@@ -33,33 +33,19 @@
                          HorizontalAlignment="Stretch"
                          Margin="5,0,5,0"
                          NavigateUri="/trials/edit" />
-        <HyperlinkButton Grid.Column="1"
-                         Content="Delete"
-                         FontSize="14"
-                         Width="Auto"
-                         HorizontalAlignment="Stretch"
-                         Margin="5,0,5,0"
-                         IsEnabled="{Binding Path=SelectedItem, ElementName=OrdersGrid, Converter={StaticResource NullToBool}}"
-                         Command="{Binding Delete}"
-                         CommandParameter="{Binding Path=SelectedItem, ElementName=OrdersGrid}" />
+        <TextBox Name="SearchBlock"
+                 Text="{Binding Search, Mode=TwoWay}"
+                 Grid.Column="1"
+                 FontSize="14"
+                 Width="200"
+                 Margin="5,0,5,0" />
         <HyperlinkButton Grid.Column="2"
-                         Content="Extend By a Week"
+                         Content="Go"
                          FontSize="14"
                          Width="Auto"
                          HorizontalAlignment="Stretch"
                          Margin="5,0,5,0"
-                         IsEnabled="{Binding Path=SelectedItem, ElementName=OrdersGrid, Converter={StaticResource NullToBool}}"
-                         Command="{Binding AddWeek}"
-                         CommandParameter="{Binding Path=SelectedItem, ElementName=OrdersGrid}" />
-        <HyperlinkButton Grid.Column="3"
-                         Content="Extend By a Two Weeks"
-                         FontSize="14"
-                         Width="Auto"
-                         HorizontalAlignment="Stretch"
-                         Margin="5,0,5,0"
-                         IsEnabled="{Binding Path=SelectedItem, ElementName=OrdersGrid, Converter={StaticResource NullToBool}}"
-                         Command="{Binding Add2Weeks}"
-                         CommandParameter="{Binding Path=SelectedItem, ElementName=OrdersGrid}" />
+                         NavigateUri="{Binding Search, StringFormat='/trials/list?search={0}'}" />
         <sdk:DataPager Grid.Column="5"
                        Source="{Binding Trials}"
                        HorizontalAlignment="Right"
@@ -74,14 +60,14 @@
                           CanUserSortColumns="true"
                           Name="OrdersGrid">
                 <sdk:DataGrid.Columns>
+                    <sdk:DataGridTextColumn Header="Id"
+                                            Binding="{Binding Id}" />
                     <sdk:DataGridTextColumn Header="Name"
                                             Binding="{Binding Name}" />
                     <sdk:DataGridTextColumn Header="Company"
                                             Binding="{Binding Company}" />
-                    <sdk:DataGridTextColumn Header="Id"
-                                            Binding="{Binding Id}" />
                     <sdk:DataGridTextColumn Header="License End Date"
-                                            Binding="{Binding LicenseEndDate}" />
+                                            Binding="{Binding EndsAt}" />
                     <sdk:DataGridTemplateColumn Header="">
                         <sdk:DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

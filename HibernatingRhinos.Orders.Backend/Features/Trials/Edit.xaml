@@ -6,6 +6,7 @@
                  mc:Ignorable="d"
                  xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
                  xmlns:Infrastructure="clr-namespace:HibernatingRhinos.Orders.Backend.Infrastructure"
+                 xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
                  Infrastructure:ModelResolver.AttachModel="EditTrialsModel"
                  d:DesignWidth="640"
                  d:DesignHeight="480"
@@ -20,19 +21,19 @@
             <ColumnDefinition Width="0.248*" />
             <ColumnDefinition Width="0.752*" />
         </Grid.ColumnDefinitions>
-        <TextBlock Margin="20,20,0,0"
+        <TextBlock Margin="20,61,0,0"
                    TextWrapping="Wrap"
                    Text="Name:"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Left"
                    FontSize="16" />
-        <TextBlock Margin="20,65,0,0"
+        <TextBlock Margin="20,106,0,0"
                    TextWrapping="Wrap"
                    Text="Company:"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Left"
                    FontSize="16" />
-        <TextBlock Margin="20,105,0,0"
+        <TextBlock Margin="20,21,0,0"
                    TextWrapping="Wrap"
                    Text="Id:"
                    HorizontalAlignment="Left"
@@ -40,32 +41,71 @@
                    VerticalAlignment="Top" />
         <TextBox Grid.Column="1"
                  Text="{Binding Path=Trial.Value.Name, Mode=TwoWay}"
-                 Margin="20,20,20,0"
+                 Margin="20,61,20,0"
                  TextWrapping="Wrap"
                  VerticalAlignment="Top" />
         <TextBox Grid.Column="1"
                  Text="{Binding Path=Trial.Value.Company, Mode=TwoWay}"
-                 Margin="20,65,20,0"
+                 Margin="20,106,20,0"
                  TextWrapping="Wrap"
                  VerticalAlignment="Top" />
         <TextBox Text="{Binding Path=Trial.Value.Id, Mode=TwoWay}"
                  Grid.Column="1"
-                 Margin="20,105,20,0"
+                 Margin="20,21,20,0"
                  VerticalAlignment="Top" />
-        <HyperlinkButton Content="Save"
-                         HorizontalAlignment="Left"
-                         Margin="8,8,0,19"
-                         Grid.Row="1"
-                         d:LayoutOverrides="Height"
-                         Command="{Binding Save}"
-                         CommandParameter="{Binding Trial.Value}"
-                         FontSize="18.667" />
-        <HyperlinkButton Content="Cancel"
-                         Margin="71,8,21,19"
-                         Grid.Row="1"
-                         FontSize="18.667"
-                         d:LayoutOverrides="Width, Height"
-                         Command="{Binding Cancel}"
-                         RenderTransformOrigin="1.254,0.455" />
+
+        <Grid Grid.ColumnSpan="3"
+              Grid.Row="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <HyperlinkButton Content="Save"
+                             HorizontalAlignment="Left"
+                             Command="{Binding Save}"
+                             CommandParameter="{Binding Trial.Value}"
+                             Padding="0,0,10,0"
+                             FontSize="19" />
+            <HyperlinkButton Content="Cancel"
+                             Grid.Column="1"
+                             Padding="0,0,10,0"
+                             FontSize="19"
+                             Command="{Binding Cancel}" />
+            <HyperlinkButton Content="Extend By Week"
+                             Grid.Column="3"
+                             Padding="0,0,10,0"
+                             FontSize="19"
+                             Command="{Binding AddWeek}"
+                             CommandParameter="{Binding Trial.Value}" />
+            <HyperlinkButton Content="Extend By 2 Weeks"
+                             Grid.Column="4"
+                             Padding="0,0,10,0"
+                             FontSize="19"
+                             Command="{Binding Add2Weeks}"
+                             CommandParameter="{Binding Trial.Value}" />
+            <HyperlinkButton Content="Delete"
+                             Grid.Column="5"
+                             Padding="0,0,10,0"
+                             FontSize="19"
+                             Command="{Binding Delete}"
+                             CommandParameter="{Binding Trial.Value}" />
+        </Grid>
+        <TextBlock Margin="20,153,17,0"
+                   TextWrapping="Wrap"
+                   Text="Trial End Date:"
+                   FontSize="16"
+                   VerticalAlignment="Top" d:LayoutOverrides="Width, GridBox" />
+        <sdk:DatePicker Grid.Column="1"
+                        SelectedDate="{Binding Trial.Value.EndsAt, Mode=TwoWay}"
+                        Margin="20,153,108,0"
+                        d:LayoutOverrides="Width, GridBox"
+                        FirstDayOfWeek="Sunday"
+                        IsDropDownOpen="False"
+                        IsTodayHighlighted="False" VerticalAlignment="Top" />
     </Grid>
 </navigation:Page>
