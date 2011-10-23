@@ -9,10 +9,12 @@ namespace HibernatingRhinos.Orders.Backend.Commands
     public class DeleteCommand : ICommand
     {
         private readonly IAsyncDocumentSession session;
+        private string location;
 
-        public DeleteCommand(IAsyncDocumentSession session)
+        public DeleteCommand(IAsyncDocumentSession session, string location)
         {
             this.session = session;
+            this.location = location;
         }
 
         public bool CanExecute(object parameter)
@@ -25,7 +27,7 @@ namespace HibernatingRhinos.Orders.Backend.Commands
             session.Delete(parameter);
             session
                 .SaveChangesAsync()
-                .Reload();
+                .GoTo(location);
         }
 
         public event EventHandler CanExecuteChanged = delegate { };

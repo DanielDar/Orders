@@ -27,5 +27,9 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
 
         public ICommand Save { get { return new SaveCommand(Session, Location ); } }
         public ICommand Cancel { get { return new CancleCommand(Location); } }
+        public ICommand AddMonth { get { return new AddTimeCommand(Session, time => time.AddMonths(1).AddDays(3)); } }
+        public ICommand AddYear { get { return new AddTimeCommand(Session, time => time.AddYears(1).AddDays(3)); } }
+        public ICommand Delete { get { return new DeleteCommand(Session, Location); } }
+
     }
 }

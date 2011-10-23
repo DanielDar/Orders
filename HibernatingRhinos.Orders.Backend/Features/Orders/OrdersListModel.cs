@@ -44,9 +44,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
 
         public BindableCollection<Order> Orders { get; set; }
 
-        public ICommand Delete { get { return new DeleteCommand(Session); } }
         public ICommand Edit { get { return new EditCommand(Session, Location); } }
-        public ICommand AddMonth { get { return new AddTimeCommand(Session, time => time.AddMonths(1).AddDays(3)); } }
-        public ICommand AddYear { get { return new AddTimeCommand(Session, time => time.AddYears(1).AddDays(3)); } }
+       
     }
 }

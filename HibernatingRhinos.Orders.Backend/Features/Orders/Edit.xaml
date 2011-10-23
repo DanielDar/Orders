@@ -1,11 +1,12 @@
-﻿<navigation:Page x:Class="HibernatingRhinos.Orders.Backend.Features.Orders.Edit"
-                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<navigation:Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                 mc:Ignorable="d"
                  xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
                  xmlns:Infrastructure="clr-namespace:HibernatingRhinos.Orders.Backend.Infrastructure"
+                 xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+                 x:Class="HibernatingRhinos.Orders.Backend.Features.Orders.Edit"
+                 mc:Ignorable="d"
                  Infrastructure:ModelResolver.AttachModel="EditOrdersModel"
                  d:DesignWidth="800"
                  d:DesignHeight="600"
@@ -28,7 +29,8 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.24*" />
-            <ColumnDefinition Width="0.76*" />
+            <ColumnDefinition Width="0.42*" />
+            <ColumnDefinition Width="0.34*" />
         </Grid.ColumnDefinitions>
         <TextBlock Margin="8,0,0,0"
                    TextWrapping="Wrap"
@@ -93,11 +95,12 @@
                    VerticalAlignment="Top"
                    Grid.Row="9" />
         <Grid Grid.Row="8"
-              Grid.ColumnSpan="2"
+              Grid.ColumnSpan="3"
               Margin="0,0,0,18">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.24*" />
-                <ColumnDefinition Width="0.76*" />
+                <ColumnDefinition Width="0.42*" />
+                <ColumnDefinition Width="0.34*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.124*" />
@@ -160,37 +163,37 @@
                        Grid.Row="7" />
             <TextBox Grid.Column="1"
                      Text="{Binding Order.Value.Address.Address1, Mode=TwoWay}"
-                     Margin="8,5,150,5"
+                     Margin="8,5,50,5"
                      TextWrapping="Wrap"
                      Grid.Row="2"
                      VerticalAlignment="Center" />
             <TextBox Grid.Column="1"
                      Text="{Binding Order.Value.Address.Address2, Mode=TwoWay}"
-                     Margin="8,5,150,5"
+                     Margin="8,5,50,5"
                      TextWrapping="Wrap"
                      Grid.Row="3"
                      VerticalAlignment="Center" />
             <TextBox Grid.Column="1"
                      Text="{Binding Order.Value.Address.City, Mode=TwoWay}"
-                     Margin="8,5,150,5"
+                     Margin="8,5,50,5"
                      TextWrapping="Wrap"
                      Grid.Row="4"
                      VerticalAlignment="Center" />
             <TextBox Grid.Column="1"
                      Text="{Binding Order.Value.Address.State, Mode=TwoWay}"
-                     Margin="8,5,150,5"
+                     Margin="8,5,50,5"
                      TextWrapping="Wrap"
                      Grid.Row="5"
                      VerticalAlignment="Center" />
             <TextBox Grid.Column="1"
                      Text="{Binding Order.Value.Address.ZipCode, Mode=TwoWay}"
-                     Margin="8,5,150,5"
+                     Margin="8,5,50,5"
                      TextWrapping="Wrap"
                      Grid.Row="6"
                      VerticalAlignment="Center" />
             <TextBox Grid.Column="1"
                      Text="{Binding Order.Value.Address.Country, Mode=TwoWay}"
-                     Margin="8,5,150,5"
+                     Margin="8,5,50,5"
                      TextWrapping="Wrap"
                      Grid.Row="7"
                      VerticalAlignment="Center" />
@@ -245,29 +248,68 @@
         <TextBox Grid.Column="1"
                  Text="{Binding Order.Value.Log, Converter={StaticResource ListToMultiString}, Mode=TwoWay}"
                  AcceptsReturn="True"
-                 Margin="8,5,8,5"
+                 Margin="8,5,8,0"
                  TextWrapping="Wrap"
                  Grid.Row="9"
-                 d:LayoutOverrides="Height"
                  VerticalAlignment="Top"
                  MinHeight="50"
                  MaxHeight="250" />
-        <HyperlinkButton Content="Save"
-                         HorizontalAlignment="Left"
-                         Margin="8,8,0,19"
-                         Grid.Row="10"
-                         d:LayoutOverrides="Height"
-                         Command="{Binding Save}"
-                         CommandParameter="{Binding Order.Value}"
-                         FontSize="18.667"
-                         VerticalAlignment="Bottom" />
-        <HyperlinkButton Content="Cancel"
-                         Margin="71,8,21,19"
-                         Grid.Row="10"
-                         FontSize="18.667"
-                         d:LayoutOverrides="Width, Height"
-                         Command="{Binding Cancel}"
-                         RenderTransformOrigin="1.254,0.455"
-                         VerticalAlignment="Bottom" />
+        <Grid Grid.ColumnSpan="3"
+              Grid.Row="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <HyperlinkButton Content="Save"
+                             HorizontalAlignment="Left"
+                             Command="{Binding Save}"
+                             CommandParameter="{Binding Order.Value}"
+                             Padding="0,0,10,0"
+                             FontSize="19" />
+            <HyperlinkButton Content="Cancel"
+                             Grid.Column="1"
+                             Padding="0,0,10,0"
+                             FontSize="19"
+                             Command="{Binding Cancel}" />
+            <HyperlinkButton Content="Extend By Month"
+                             Grid.Column="3"
+                             Padding="0,0,10,0"
+                             FontSize="19"
+                             Command="{Binding AddMonth}"
+                             CommandParameter="{Binding Order.Value}" />
+            <HyperlinkButton Content="Extend By Year"
+                             Grid.Column="4"
+                             Padding="0,0,10,0"
+                             FontSize="19"
+                             Command="{Binding AddYear}"
+                             CommandParameter="{Binding Order.Value}"/>
+            <HyperlinkButton Content="Delete"
+                             Grid.Column="5"
+                             Padding="0,0,10,0"
+                             FontSize="19"
+                             Command="{Binding Delete}"
+                             CommandParameter="{Binding Order.Value}"/>
+        </Grid>
+        <TextBlock Margin="25,0,0,0"
+                   TextWrapping="Wrap"
+                   Text="License End Date:"
+                   HorizontalAlignment="Left"
+                   FontSize="16"
+                   VerticalAlignment="Center"
+                   Grid.Column="2" />
+        <sdk:DatePicker Grid.Column="2"
+
+                        SelectedDate="{Binding Order.Value.EndsAt, Mode=TwoWay}"
+                        Margin="25,0,103,0"
+                        Grid.Row="1"
+                        d:LayoutOverrides="Width, Height"
+                        FirstDayOfWeek="Sunday"
+                        IsDropDownOpen="False" 
+                        IsTodayHighlighted="False" />
     </Grid>
 </navigation:Page>
