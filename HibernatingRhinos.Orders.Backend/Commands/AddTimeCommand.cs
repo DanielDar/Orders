@@ -11,63 +11,33 @@ namespace HibernatingRhinos.Orders.Backend.Commands
     public class AddTimeCommand : ICommand
     {
         private readonly IAsyncDocumentSession session;
-        private Type type;
-        private DateTime licenseEndDate;
-        private int years;
-        private int months;
-        private int weeks;
-        private int days;
+        private readonly Func<DateTime, DateTime> modifyDate;
         private Order order;
         private Trial trial;
 
-        public AddTimeCommand(IAsyncDocumentSession session, Type type, int years, int months, int weeks, int days)
+        public AddTimeCommand(IAsyncDocumentSession session, Func<DateTime, DateTime>  modifyDate)
         {
             this.session = session;
-            this.type = type;
-            this.years = years;
-            this.months = months;
-            this.weeks = weeks;
-            this.days = days;
+            this.modifyDate = modifyDate;
         }
 
         public bool CanExecute(object parameter)
         {
-            //order = parameter as Order;
-            //return order != null;
-
-            return true;
+            return parameter is IEnd;
         }
 
         public void Execute(object parameter)
         {
-            order = parameter as Order;
-            trial = parameter as Trial;
-            if (order != null || trial != null)
-            {
-                AddTime();
+            var ends = (IEnd) parameter;
 
-                if (order != null)
-                {
-                    order.LicenseEndDate = licenseEndDate;
-                }
-                else
-                {
-                    trial.LicenseEndDate = licenseEndDate;
-                }
-            }
+            ends.EndsAt = modifyDate(DateTime.Today);
 
-            session.SaveChangesAsync()
-                .ContinueOnSuccessInTheUiThread(() => Application.Current.Host.NavigationState += "?" + Guid.NewGuid());
+            session
+                .SaveChangesAsync()
+                .Reload();
         }
 
         public event EventHandler CanExecuteChanged = delegate { };
 
-        private void AddTime()
-        {
-            licenseEndDate = DateTime.Today;
-            licenseEndDate = licenseEndDate.AddYears(years);
-            licenseEndDate = licenseEndDate.AddMonths(months);
-            licenseEndDate = licenseEndDate.AddDays(weeks * 7 + days);
-        }
     }
 }
