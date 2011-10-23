@@ -1,0 +1,551 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="UberProf.BackendModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="UberProfBackendModelStoreContainer">
+          <EntitySet Name="Buyers" EntityType="UberProf.BackendModel.Store.Buyers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Downloads" EntityType="UberProf.BackendModel.Store.Downloads" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ErrorReports" EntityType="UberProf.BackendModel.Store.ErrorReports" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Freebies" EntityType="UberProf.BackendModel.Store.Freebies" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LicenseFiles" EntityType="UberProf.BackendModel.Store.LicenseFiles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Orders" EntityType="UberProf.BackendModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Prospects" EntityType="UberProf.BackendModel.Store.Prospects" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="UberProf.BackendModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Trials" EntityType="UberProf.BackendModel.Store.Trials" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK318A099B6965C307" Association="UberProf.BackendModel.Store.FK318A099B6965C307">
+            <End Role="Buyers" EntitySet="Buyers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK3A420F9C2AB61060" Association="UberProf.BackendModel.Store.FK3A420F9C2AB61060">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="LicenseFiles" EntitySet="LicenseFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK3A420F9C52F8CEC2" Association="UberProf.BackendModel.Store.FK3A420F9C52F8CEC2">
+            <End Role="Freebies" EntitySet="Freebies" />
+            <End Role="LicenseFiles" EntitySet="LicenseFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK570785C186B03BAA" Association="UberProf.BackendModel.Store.FK570785C186B03BAA">
+            <End Role="Buyers" EntitySet="Buyers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Buyers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ContactEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactLastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactFirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactPhone" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactAlternativeMail" Type="nvarchar" MaxLength="100" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="100" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ZipPostalCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="StateProvince" Type="nvarchar" MaxLength="100" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Downloads">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TrackingId" Type="uniqueidentifier" />
+          <Property Name="At" Type="datetime" />
+          <Property Name="Profile" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ErrorReports">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="OperationSystem" Type="nvarchar" MaxLength="100" />
+          <Property Name="WorkingSet" Type="bigint" />
+          <Property Name="ProcessorCount" Type="int" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="Error" Type="nvarchar(max)" />
+          <Property Name="MachineName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ErrorId" Type="uniqueidentifier" />
+          <Property Name="Profile" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Freebies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Profile" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="LicenseFiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="FreebieId" Type="bigint" />
+          <Property Name="OrderId" Type="bigint" />
+          <Property Name="Profile" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="LicenseType" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="100" />
+          <Property Name="Total" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="SWRegLinkForReceipt" Type="nvarchar" MaxLength="100" />
+          <Property Name="SWRegOrderNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="Vat" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="UniqueOrderId" Type="nvarchar" MaxLength="100" />
+          <Property Name="LicenseQuantity" Type="int" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="BuyerId" Type="bigint" />
+          <Property Name="Profile" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="OrderType" Type="int" />
+          <Property Name="PlimusLinkForReceipt" Type="nvarchar" MaxLength="100" />
+          <Property Name="PlimusOrderNumber" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Prospects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+          <Property Name="TrackingId" Type="uniqueidentifier" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Profile" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Trials">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Expiry" Type="datetime" />
+          <Property Name="Company" Type="nvarchar" MaxLength="100" />
+          <Property Name="TrackingId" Type="uniqueidentifier" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Profile" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK318A099B6965C307">
+          <End Role="Buyers" Type="UberProf.BackendModel.Store.Buyers" Multiplicity="0..1" />
+          <End Role="Orders" Type="UberProf.BackendModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buyers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="BuyerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK3A420F9C2AB61060">
+          <End Role="Orders" Type="UberProf.BackendModel.Store.Orders" Multiplicity="0..1" />
+          <End Role="LicenseFiles" Type="UberProf.BackendModel.Store.LicenseFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LicenseFiles">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK3A420F9C52F8CEC2">
+          <End Role="Freebies" Type="UberProf.BackendModel.Store.Freebies" Multiplicity="0..1" />
+          <End Role="LicenseFiles" Type="UberProf.BackendModel.Store.LicenseFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Freebies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LicenseFiles">
+              <PropertyRef Name="FreebieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK570785C186B03BAA">
+          <End Role="Buyers" Type="UberProf.BackendModel.Store.Buyers" Multiplicity="0..1" />
+          <End Role="Orders" Type="UberProf.BackendModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buyers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="BuyerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UberProf.BackendModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Buyers" EntityType="UberProf.BackendModel.Buyer" />
+          <EntitySet Name="Downloads" EntityType="UberProf.BackendModel.Download" />
+          <EntitySet Name="ErrorReports" EntityType="UberProf.BackendModel.ErrorReport" />
+          <EntitySet Name="Freebies" EntityType="UberProf.BackendModel.Freebie" />
+          <EntitySet Name="LicenseFiles" EntityType="UberProf.BackendModel.LicenseFile" />
+          <EntitySet Name="Orders" EntityType="UberProf.BackendModel.Order" />
+          <EntitySet Name="Prospects" EntityType="UberProf.BackendModel.Prospect" />
+          <EntitySet Name="sysdiagrams" EntityType="UberProf.BackendModel.sysdiagram" />
+          <EntitySet Name="Trials" EntityType="UberProf.BackendModel.Trial" />
+          <AssociationSet Name="FK318A099B6965C307" Association="UberProf.BackendModel.FK318A099B6965C307">
+            <End Role="Buyers" EntitySet="Buyers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK570785C186B03BAA" Association="UberProf.BackendModel.FK570785C186B03BAA">
+            <End Role="Buyers" EntitySet="Buyers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK3A420F9C52F8CEC2" Association="UberProf.BackendModel.FK3A420F9C52F8CEC2">
+            <End Role="Freebies" EntitySet="Freebies" />
+            <End Role="LicenseFiles" EntitySet="LicenseFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK3A420F9C2AB61060" Association="UberProf.BackendModel.FK3A420F9C2AB61060">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="LicenseFiles" EntitySet="LicenseFiles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Buyer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactEmail" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ContactLastName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ContactFirstName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ContactPhone" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ContactAlternativeMail" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Address2" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Address1" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ZipPostalCode" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="StateProvince" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Orders" Relationship="UberProf.BackendModel.FK318A099B6965C307" FromRole="Buyers" ToRole="Orders" />
+          <NavigationProperty Name="Orders1" Relationship="UberProf.BackendModel.FK570785C186B03BAA" FromRole="Buyers" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Download">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrackingId" Type="Guid" />
+          <Property Name="At" Type="DateTime" />
+          <Property Name="Profile" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ErrorReport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="OperationSystem" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="WorkingSet" Type="Int64" />
+          <Property Name="ProcessorCount" Type="Int32" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="Error" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="MachineName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ErrorId" Type="Guid" />
+          <Property Name="Profile" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Freebie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reason" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Profile" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="LicenseFiles" Relationship="UberProf.BackendModel.FK3A420F9C52F8CEC2" FromRole="Freebies" ToRole="LicenseFiles" />
+        </EntityType>
+        <EntityType Name="LicenseFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="FreebieId" Type="Int64" />
+          <Property Name="OrderId" Type="Int64" />
+          <Property Name="Profile" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="LicenseType" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Freebie" Relationship="UberProf.BackendModel.FK3A420F9C52F8CEC2" FromRole="LicenseFiles" ToRole="Freebies" />
+          <NavigationProperty Name="Order" Relationship="UberProf.BackendModel.FK3A420F9C2AB61060" FromRole="LicenseFiles" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Currency" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="SWRegLinkForReceipt" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="SWRegOrderNumber" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Vat" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="UniqueOrderId" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="LicenseQuantity" Type="Int32" />
+          <Property Name="OrderDate" Type="DateTime" />
+          <Property Name="BuyerId" Type="Int64" />
+          <Property Name="Profile" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="OrderType" Type="Int32" />
+          <Property Name="PlimusLinkForReceipt" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="PlimusOrderNumber" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Buyer" Relationship="UberProf.BackendModel.FK318A099B6965C307" FromRole="Orders" ToRole="Buyers" />
+          <NavigationProperty Name="Buyer1" Relationship="UberProf.BackendModel.FK570785C186B03BAA" FromRole="Orders" ToRole="Buyers" />
+          <NavigationProperty Name="LicenseFiles" Relationship="UberProf.BackendModel.FK3A420F9C2AB61060" FromRole="Orders" ToRole="LicenseFiles" />
+        </EntityType>
+        <EntityType Name="Prospect">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="TrackingId" Type="Guid" />
+          <Property Name="FullName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Profile" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Trial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Expiry" Type="DateTime" />
+          <Property Name="Company" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="TrackingId" Type="Guid" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Profile" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK318A099B6965C307">
+          <End Role="Buyers" Type="UberProf.BackendModel.Buyer" Multiplicity="0..1" />
+          <End Role="Orders" Type="UberProf.BackendModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buyers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="BuyerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK570785C186B03BAA">
+          <End Role="Buyers" Type="UberProf.BackendModel.Buyer" Multiplicity="0..1" />
+          <End Role="Orders" Type="UberProf.BackendModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buyers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="BuyerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK3A420F9C52F8CEC2">
+          <End Role="Freebies" Type="UberProf.BackendModel.Freebie" Multiplicity="0..1" />
+          <End Role="LicenseFiles" Type="UberProf.BackendModel.LicenseFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Freebies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LicenseFiles">
+              <PropertyRef Name="FreebieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK3A420F9C2AB61060">
+          <End Role="Orders" Type="UberProf.BackendModel.Order" Multiplicity="0..1" />
+          <End Role="LicenseFiles" Type="UberProf.BackendModel.LicenseFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LicenseFiles">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UberProfBackendModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Buyers"><EntityTypeMapping TypeName="UberProf.BackendModel.Buyer"><MappingFragment StoreEntitySet="Buyers">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+            <ScalarProperty Name="ContactLastName" ColumnName="ContactLastName" />
+            <ScalarProperty Name="ContactFirstName" ColumnName="ContactFirstName" />
+            <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+            <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+            <ScalarProperty Name="ContactAlternativeMail" ColumnName="ContactAlternativeMail" />
+            <ScalarProperty Name="Country" ColumnName="Country" />
+            <ScalarProperty Name="Address2" ColumnName="Address2" />
+            <ScalarProperty Name="Address1" ColumnName="Address1" />
+            <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+            <ScalarProperty Name="ZipPostalCode" ColumnName="ZipPostalCode" />
+            <ScalarProperty Name="StateProvince" ColumnName="StateProvince" />
+            <ScalarProperty Name="City" ColumnName="City" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Downloads"><EntityTypeMapping TypeName="UberProf.BackendModel.Download"><MappingFragment StoreEntitySet="Downloads">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="TrackingId" ColumnName="TrackingId" />
+            <ScalarProperty Name="At" ColumnName="At" />
+            <ScalarProperty Name="Profile" ColumnName="Profile" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ErrorReports"><EntityTypeMapping TypeName="UberProf.BackendModel.ErrorReport"><MappingFragment StoreEntitySet="ErrorReports">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="UserName" ColumnName="UserName" />
+            <ScalarProperty Name="OperationSystem" ColumnName="OperationSystem" />
+            <ScalarProperty Name="WorkingSet" ColumnName="WorkingSet" />
+            <ScalarProperty Name="ProcessorCount" ColumnName="ProcessorCount" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="Error" ColumnName="Error" />
+            <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+            <ScalarProperty Name="ErrorId" ColumnName="ErrorId" />
+            <ScalarProperty Name="Profile" ColumnName="Profile" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Freebies"><EntityTypeMapping TypeName="UberProf.BackendModel.Freebie"><MappingFragment StoreEntitySet="Freebies">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Reason" ColumnName="Reason" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Profile" ColumnName="Profile" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LicenseFiles"><EntityTypeMapping TypeName="UberProf.BackendModel.LicenseFile"><MappingFragment StoreEntitySet="LicenseFiles">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="FreebieId" ColumnName="FreebieId" />
+            <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+            <ScalarProperty Name="Profile" ColumnName="Profile" />
+            <ScalarProperty Name="LicenseType" ColumnName="LicenseType" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Orders"><EntityTypeMapping TypeName="UberProf.BackendModel.Order"><MappingFragment StoreEntitySet="Orders">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Currency" ColumnName="Currency" />
+            <ScalarProperty Name="Total" ColumnName="Total" />
+            <ScalarProperty Name="SWRegLinkForReceipt" ColumnName="SWRegLinkForReceipt" />
+            <ScalarProperty Name="SWRegOrderNumber" ColumnName="SWRegOrderNumber" />
+            <ScalarProperty Name="Vat" ColumnName="Vat" />
+            <ScalarProperty Name="UniqueOrderId" ColumnName="UniqueOrderId" />
+            <ScalarProperty Name="LicenseQuantity" ColumnName="LicenseQuantity" />
+            <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+            <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
+            <ScalarProperty Name="Profile" ColumnName="Profile" />
+            <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+            <ScalarProperty Name="PlimusLinkForReceipt" ColumnName="PlimusLinkForReceipt" />
+            <ScalarProperty Name="PlimusOrderNumber" ColumnName="PlimusOrderNumber" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Prospects"><EntityTypeMapping TypeName="UberProf.BackendModel.Prospect"><MappingFragment StoreEntitySet="Prospects">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+            <ScalarProperty Name="TrackingId" ColumnName="TrackingId" />
+            <ScalarProperty Name="FullName" ColumnName="FullName" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="Profile" ColumnName="Profile" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams"><EntityTypeMapping TypeName="UberProf.BackendModel.sysdiagram"><MappingFragment StoreEntitySet="sysdiagrams">
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+            <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+            <ScalarProperty Name="version" ColumnName="version" />
+            <ScalarProperty Name="definition" ColumnName="definition" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Trials"><EntityTypeMapping TypeName="UberProf.BackendModel.Trial"><MappingFragment StoreEntitySet="Trials">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Expiry" ColumnName="Expiry" />
+            <ScalarProperty Name="Company" ColumnName="Company" />
+            <ScalarProperty Name="TrackingId" ColumnName="TrackingId" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="Profile" ColumnName="Profile" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="LegacyOrders">
+        <EntityTypeShape EntityType="UberProf.BackendModel.Buyer" Width="1.5" PointX="0.75" PointY="1.125" Height="4.0956022135416656" IsExpanded="true" />
+        <EntityTypeShape EntityType="UberProf.BackendModel.Download" Width="1.5" PointX="5.75" PointY="5.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="UberProf.BackendModel.ErrorReport" Width="1.5" PointX="7.75" PointY="0.75" Height="2.9417936197916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="UberProf.BackendModel.Freebie" Width="1.5" PointX="3" PointY="7.125" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="UberProf.BackendModel.LicenseFile" Width="1.5" PointX="5.25" PointY="1.75" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="UberProf.BackendModel.Order" Width="1.5" PointX="3" PointY="1" Height="4.2879036458333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="UberProf.BackendModel.Prospect" Width="1.5" PointX="7.75" PointY="4.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="UberProf.BackendModel.sysdiagram" Width="1.5" PointX="7.75" PointY="7.75" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="UberProf.BackendModel.Trial" Width="1.5" PointX="9.75" PointY="0.75" Height="2.3648893229166674" IsExpanded="true" />
+        <AssociationConnector Association="UberProf.BackendModel.FK318A099B6965C307" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.1728011067708328" />
+          <ConnectorPoint PointX="3" PointY="3.1728011067708328" />
+        </AssociationConnector>
+        <AssociationConnector Association="UberProf.BackendModel.FK570785C186B03BAA" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.0864005533854164" />
+          <ConnectorPoint PointX="3" PointY="2.0864005533854164" />
+        </AssociationConnector>
+        <AssociationConnector Association="UberProf.BackendModel.FK3A420F9C52F8CEC2" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="8.4490364583333335" />
+          <ConnectorPoint PointX="5.46875" PointY="8.4490364583333335" />
+          <ConnectorPoint PointX="5.46875" PointY="4.4994921875" />
+        </AssociationConnector>
+        <AssociationConnector Association="UberProf.BackendModel.FK3A420F9C2AB61060" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="3.12474609375" />
+          <ConnectorPoint PointX="5.25" PointY="3.12474609375" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -14,5 +14,11 @@ namespace HibernatingRhinos.Orders.Backend.Features.Trials
         public DateTime EndsAt { get; set; }
 
         public DateTime StartedAt { get; set; }
+
+    	public string Email { get; set; }
+
+		public Guid TrackingId { get; set; }
+
+		public string ProductId { get; set; }
     }
 }
