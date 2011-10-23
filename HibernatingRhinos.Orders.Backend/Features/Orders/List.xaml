@@ -13,14 +13,12 @@
                  d:DesignHeight="480"
                  Infrastructure:ModelResolver.AttachModel="OrdersListModel"
                  Title="List Page">
-
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
@@ -34,33 +32,19 @@
                          HorizontalAlignment="Stretch"
                          Margin="5,0,5,0"
                          NavigateUri="/orders/edit" />
-        <HyperlinkButton Grid.Column="1"
-                         Content="Delete"
-                         FontSize="14"
-                         Width="Auto"
-                         HorizontalAlignment="Stretch"
-                         Margin="5,0,5,0"
-                         IsEnabled="{Binding Path=SelectedItem, ElementName=OrdersGrid, Converter={StaticResource NullToBool}}"
-                         Command="{Binding Delete}"
-                         CommandParameter="{Binding Path=SelectedItem, ElementName=OrdersGrid}" />
+        <TextBox Name="SearchBlock"
+                 Text="{Binding Search, Mode=TwoWay}"
+                 Grid.Column="1"
+                 FontSize="14"
+                 Width="200"
+                 Margin="5,0,5,0" />
         <HyperlinkButton Grid.Column="2"
-                         Content="Extend By a Month"
+                         Content="Go"
                          FontSize="14"
                          Width="Auto"
                          HorizontalAlignment="Stretch"
                          Margin="5,0,5,0"
-                         IsEnabled="{Binding Path=SelectedItem, ElementName=OrdersGrid, Converter={StaticResource NullToBool}}"
-                         Command="{Binding AddMonth}"
-                         CommandParameter="{Binding Path=SelectedItem, ElementName=OrdersGrid}" />
-        <HyperlinkButton Grid.Column="3"
-                         Content="Extend By a Year"
-                         FontSize="14"
-                         Width="Auto"
-                         HorizontalAlignment="Stretch"
-                         Margin="5,0,5,0"
-                         IsEnabled="{Binding Path=SelectedItem, ElementName=OrdersGrid, Converter={StaticResource NullToBool}}"
-                         Command="{Binding AddYear}"
-                         CommandParameter="{Binding Path=SelectedItem, ElementName=OrdersGrid}" />
+                         NavigateUri="{Binding Search, StringFormat='/orders/list?search={0}'}" />
         <sdk:DataPager Grid.Column="5"
                        Source="{Binding Orders}"
                        HorizontalAlignment="Right"
@@ -79,29 +63,20 @@
                                             Binding="{Binding OrderNumber}" />
                     <sdk:DataGridTextColumn Header="Quantity"
                                             Binding="{Binding Quantity}" />
-                    <sdk:DataGridTextColumn Header="Product Id"
-                                            Binding="{Binding ProductId}" />
-                    <sdk:DataGridTextColumn Header="First Name"
-                                            Binding="{Binding FirstName}" />
-                    <sdk:DataGridTextColumn Header="Last Name"
-                                            Binding="{Binding LastName}" />
                     <sdk:DataGridTextColumn Header="Company Name"
                                             Binding="{Binding CompanyName}" />
                     <sdk:DataGridTextColumn Header="Email"
-                                            Binding="{Binding Email}" />
-                    <sdk:DataGridTextColumn Header="License End Date"
-                                            Binding="{Binding LicenseEndDate}" />
-                    <sdk:DataGridTextColumn Header="Address"
-                                            Binding="{Binding Address, Converter={StaticResource AddressToMultiString}}" />
-                    <sdk:DataGridTextColumn Header="Log"
-                                            Binding="{Binding Log, Converter={StaticResource ListToMultiString}}" />
-                    <sdk:DataGridTemplateColumn Header="">
+                                            Binding="{Binding Email}"
+                                            Width="*"/>
+                    <sdk:DataGridTemplateColumn Header=""
+                                                Width="50">
                         <sdk:DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <HyperlinkButton Content="Edit"
                                                  VerticalAlignment="Center"
+                                                 HorizontalAlignment="Left"
                                                  IsEnabled="True"
-                                                 NavigateUri="{Binding OrderNumber, StringFormat='/orders/edit?orderNumber={0}'}" />
+                                                 NavigateUri="{Binding Id, StringFormat='/orders/edit?id={0}'}" />
                             </DataTemplate>
                         </sdk:DataGridTemplateColumn.CellTemplate>
                     </sdk:DataGridTemplateColumn>

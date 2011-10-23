@@ -13,7 +13,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
 
         public OrdersListModel()
         {
-            Orders = new BindableCollection<Order>(new PrimaryKeyComparer<Order>(x => x.OrderNumber));
+            Orders = new BindableCollection<Order>(new PrimaryKeyComparer<Order>(x => x.Id));
             
             var searchValue = GetQueryParam("search") ;
             var query = Session.Query<Orders_Search.ReduceResult>("Orders/Search");
@@ -29,6 +29,17 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
                 .As<Order>()
                 .ToListAsync()
                 .ContinueOnSuccess(orders => Orders.Match(orders));
+        }
+
+        private string search;
+        public string Search
+        {
+            get { return search; }
+            set
+            {
+                search = value;
+                OnPropertyChanged();
+            }
         }
 
         public BindableCollection<Order> Orders { get; set; }
