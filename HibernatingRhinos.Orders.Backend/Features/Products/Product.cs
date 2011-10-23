@@ -4,12 +4,15 @@ namespace HibernatingRhinos.Orders.Backend.Features.Products
 {
     public class Product
     {
-        public string Id { get; set; }
+        public string Id
+        {
+            get { return "products/" + Name; }
+        }
 
-        public string Title { get; set; }
+        public string Name { get; set; }
 
-        public List<string> StoreId { get; set; }
+        public string Description { get; set; }
 
-        public ProductTypes ProductType { get; set; }
+        public Dictionary<string, ProductTypes> Identifiers { get; set; }
     }
 }

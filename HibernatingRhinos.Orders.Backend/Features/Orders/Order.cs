@@ -7,6 +7,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
     public class Order 
     {
 		public ProductTypes Type { get; set; }
+
     	public string Id { get; set; }
 
         public string OrderNumber { get; set; }

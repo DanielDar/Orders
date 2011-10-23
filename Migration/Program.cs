@@ -106,16 +106,16 @@ namespace Migration
 			}
 		}
 
-		private static ProductTypes GetOrderType(Order order)
+        private static ProductTypes GetOrderType(Order order)
 		{
 			switch (order.OrderType.Value)
 			{
 				case 1:
-					return ProductTypes.LifeTime;
+                    return ProductTypes.LifeTime;
 				case 2:
-					return ProductTypes.Monthly;
+                    return ProductTypes.Monthly;
 				case 3:
-					return ProductTypes.Yearly;
+                    return ProductTypes.Yearly;
 				default:
 					throw new ArgumentException(order.OrderType.Value.ToString());
 			}
