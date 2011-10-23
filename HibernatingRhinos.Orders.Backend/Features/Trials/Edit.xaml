@@ -11,7 +11,7 @@
                  d:DesignWidth="640"
                  d:DesignHeight="480"
                  Title="Trial Edit Page">
-    
+
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.902*" />
@@ -49,10 +49,10 @@
                  Margin="20,106,20,0"
                  TextWrapping="Wrap"
                  VerticalAlignment="Top" />
-        <TextBox Text="{Binding Path=Trial.Value.Id, Mode=TwoWay}"
-                 Grid.Column="1"
-                 Margin="20,21,20,0"
-                 VerticalAlignment="Top" />
+        <TextBlock Text="{Binding Path=Trial.Value.Id, Mode=TwoWay}"
+                   Grid.Column="1"
+                   Margin="20,21,20,0"
+                   VerticalAlignment="Top" />
 
         <Grid Grid.ColumnSpan="3"
               Grid.Row="10">
@@ -99,13 +99,15 @@
                    TextWrapping="Wrap"
                    Text="Trial End Date:"
                    FontSize="16"
-                   VerticalAlignment="Top" d:LayoutOverrides="Width, GridBox" />
+                   VerticalAlignment="Top"
+                   d:LayoutOverrides="Width, GridBox" />
         <sdk:DatePicker Grid.Column="1"
                         SelectedDate="{Binding Trial.Value.EndsAt, Mode=TwoWay}"
                         Margin="20,153,108,0"
                         d:LayoutOverrides="Width, GridBox"
                         FirstDayOfWeek="Sunday"
                         IsDropDownOpen="False"
-                        IsTodayHighlighted="False" VerticalAlignment="Top" />
+                        IsTodayHighlighted="False"
+                        VerticalAlignment="Top" />
     </Grid>
 </navigation:Page>
