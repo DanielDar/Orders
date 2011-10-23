@@ -90,13 +90,6 @@
                                      NavigateUri="/Trials/List"
                                      TargetName="ContentFrame"
                                      Content="trials" />
-
-                    <HyperlinkButton x:Name="Link6"
-                                     Style="{StaticResource LinkStyle}"
-                                     NavigateUri="/Search/List"
-                                     TargetName="ContentFrame"
-                                     Content="search" />
-
                 </StackPanel>
             </Border>
 

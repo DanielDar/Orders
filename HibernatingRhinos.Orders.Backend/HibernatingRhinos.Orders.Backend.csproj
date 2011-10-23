@@ -126,10 +126,6 @@
     <Compile Include="Features\Products\Product.cs" />
     <Compile Include="Features\Products\ProductTypes.cs" />
     <Compile Include="Features\Products\ProductsListModel.cs" />
-    <Compile Include="Features\Search\SearchModel.cs" />
-    <Compile Include="Features\Search\List.xaml.cs">
-      <DependentUpon>List.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Features\Trials\Edit.xaml.cs">
       <DependentUpon>Edit.xaml</DependentUpon>
     </Compile>
@@ -197,10 +193,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Resource>
-    <Page Include="Features\Search\List.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Features\Trials\Edit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
