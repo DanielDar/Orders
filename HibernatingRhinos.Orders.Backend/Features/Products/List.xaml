@@ -61,8 +61,10 @@
                     <sdk:DataGridTextColumn Header="Store Ids"
                                             Binding="{Binding StoreId, Converter={StaticResource ListToMultiString}}" />
                     <sdk:DataGridTextColumn Header="License Type"
-                                            Binding="{Binding ProductType}" />
-                    <sdk:DataGridTemplateColumn Header="">
+                                            Binding="{Binding ProductType}" 
+                                            Width="*"/>
+                    <sdk:DataGridTemplateColumn Header=""
+                                                Width="50">
                         <sdk:DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <HyperlinkButton Content="Edit"

@@ -39,5 +39,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Products
 
         public ICommand Save { get { return new SaveCommand(Session, Location); } }
         public ICommand Cancel { get { return new CancleCommand(Location); } }
+        public ICommand Delete { get { return new DeleteCommand(Session, Location); } }
+
     }
 }

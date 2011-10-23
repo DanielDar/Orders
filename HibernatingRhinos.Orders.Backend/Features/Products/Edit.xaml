@@ -70,20 +70,33 @@
             <ComboBoxItem Content="Monthly" />
             <ComboBoxItem Content="Yearly" />
         </ComboBox>
-        <HyperlinkButton Content="Save"
-                         HorizontalAlignment="Left"
-                         Margin="8,8,0,19"
-                         Grid.Row="1"
-                         d:LayoutOverrides="Height"
-                         Command="{Binding Save}"
-                         CommandParameter="{Binding Product.Value}"
-                         FontSize="18.667" />
-        <HyperlinkButton Content="Cancel"
-                         Margin="71,8,21,19"
-                         Grid.Row="1"
-                         FontSize="18.667"
-                         d:LayoutOverrides="Width, Height"
-                         Command="{Binding Cancel}"
-                         RenderTransformOrigin="1.254,0.455" />
+
+        <Grid Grid.ColumnSpan="3"
+              Grid.Row="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <HyperlinkButton Content="Save"
+                             HorizontalAlignment="Left"
+                             Command="{Binding Save}"
+                             CommandParameter="{Binding Product.Value}"
+                             Padding="0,0,10,0"
+                             FontSize="19" />
+            <HyperlinkButton Content="Cancel"
+                             Grid.Column="1"
+                             Padding="0,0,10,0"
+                             FontSize="19"
+                             Command="{Binding Cancel}" />
+            <HyperlinkButton Content="Delete"
+                             Grid.Column="3"
+                             Padding="0,0,10,0"
+                             FontSize="19"
+                             Command="{Binding Delete}"
+                             CommandParameter="{Binding Product.Value}" />
+        </Grid>
     </Grid>
 </navigation:Page>
