@@ -30,6 +30,13 @@ namespace HibernatingRhinos.Orders.Backend.Infrastructure
                     () => Application.Current.Host.NavigationState += "?" + Guid.NewGuid());
         }
 
+        public static Task GoTo(this Task parent, string destination)
+        {
+            return
+                parent.ContinueOnSuccessInTheUiThread(
+                    () => Application.Current.Host.NavigationState = destination + "?" + Guid.NewGuid());
+        }
+
         public static Task ContinueOnSuccessInTheUiThread(this Task parent, Action action)
         {
             return parent.ContinueOnSuccess(() =>
