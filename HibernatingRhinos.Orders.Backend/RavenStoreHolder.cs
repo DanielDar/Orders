@@ -1,5 +1,7 @@
-﻿using Raven.Client;
+﻿using System.Reflection;
+using Raven.Client;
 using Raven.Client.Document;
+using Raven.Client.Indexes;
 
 namespace HibernatingRhinos.Orders.Backend
 {
@@ -11,6 +13,8 @@ namespace HibernatingRhinos.Orders.Backend
             {
                 Url = "http://localhost:8080"
             }.Initialize();
+
+            IndexCreation.CreateIndexesAsync(Assembly.GetExecutingAssembly(), Store);
         }
 
         public static IDocumentStore Store { get; private set; }

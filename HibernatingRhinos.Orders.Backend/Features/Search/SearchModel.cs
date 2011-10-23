@@ -1,7 +1,9 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using HibernatingRhinos.Orders.Backend.Commands;
 using HibernatingRhinos.Orders.Backend.Features.Orders;
 using HibernatingRhinos.Orders.Backend.Features.Products;
+using HibernatingRhinos.Orders.Backend.Indexes;
 using HibernatingRhinos.Orders.Backend.Infrastructure;
 using Raven.Client.Linq;
 
@@ -14,66 +16,29 @@ namespace HibernatingRhinos.Orders.Backend.Features.Search
         public SearchModel()
         {
             var searchValue = GetQueryParam("search");
-            if (string.IsNullOrEmpty(searchValue))
-            {
-                Orders = new BindableCollection<Order>(new PrimaryKeyComparer<Order>(x => x.OrderNumber));
-                Session.Query<Order>().ToListAsync()
-                    .ContinueOnSuccess(orders => Orders.Match(orders));
-            }
-            else
-            {
-                searchValue = searchValue.Split('?')[0];
-                Orders = new BindableCollection<Order>(new PrimaryKeyComparer<Order>(x => x.OrderNumber));
 
-                switch (_searchParameter)
-                {
-                    case "Email":
-                        Session.Query<Order>().Where(x => x.Email == searchValue).ToListAsync()
-                            .ContinueOnSuccess(orders => Orders.Match(orders));
-                        break;
-                    case "Name":
-                        Session.Query<Order>().Where(x => x.FirstName == searchValue).ToListAsync()
-                            .ContinueOnSuccess(orders => Orders.Match(orders));
-                        break;
-                    case "Order Number":
-                        Session.Query<Order>().Where(x => x.OrderNumber == searchValue).ToListAsync()
-                            .ContinueOnSuccess(orders => Orders.Match(orders));
-                        break;
-                    case "Product Id":
-                        Session.Query<Order>().Where(x => x.ProductId == searchValue).ToListAsync()
-                            .ContinueOnSuccess(orders => Orders.Match(orders));
-                        break;
-                }
-            }
+            Session.Query<Orders_Search.ReduceResult>("Orders/Search")
+                .Where(x => x.Query == searchValue)
+                .OrderByDescending(x => x.OrderedAt)
+                .As<Order>()
+                .ToListAsync()
+                .ContinueOnSuccess(orders => Orders.Match(orders));
         }
 
-        private string search;
-        public string Search
-        {
-            get { return search; }
-            set
-            {
-                search = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private static string _searchParameter;
-        public string SearchParameter
-        {
-            get { return _searchParameter; }
-            set
-            {
-                _searchParameter = value;
-                OnPropertyChanged();
-            }
-        }
+        //private string search;
+        //public string Search
+        //{
+        //    get { return search; }
+        //    set
+        //    {
+        //        search = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
         public BindableCollection<Order> Orders { get; set; }
 
         public ICommand Delete { get { return new DeleteCommand(Session); } }
         public ICommand Edit { get { return new EditCommand(Session, Location); } }
-        public ICommand AddMonth { get { return new AddTimeCommand(Session, typeof (Order), 0, 1, 0, 3); } }
-        public ICommand AddYear { get { return new AddTimeCommand(Session, typeof (Order), 1, 0, 0, 3); } }
     }
 }
