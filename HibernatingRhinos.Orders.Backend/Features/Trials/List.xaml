@@ -11,7 +11,7 @@
                  d:DesignWidth="640"
                  d:DesignHeight="480"
                  Infrastructure:ModelResolver.AttachModel="TrialsListModel"
-                 Title="List Page">
+                 Title="Trials Page">
 
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>

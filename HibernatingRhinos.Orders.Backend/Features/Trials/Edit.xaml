@@ -9,7 +9,7 @@
                  Infrastructure:ModelResolver.AttachModel="EditTrialsModel"
                  d:DesignWidth="640"
                  d:DesignHeight="480"
-                 Title="Edit Page">
+                 Title="Trial Edit Page">
     
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>

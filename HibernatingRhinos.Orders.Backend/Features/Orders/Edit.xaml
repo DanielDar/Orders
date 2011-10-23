@@ -9,7 +9,7 @@
                  Infrastructure:ModelResolver.AttachModel="EditOrdersModel"
                  d:DesignWidth="800"
                  d:DesignHeight="600"
-                 Title="Products Page">
+                 Title="Order Edit Page">
 
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>

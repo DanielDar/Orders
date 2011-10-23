@@ -11,7 +11,7 @@
                  Infrastructure:ModelResolver.AttachModel="SearchModel"
                  d:DesignWidth="640"
                  d:DesignHeight="480"
-                 Title="List Page">
+                 Title="Search Page">
     
     <Grid x:Name="SearchGrid">
         <Grid.RowDefinitions>
