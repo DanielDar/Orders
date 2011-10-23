@@ -67,8 +67,10 @@
                     <sdk:DataGridTextColumn Header="Company"
                                             Binding="{Binding Company}" />
                     <sdk:DataGridTextColumn Header="License End Date"
-                                            Binding="{Binding EndsAt}" />
-                    <sdk:DataGridTemplateColumn Header="">
+                                            Binding="{Binding EndsAt}" 
+                                            Width="*"/>
+                    <sdk:DataGridTemplateColumn Header=""
+                                                Width="50">
                         <sdk:DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <HyperlinkButton Content="Edit"
