@@ -58,6 +58,7 @@
                           IsReadOnly="True"
                           AutoGenerateColumns="false"
                           CanUserSortColumns="true"
+                          CellStyle="{StaticResource NonSelectableDataGridCellStyle}"
                           Name="OrdersGrid">
                 <sdk:DataGrid.Columns>
                     <sdk:DataGridTextColumn Header="Id"

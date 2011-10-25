@@ -49,6 +49,7 @@
         <toolkit:DockPanel Grid.Row="1"
                            Grid.ColumnSpan="4">
             <sdk:DataGrid ItemsSource="{Binding Products}"
+                          CellStyle="{StaticResource NonSelectableDataGridCellStyle}"
                           IsReadOnly="True"
                           AutoGenerateColumns="false"
                           CanUserSortColumns="true"
