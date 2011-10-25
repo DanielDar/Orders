@@ -12,22 +12,42 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
     {
         private const string Location = "/orders/list";
         public const int ItemsPerPage = 20;
-        public Observable<int> NumberOfPages { get; set; }
+        public PagingInfo Paging { get; set; }
 
-        public int PageNumber
+        public class PagingInfo
         {
-            get
+            public PagingInfo()
             {
-                int pageNumber;
-                int.TryParse(GetQueryParam("pageNumber"), out pageNumber);
-                return pageNumber;
+                NumberOfPages = new Observable<int>();
+                NumberOfItems = new Observable<int>();
+
             }
+
+            public int PageNumber { get; set; }
+            public Observable<int> NumberOfPages { get; set; }
+            public Observable<int> NumberOfItems { get; set; }
         }
 
         public OrdersListModel()
         {
-            NumberOfPages = new Observable<int>();
-            NumberOfPages.PropertyChanged += (sender, args) => OnPropertyChanged("NextPage");
+            int pageNumber;
+            int.TryParse(GetQueryParam("pageNumber"), out pageNumber);
+
+            Paging = new PagingInfo
+            {
+                PageNumber = pageNumber
+            };
+
+            Paging.NumberOfPages.PropertyChanged += (sender, args) =>
+            {
+                OnPropertyChanged("NextPage");
+                OnPropertyChanged("Paging");
+            };
+            Paging.NumberOfItems.PropertyChanged += (sender, args) =>
+            {
+                OnPropertyChanged("PageDataConverter");
+                OnPropertyChanged("Paging");
+            };
 
             Orders = new BindableCollection<Order>(new PrimaryKeyComparer<Order>(x => x.Id));
 
@@ -37,7 +57,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
             RavenQueryStatistics stats;
             var query = Session.Query<Orders_Search.ReduceResult>("Orders/Search")
                 .Statistics(out stats)
-                .Skip(PageNumber * ItemsPerPage)
+                .Skip(Paging.PageNumber * ItemsPerPage)
                 .Take(ItemsPerPage);
 
 
@@ -56,7 +76,8 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
                 .ContinueOnSuccess(orders =>
                 {
                     Orders.Match(orders);
-                    NumberOfPages.Value = stats.TotalResults / ItemsPerPage;
+                    Paging.NumberOfItems.Value = stats.TotalResults;
+                    Paging.NumberOfPages.Value = Paging.NumberOfItems.Value / ItemsPerPage;
                 });
         }
 
@@ -78,9 +99,9 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
 
         public ICommand Edit { get { return new EditCommand(Session, Location); } }
 
-        public ICommand PreviousPage { get { return new UpdateUrlCommand(CreateUrl(PageNumber - 1), PageNumber > 0); } }
+        public ICommand PreviousPage { get { return new UpdateUrlCommand(CreateUrl(Paging.PageNumber - 1), Paging.PageNumber > 0); } }
 
-        public ICommand NextPage { get { return new UpdateUrlCommand(CreateUrl(PageNumber + 1), PageNumber < NumberOfPages.Value); } }
+        public ICommand NextPage { get { return new UpdateUrlCommand(CreateUrl(Paging.PageNumber + 1), Paging.PageNumber < Paging.NumberOfPages.Value); } }
 
         public ICommand SearchUrl { get { return new UpdateUrlCommand(CreateUrl(0), true); } }
 

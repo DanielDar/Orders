@@ -107,6 +107,7 @@
     <Compile Include="Converters\ArrayListToStringConverter.cs" />
     <Compile Include="Converters\AddressToMultiLineStringConverter.cs" />
     <Compile Include="Converters\ComboBoxItemToStringConverter.cs" />
+    <Compile Include="Converters\PageDataConverter.cs" />
     <Compile Include="Converters\OrderConverter.cs" />
     <Compile Include="Converters\StringToProductsTypesEnumConverter.cs" />
     <Compile Include="Converters\NullToBoolConverter.cs" />
@@ -138,6 +139,7 @@
     </Compile>
     <Compile Include="Features\Trials\TrialsListModel.cs" />
     <Compile Include="Features\Trials\Trial.cs" />
+    <Compile Include="Indexes\Products_Stats.cs" />
     <Compile Include="Indexes\Orders_Stats.cs" />
     <Compile Include="Indexes\Trials_Search.cs" />
     <Compile Include="Indexes\Orders_Search.cs" />

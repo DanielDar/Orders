@@ -10,4 +10,5 @@
     <Converters:AddressToMultiLineStringConverter x:Key="AddressToMultiString" />
     <Converters:ComboBoxItemToStringConverter x:Key="ComboBoxItemToString"/>
     <Converters:OrderConverter x:Key="OrderConverter" />
+    <Converters:PageDataConverter x:Key="PageDataConverter" />
 </ResourceDictionary>
