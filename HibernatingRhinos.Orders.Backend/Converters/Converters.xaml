@@ -11,4 +11,6 @@
     <Converters:ComboBoxItemToStringConverter x:Key="ComboBoxItemToString"/>
     <Converters:OrderConverter x:Key="OrderConverter" />
     <Converters:PageDataConverter x:Key="PageDataConverter" />
+    <Converters:PaymentConverter x:Key="PaymentConverter" />
+    <Converters:DateConverter x:Key="DateConverter" />
 </ResourceDictionary>

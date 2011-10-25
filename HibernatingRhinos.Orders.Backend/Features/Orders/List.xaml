@@ -40,8 +40,7 @@
                          Width="Auto"
                          HorizontalAlignment="Stretch"
                          Margin="5,0,5,0"
-                         NavigateUri="{Binding Search, StringFormat='/orders/list?search={0}'}" />
-
+                         Command="{Binding SearchUrl}" />
         <HyperlinkButton Grid.Column="3"
                          Content="&lt;"
                          FontSize="14"

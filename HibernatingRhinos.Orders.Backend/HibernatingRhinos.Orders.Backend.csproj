@@ -107,6 +107,8 @@
     <Compile Include="Converters\ArrayListToStringConverter.cs" />
     <Compile Include="Converters\AddressToMultiLineStringConverter.cs" />
     <Compile Include="Converters\ComboBoxItemToStringConverter.cs" />
+    <Compile Include="Converters\DateConverter.cs" />
+    <Compile Include="Converters\PaymentConverter.cs" />
     <Compile Include="Converters\PageDataConverter.cs" />
     <Compile Include="Converters\OrderConverter.cs" />
     <Compile Include="Converters\StringToProductsTypesEnumConverter.cs" />

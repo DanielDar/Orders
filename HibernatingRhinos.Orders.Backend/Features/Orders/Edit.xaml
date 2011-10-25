@@ -289,17 +289,17 @@
                              Padding="0,0,20,0"
                              FontSize="19"
                              Command="{Binding AddYear}"
-                             CommandParameter="{Binding Order.Value}"/>
+                             CommandParameter="{Binding Order.Value}" />
             <HyperlinkButton Content="Delete"
                              Grid.Column="5"
                              Padding="0,0,20,0"
                              FontSize="19"
                              Command="{Binding Delete}"
-                             CommandParameter="{Binding Order.Value}"/>
+                             CommandParameter="{Binding Order.Value}" />
             <HyperlinkButton Content="Cancel License"
                              Grid.Column="6"
                              Padding="0,0,20,0"
-                             FontSize="19"/>
+                             FontSize="19" />
             <HyperlinkButton Content="Resend License"
                              Grid.Column="7"
                              Padding="0,0,20,0"
@@ -307,19 +307,26 @@
         </Grid>
         <TextBlock Margin="25,0,0,0"
                    TextWrapping="Wrap"
-                   Text="License End Date:"
+                   Text="Payment History:"
                    HorizontalAlignment="Left"
                    FontSize="16"
                    VerticalAlignment="Center"
                    Grid.Column="2" />
-        <sdk:DatePicker Grid.Column="2"
-
-                        SelectedDate="{Binding Order.Value.EndsAt, Mode=TwoWay}"
-                        Margin="25,0,103,0"
-                        Grid.Row="1"
-                        d:LayoutOverrides="Width, Height"
-                        FirstDayOfWeek="Sunday"
-                        IsDropDownOpen="False" 
-                        IsTodayHighlighted="False" />
+        <sdk:DataGrid Grid.Column="2"
+                      Margin="8,8,18,8"
+                      Grid.Row="1"
+                      Grid.RowSpan="8"
+                      ItemsSource="{Binding Order.Value.Payments}"
+                      IsReadOnly="True"
+                      AutoGenerateColumns="False"
+                      CanUserSortColumns="true"
+                      CellStyle="{StaticResource NonSelectableDataGridCellStyle}">
+            <sdk:DataGrid.Columns>
+                <sdk:DataGridTextColumn Header="Date of Payment"
+                                        Binding="{Binding At, Converter={StaticResource DateConverter}}" />
+                <sdk:DataGridTextColumn Header="Amount of Payment"
+                                        Binding="{Binding Converter={StaticResource PaymentConverter} }" />
+            </sdk:DataGrid.Columns>
+        </sdk:DataGrid>
     </Grid>
 </navigation:Page>
