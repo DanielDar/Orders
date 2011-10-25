@@ -54,7 +54,7 @@
 
                     <HyperlinkButton x:Name="Link1"
                                      Style="{StaticResource LinkStyle}"
-                                     NavigateUri="/Home"
+                                     NavigateUri="/Home/List"
                                      TargetName="ContentFrame"
                                      Content="home" />
 

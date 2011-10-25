@@ -8,49 +8,13 @@ using System.Linq;
 
 namespace HibernatingRhinos.Orders.Backend.Features.Orders
 {
-    public class OrdersListModel : ModelBase
+    public class OrdersListModel : PageableModel
     {
         private const string Location = "/orders/list";
-        public const int ItemsPerPage = 20;
-        public PagingInfo Paging { get; set; }
-
-        public class PagingInfo
-        {
-            public PagingInfo()
-            {
-                NumberOfPages = new Observable<int>();
-                NumberOfItems = new Observable<int>();
-
-            }
-
-            public int PageNumber { get; set; }
-            public Observable<int> NumberOfPages { get; set; }
-            public Observable<int> NumberOfItems { get; set; }
-        }
 
         public OrdersListModel()
         {
-            int pageNumber;
-            int.TryParse(GetQueryParam("pageNumber"), out pageNumber);
-
-            Paging = new PagingInfo
-            {
-                PageNumber = pageNumber
-            };
-
-            Paging.NumberOfPages.PropertyChanged += (sender, args) =>
-            {
-                OnPropertyChanged("NextPage");
-                OnPropertyChanged("Paging");
-            };
-            Paging.NumberOfItems.PropertyChanged += (sender, args) =>
-            {
-                OnPropertyChanged("PageDataConverter");
-                OnPropertyChanged("Paging");
-            };
-
             Orders = new BindableCollection<Order>(new PrimaryKeyComparer<Order>(x => x.Id));
-
 
             Search = GetQueryParam("search");
 
@@ -59,8 +23,6 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
                 .Statistics(out stats)
                 .Skip(Paging.PageNumber * ItemsPerPage)
                 .Take(ItemsPerPage);
-
-
 
             if (string.IsNullOrEmpty(Search) == false)
             {
@@ -82,6 +44,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
         }
 
         private string search;
+
         public string Search
         {
             get { return search; }
@@ -99,13 +62,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
 
         public ICommand Edit { get { return new EditCommand(Session, Location); } }
 
-        public ICommand PreviousPage { get { return new UpdateUrlCommand(CreateUrl(Paging.PageNumber - 1), Paging.PageNumber > 0); } }
-
-        public ICommand NextPage { get { return new UpdateUrlCommand(CreateUrl(Paging.PageNumber + 1), Paging.PageNumber < Paging.NumberOfPages.Value); } }
-
-        public ICommand SearchUrl { get { return new UpdateUrlCommand(CreateUrl(0), true); } }
-
-        private string CreateUrl(int pageNumber)
+        protected override string CreateUrl(int pageNumber)
         {
             return string.Format("{0}?search={1}&pageNumber={2}", Location, Search, pageNumber);
         }

@@ -113,6 +113,11 @@
     <Compile Include="Converters\OrderConverter.cs" />
     <Compile Include="Converters\StringToProductsTypesEnumConverter.cs" />
     <Compile Include="Converters\NullToBoolConverter.cs" />
+    <Compile Include="Features\Home\List.xaml.cs">
+      <DependentUpon>List.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Home\HomeListModel.cs" />
+    <Compile Include="Features\Home\ProductStat.cs" />
     <Compile Include="Features\Orders\Address.cs" />
     <Compile Include="Features\Orders\Edit.xaml.cs">
       <DependentUpon>Edit.xaml</DependentUpon>
@@ -153,6 +158,7 @@
     <Compile Include="Infrastructure\ModelResolver.cs" />
     <Compile Include="Infrastructure\NotifyPropertyChangedBase.cs" />
     <Compile Include="Infrastructure\Observable.cs" />
+    <Compile Include="Infrastructure\PageableModel.cs" />
     <Compile Include="Infrastructure\PrimaryKeyComparer.cs" />
     <Compile Include="RavenStoreHolder.cs" />
     <Compile Include="Views\ErrorWindow.xaml.cs">
@@ -178,6 +184,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Converters\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Home\List.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

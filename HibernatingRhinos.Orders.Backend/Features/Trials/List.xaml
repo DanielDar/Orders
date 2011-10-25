@@ -12,7 +12,6 @@
                  d:DesignHeight="480"
                  Infrastructure:ModelResolver.AttachModel="TrialsListModel"
                  Title="Trials Page">
-
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -21,39 +20,53 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <HyperlinkButton Grid.Column="0"
-                         Content="Add"
-                         FontSize="14"
-                         Width="Auto"
-                         HorizontalAlignment="Stretch"
-                         Margin="5,0,5,0"
-                         NavigateUri="/trials/edit" />
         <TextBox Name="SearchBlock"
                  Text="{Binding Search, Mode=TwoWay}"
-                 Grid.Column="1"
+                 Grid.Column="0"
                  FontSize="14"
                  Width="200"
-                 Margin="5,0,5,0" />
-        <HyperlinkButton Grid.Column="2"
+                 Margin="5,0,5,0">
+        </TextBox>
+        <HyperlinkButton Grid.Column="1"
                          Content="Go"
                          FontSize="14"
                          Width="Auto"
                          HorizontalAlignment="Stretch"
                          Margin="5,0,5,0"
-                         NavigateUri="{Binding Search, StringFormat='/trials/list?search={0}'}" />
-        <sdk:DataPager Grid.Column="5"
-                       Source="{Binding Trials}"
-                       HorizontalAlignment="Right"
-                       Height="26"
-                       PageSize="3"
-                       Width="200" />
+                         Command="{Binding SearchUrl}" />
+        <HyperlinkButton Grid.Column="3"
+                         Content="&lt;"
+                         FontSize="14"
+                         Width="Auto"
+                         HorizontalAlignment="Stretch"
+                         Margin="5,0,5,0"
+                         Command="{Binding PreviousPage}" />
+        <TextBlock FontSize="14"
+                   Grid.Column="4"
+                   Width="Auto"
+                   Text="{Binding Path=Paging, Converter={StaticResource PageDataConverter}}" />
+        <HyperlinkButton Grid.Column="5"
+                         Content="&gt;"
+                         FontSize="14"
+                         Width="Auto"
+                         HorizontalAlignment="Stretch"
+                         Margin="5,0,5,0"
+                         Command="{Binding NextPage}" />
+        <HyperlinkButton Grid.Column="7"
+                         Content="Add"
+                         FontSize="14"
+                         HorizontalAlignment="Left"
+                         Margin="5,0,5,0"
+                         NavigateUri="/trials/edit" />
         <toolkit:DockPanel Grid.Row="1"
-                           Grid.ColumnSpan="6">
+                           Grid.ColumnSpan="8">
             <sdk:DataGrid ItemsSource="{Binding Trials}"
                           IsReadOnly="True"
                           AutoGenerateColumns="false"
