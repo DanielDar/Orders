@@ -552,12 +552,6 @@
                 Value="Center" />
     </Style>
 
-    <Style x:Key="AlignRight"
-           TargetType="sdk:DataGridCell">
-        <Setter Property="HorizontalContentAlignment"
-                Value="Right" />
-    </Style>
-
     <Style x:Key="NonSelectableDataGridCellStyle"
            TargetType="sdk:DataGridCell">
         <Setter Property="Background"
