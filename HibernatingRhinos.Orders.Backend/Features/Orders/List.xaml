@@ -21,16 +21,12 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <HyperlinkButton Grid.Column="3"
-                         Content="Add"
-                         FontSize="14"
-                         HorizontalAlignment="Center"
-                         Margin="5,0,5,0"
-                         NavigateUri="/orders/edit" />
         <TextBox Name="SearchBlock"
                  Text="{Binding Search, Mode=TwoWay}"
                  Grid.Column="0"
@@ -43,34 +39,44 @@
                          Width="Auto"
                          HorizontalAlignment="Stretch"
                          Margin="5,0,5,0"
-                         NavigateUri="{Binding Search, StringFormat='/orders/list?search={0}'}" />
-        
-      
-        <sdk:DataPager x:Name="OrdersPager"
-                       Grid.Column="4"
-                       Source="{Binding ItemsSource, ElementName=OrdersGrid}"
-                       DisplayMode="FirstLastPreviousNextNumeric"
-                       HorizontalAlignment="Right"
-                       Height="26"
-                       
-                       PageSize="20" />
-        
+                         Command="{Binding SearchUrl}" />
+        <HyperlinkButton Grid.Column="3"
+                         FontSize="14"
+                         Content="&lt;"
+                         Command="{Binding PreviousPage}"/>
+        <HyperlinkButton Grid.Column="4"
+                         FontSize="14"
+                         Content="&gt;"
+                         Command="{Binding NextPage}"/>
+        <HyperlinkButton Grid.Column="6"
+                         Content="Add"
+                         FontSize="14"
+                         HorizontalAlignment="Left"
+                         Margin="5,0,5,0"
+                         NavigateUri="/orders/edit" />
+           
         <toolkit:DockPanel Grid.Row="1"
-                           Grid.ColumnSpan="6">
+                           Grid.ColumnSpan="7">
             <sdk:DataGrid ItemsSource="{Binding Orders}"
                           IsReadOnly="True"
                           AutoGenerateColumns="false"
                           CanUserSortColumns="true"
+                          CellStyle="{StaticResource NonSelectableDataGridCellStyle}"
                           Name="OrdersGrid">
                 <sdk:DataGrid.Columns>
                     <sdk:DataGridTextColumn Header="Order Number"
                                             Binding="{Binding OrderNumber}" />
                     <sdk:DataGridTextColumn Header="Quantity"
                                             Binding="{Binding Quantity}" />
-                    <sdk:DataGridTextColumn Header="Company Name"
-                                            Binding="{Binding CompanyName}" />
-                    <sdk:DataGridTextColumn Header="Email"
-                                            Binding="{Binding EndsAt}"
+                    <sdk:DataGridTextColumn Header="Name"
+                                            Binding="{Binding Converter={StaticResource OrderConverter}, ConverterParameter=Name}" />
+                    <sdk:DataGridTextColumn Header="Date of Last Payment"
+                                            Binding="{Binding Converter={StaticResource OrderConverter}, ConverterParameter=Date}" />
+                    <sdk:DataGridTextColumn Header="Amount of Last Payment"
+                                            CellStyle="{StaticResource AlignRight}"
+                                            Binding="{Binding Converter={StaticResource OrderConverter}, ConverterParameter=Amount}"/>
+                        <sdk:DataGridTextColumn Header="Email"
+                                            Binding="{Binding Email}"
                                             Width="*" />
                     <sdk:DataGridTemplateColumn Header=""
                                                 Width="50">

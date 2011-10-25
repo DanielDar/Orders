@@ -17,7 +17,7 @@
 
             <navigation:Frame x:Name="ContentFrame"
                               Style="{StaticResource ContentFrameStyle}"
-                              Source="/Products/List"
+                              Source="/Orders/List"
                               Navigated="ContentFrame_Navigated"
                               NavigationFailed="ContentFrame_NavigationFailed">
                 <navigation:Frame.UriMapper>
@@ -81,7 +81,7 @@
 
                     <HyperlinkButton x:Name="Link4"
                                      Style="{StaticResource LinkStyle}"
-                                     NavigateUri="/Orders/List"
+                                     NavigateUri="/Orders/List?pageNumber=0"
                                      TargetName="ContentFrame"
                                      Content="orders" />
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using HibernatingRhinos.Orders.Backend.Features.Products;
+using System.Linq;
 
 namespace HibernatingRhinos.Orders.Backend.Features.Orders
 {

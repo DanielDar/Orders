@@ -10,11 +10,12 @@ namespace HibernatingRhinos.Orders.Backend.Indexes
         public class ReduceResult
         {
             public string Query { get; set; }
-            public DateTime OrderedAt { get;set; }
+            public DateTime LastPaymentDate { get; set; }
         }
         public Orders_Search()
         {
             Map = orders => from order in orders
+                            //let lastPayment = order.Payments[order.Payments.Count-1]
                             select new
                             {
                                 Query = new[]
@@ -25,7 +26,7 @@ namespace HibernatingRhinos.Orders.Backend.Indexes
                                     order.Email, 
                                     order.CompanyName
                                 },
-                                order.OrderedAt
+                                LastPaymentDate = order.OrderedAt
                             };
         }
     }
