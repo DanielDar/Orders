@@ -2,6 +2,7 @@
 using HibernatingRhinos.Orders.Backend.Features.Orders;
 using Raven.Client.Document;
 using Raven.Client.Indexes;
+using DateTime = System.DateTime;
 
 namespace HibernatingRhinos.Orders.Backend.Indexes
 {
@@ -11,8 +12,7 @@ namespace HibernatingRhinos.Orders.Backend.Indexes
         {
             public decimal Amount { get; set; }
             public string Currency { get; set; }
-            public int Month { get; set; }
-            public int Year { get; set; }
+            public DateTime Date { get; set; }
         }
 
         public Orders_Stats()
@@ -23,17 +23,15 @@ namespace HibernatingRhinos.Orders.Backend.Indexes
                             {
                                 Amount = (payment.Total.Amount - payment.VAT.Amount), 
                                 payment.Total.Currency,
-                                order.OrderedAt.Month,
-                                order.OrderedAt.Year
+                                Date = new DateTime(order.OrderedAt.Year, order.OrderedAt.Month, 1)
                             };
 
             Reduce = results => from result in results
-                                group result by new {result.Year, result.Month, result.Currency}
+                                group result by new {result.Date, result.Currency}
                                 into g
                                 select new
                                 {
-                                    g.Key.Year, 
-                                    g.Key.Month, 
+                                    g.Key.Date,
                                     g.Key.Currency,
                                     Amount = g.Sum(x => (double) x.Amount)
                                 };

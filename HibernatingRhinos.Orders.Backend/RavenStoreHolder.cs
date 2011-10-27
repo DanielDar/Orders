@@ -15,15 +15,7 @@ namespace HibernatingRhinos.Orders.Backend
                 Url = "http://localhost:8080"
             }.Initialize();
 
-            //IndexCreation.CreateIndexesAsync(typeof(Orders_Search).Assembly, Store);
-            var productsStats = new Products_Stats();
-            productsStats.ExecuteAsync(Store.AsyncDatabaseCommands, Store.Conventions)
-                .ContinueWith(task =>
-                {
-                    var indexDefinition = productsStats.CreateIndexDefinition();
-                    var map = indexDefinition.Map;
-                    var reduce = indexDefinition.Reduce;
-                });
+            IndexCreation.CreateIndexesAsync(typeof(Orders_Search).Assembly, Store);
         }
 
         public static IDocumentStore Store { get; private set; }

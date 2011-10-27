@@ -74,9 +74,16 @@
 
         <toolkit:Chart Height="274">
             <toolkit:Chart.Series>
-                <toolkit:LineSeries ItemsSource="{Binding OrderStats}"
-                                    IndependentValueBinding="{Binding Month}"
-                                    DependentValueBinding="{Binding Amount}" />
+                <toolkit:LineSeries Title="Euro"
+                                    ItemsSource="{Binding OrderStatsEuro}"
+                                    IndependentValueBinding="{Binding Date, StringFormat='MMM yy'}"
+                                    DependentValueBinding="{Binding Amount}">
+                </toolkit:LineSeries>
+                <toolkit:LineSeries Title="USD"
+                                    ItemsSource="{Binding OrderStatsUsd}"
+                                    IndependentValueBinding="{Binding Date, StringFormat='MMM yy'}"
+                                    DependentValueBinding="{Binding Amount}">
+                </toolkit:LineSeries>
             </toolkit:Chart.Series>
 
         </toolkit:Chart>

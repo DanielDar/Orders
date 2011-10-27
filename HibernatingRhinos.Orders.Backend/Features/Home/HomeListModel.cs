@@ -38,19 +38,31 @@ namespace HibernatingRhinos.Orders.Backend.Features.Home
                 .ToListAsync()
                 .ContinueOnSuccess(items => ProductStats.Match(items));
 
-            OrderStats =
+            OrderStatsUsd = new BindableCollection<Orders_Stats.ReduceResult>(
+                    new PrimaryKeyComparer<Orders_Stats.ReduceResult>(
+                        x => Tuple.Create(x.Date, x.Currency)));
+
+            OrderStatsEuro =
                 new BindableCollection<Orders_Stats.ReduceResult>(
                     new PrimaryKeyComparer<Orders_Stats.ReduceResult>(
-                        x => Tuple.Create(x.Year, x.Month, x.Currency)));
+                        x => Tuple.Create(x.Date, x.Currency)));
+
+            DateTime yearBack = LookAtDate.AddYears(-1);
 
             Session.Query<Orders_Stats.ReduceResult>("Orders/Stats")
-                .Where(x=>x.Year == LookAtDate.Year)
+                .Where(x => x.Date >= yearBack)// && x.Currency == "EUR")
                 .ToListAsync()
-                .ContinueOnSuccess(items => OrderStats.Match(items));
+                .ContinueOnSuccess(items => OrderStatsEuro.Match(items));
+
+            //Session.Query<Orders_Stats.ReduceResult>("Orders/Stats")
+            //     .Where(x => x.Date >= LookAtDate.AddMonths(-12) && x.Currency == "USD")
+            //    .ToListAsync()
+            //    .ContinueOnSuccess(items => OrderStatsUsd.Match(items));
         }
 
         public BindableCollection<Products_Stats.ReduceResult> ProductStats { get; set; }
-        public BindableCollection<Orders_Stats.ReduceResult> OrderStats { get; set; }
+        public BindableCollection<Orders_Stats.ReduceResult> OrderStatsEuro { get; set; }
+        public BindableCollection<Orders_Stats.ReduceResult> OrderStatsUsd { get; set; }
 
         public ICommand PreviousMonth { get { return new ChangeDateCommand(LookAtDate, -1); } }
         public ICommand NextMonth { get { return new ChangeDateCommand(LookAtDate, 1); } }
