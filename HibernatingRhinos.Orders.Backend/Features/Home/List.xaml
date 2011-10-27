@@ -85,7 +85,6 @@
                                     DependentValueBinding="{Binding Amount}">
                 </toolkit:LineSeries>
             </toolkit:Chart.Series>
-
         </toolkit:Chart>
     </StackPanel>
 </navigation:Page>

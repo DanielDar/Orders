@@ -11,13 +11,11 @@
 
     <Grid x:Name="LayoutRoot"
           Style="{StaticResource LayoutRootGridStyle}">
-
         <Border x:Name="ContentBorder"
                 Style="{StaticResource ContentBorderStyle}">
-
             <navigation:Frame x:Name="ContentFrame"
                               Style="{StaticResource ContentFrameStyle}"
-                              Source="/Orders/List"
+                              Source="/Home/List"
                               Navigated="ContentFrame_Navigated"
                               NavigationFailed="ContentFrame_NavigationFailed">
                 <navigation:Frame.UriMapper>
@@ -33,58 +31,39 @@
 
         <Grid x:Name="NavigationGrid"
               Style="{StaticResource NavigationGridStyle}">
-
             <Border x:Name="BrandingBorder"
                     Style="{StaticResource BrandingBorderStyle}">
                 <StackPanel x:Name="BrandingStackPanel"
                             Style="{StaticResource BrandingStackPanelStyle}">
-
                     <ContentControl Style="{StaticResource LogoIcon}" />
                     <TextBlock x:Name="ApplicationNameTextBlock"
                                Style="{StaticResource ApplicationNameStyle}"
-                               Text="Application Name" />
-
+                               Text="Ribernating Rhinos Orders" />
                 </StackPanel>
             </Border>
-
             <Border x:Name="LinksBorder"
                     Style="{StaticResource LinksBorderStyle}">
                 <StackPanel x:Name="LinksStackPanel"
                             Style="{StaticResource LinksStackPanelStyle}">
-
                     <HyperlinkButton x:Name="Link1"
                                      Style="{StaticResource LinkStyle}"
                                      NavigateUri="/Home/List"
                                      TargetName="ContentFrame"
                                      Content="home" />
-
                     <Rectangle x:Name="Divider1"
                                Style="{StaticResource DividerStyle}" />
-
-                    <HyperlinkButton x:Name="Link2"
-                                     Style="{StaticResource LinkStyle}"
-                                     NavigateUri="/About"
-                                     TargetName="ContentFrame"
-                                     Content="about" />
-
-                    <Rectangle x:Name="Divider2"
-                               Style="{StaticResource DividerStyle}" />
-
                     <HyperlinkButton x:Name="Link3"
                                      Style="{StaticResource LinkStyle}"
                                      NavigateUri="/Products/List"
                                      TargetName="ContentFrame"
                                      Content="products" />
-
                     <Rectangle x:Name="Divider3"
                                Style="{StaticResource DividerStyle}" />
-
                     <HyperlinkButton x:Name="Link4"
                                      Style="{StaticResource LinkStyle}"
                                      NavigateUri="/Orders/List?pageNumber=0"
                                      TargetName="ContentFrame"
                                      Content="orders" />
-
                     <HyperlinkButton x:Name="Link5"
                                      Style="{StaticResource LinkStyle}"
                                      NavigateUri="/Trials/List"
@@ -92,9 +71,6 @@
                                      Content="trials" />
                 </StackPanel>
             </Border>
-
         </Grid>
-
     </Grid>
-
 </UserControl>
