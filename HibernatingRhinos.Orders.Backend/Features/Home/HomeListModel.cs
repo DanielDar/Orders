@@ -50,12 +50,12 @@ namespace HibernatingRhinos.Orders.Backend.Features.Home
             DateTime yearBack = LookAtDate.AddYears(-1);
 
             Session.Query<Orders_Stats.ReduceResult>("Orders/Stats")
-                .Where(x => x.Date >= yearBack && x.Currency == "EUR")
+                .Where(x => x.Date >= yearBack && x.Date < LookAtDate && x.Currency == "EUR")
                 .ToListAsync()
                 .ContinueOnSuccess(items => OrderStatsEuro.Match(items));
 
             Session.Query<Orders_Stats.ReduceResult>("Orders/Stats")
-                 .Where(x => x.Date >= yearBack && x.Currency == "USD")
+                 .Where(x => x.Date >= yearBack && x.Date < LookAtDate && x.Currency == "USD")
                 .ToListAsync()
                 .ContinueOnSuccess(items => OrderStatsUsd.Match(items));
         }
