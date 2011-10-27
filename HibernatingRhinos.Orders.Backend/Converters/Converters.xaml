@@ -13,4 +13,7 @@
     <Converters:PageDataConverter x:Key="PageDataConverter" />
     <Converters:PaymentConverter x:Key="PaymentConverter" />
     <Converters:DateConverter x:Key="DateConverter" />
+    <Converters:ProductTypeCount x:Key="ProductTypeCount" />
+    <Converters:RemovePrefixConverter x:Key="RemovePrefixConverter" />
+    <Converters:MoneyConverter x:Key="MoneyConverter" />
 </ResourceDictionary>

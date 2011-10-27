@@ -86,6 +86,7 @@
     <Reference Include="System.Net" />
     <Reference Include="System.Windows.Controls.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Windows.Controls.Data.Input" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit" />
     <Reference Include="System.Windows.Controls.Input.Toolkit" />
     <Reference Include="System.Windows.Controls.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
@@ -99,6 +100,7 @@
     </Compile>
     <Compile Include="Commands\AddTimeCommand.cs" />
     <Compile Include="Commands\CancelCommand.cs" />
+    <Compile Include="Commands\ChangeDateCommand.cs" />
     <Compile Include="Commands\UpdateUrlCommand.cs" />
     <Compile Include="Commands\SaveCommand.cs" />
     <Compile Include="Commands\DeleteCommand.cs" />
@@ -107,17 +109,19 @@
     <Compile Include="Converters\ArrayListToStringConverter.cs" />
     <Compile Include="Converters\AddressToMultiLineStringConverter.cs" />
     <Compile Include="Converters\ComboBoxItemToStringConverter.cs" />
+    <Compile Include="Converters\MoneyConverter.cs" />
+    <Compile Include="Converters\RemovePrefixConverter.cs" />
     <Compile Include="Converters\DateConverter.cs" />
     <Compile Include="Converters\PaymentConverter.cs" />
     <Compile Include="Converters\PageDataConverter.cs" />
     <Compile Include="Converters\OrderConverter.cs" />
+    <Compile Include="Converters\ProductTypeCount.cs" />
     <Compile Include="Converters\StringToProductsTypesEnumConverter.cs" />
     <Compile Include="Converters\NullToBoolConverter.cs" />
     <Compile Include="Features\Home\List.xaml.cs">
       <DependentUpon>List.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Home\HomeListModel.cs" />
-    <Compile Include="Features\Home\ProductStat.cs" />
     <Compile Include="Features\Orders\Address.cs" />
     <Compile Include="Features\Orders\Edit.xaml.cs">
       <DependentUpon>Edit.xaml</DependentUpon>

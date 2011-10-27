@@ -1,0 +1,84 @@
+﻿<navigation:Page x:Class="HibernatingRhinos.Orders.Backend.Features.Home.List"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 mc:Ignorable="d"
+                 xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+                 xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+                 Infrastructure:ModelResolver.AttachModel="HomeListModel"
+                 xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+                 xmlns:Infrastructure="clr-namespace:HibernatingRhinos.Orders.Backend.Infrastructure"
+                 d:DesignWidth="640"
+                 d:DesignHeight="480"
+                 Title="List Page">
+    <StackPanel>
+        <Grid x:Name="LayoutRoot">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <HyperlinkButton Grid.Column="1"
+                             Content="&lt;"
+                             FontSize="14"
+                             Width="Auto"
+                             HorizontalAlignment="Stretch"
+                             Margin="5,0,5,0"
+                             Command="{Binding PreviousMonth}" />
+            <TextBlock FontSize="14"
+                       Grid.Column="2"
+                       Width="Auto"
+                       Text="{Binding LookAtDate, StringFormat=MMM yyyy}" />
+            <HyperlinkButton Grid.Column="3"
+                             Content="&gt;"
+                             FontSize="14"
+                             Width="Auto"
+                             HorizontalAlignment="Stretch"
+                             Margin="5,0,5,0"
+                             Command="{Binding NextMonth}" />
+            <toolkit:DockPanel Grid.Row="1"
+                               Grid.ColumnSpan="8">
+                <sdk:DataGrid ItemsSource="{Binding ProductStats}"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="false"
+                              CanUserSortColumns="true"
+                              Name="OrdersGrid"
+                              CellStyle="{StaticResource NonSelectableDataGridCellStyle}"
+                              Height="184"
+                              VerticalAlignment="Top">
+                    <sdk:DataGrid.Columns>
+                        <sdk:DataGridTextColumn Header="Product"
+                                                Binding="{Binding ProductId, Converter={StaticResource RemovePrefixConverter}, ConverterParameter=9}" />
+                        <sdk:DataGridTextColumn Header="Amount"
+                                                Binding="{Binding Total,Converter={StaticResource MoneyConverter}}" />
+                        <sdk:DataGridTextColumn Header="Life Time"
+                                                Binding="{Binding Converter={StaticResource ProductTypeCount}, ConverterParameter=Lifetime}" />
+                        <sdk:DataGridTextColumn Header="Yearly"
+                                                Binding="{Binding Converter={StaticResource ProductTypeCount}, ConverterParameter=Yearly}" />
+                        <sdk:DataGridTextColumn Header="Monthly"
+                                                Binding="{Binding Converter={StaticResource ProductTypeCount}, ConverterParameter=Monthly}" />
+                        <sdk:DataGridTextColumn Header="Total Licenses"
+                                                Binding="{Binding Converter={StaticResource ProductTypeCount}, ConverterParameter=Total}" />
+                    </sdk:DataGrid.Columns>
+                </sdk:DataGrid>
+            </toolkit:DockPanel>
+        </Grid>
+
+        <toolkit:Chart Height="274">
+            <toolkit:Chart.Series>
+                <toolkit:LineSeries ItemsSource="{Binding OrderStats}"
+                                    IndependentValueBinding="{Binding Month}"
+                                    DependentValueBinding="{Binding Amount}" />
+            </toolkit:Chart.Series>
+
+        </toolkit:Chart>
+    </StackPanel>
+</navigation:Page>
