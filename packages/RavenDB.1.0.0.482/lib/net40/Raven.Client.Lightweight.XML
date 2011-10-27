@@ -1584,8 +1584,7 @@
             <returns>
             true if this converter can perform the conversion; otherwise, false.
             </returns>
-            <param name="sourceType">A <see cref="T:System.Type"/> that represents the type you want to convert from. 
-                            </param>
+            <param name="sourceType">A <see cref="T:System.Type"/> that represents the type you want to convert from.</param>
         </member>
         <member name="M:Raven.Client.Converters.ITypeConverter.ConvertFrom(System.String,System.Object,System.Boolean)">
             <summary>
@@ -1615,8 +1614,7 @@
             <returns>
             true if this converter can perform the conversion; otherwise, false.
             </returns>
-            <param name="sourceType">A <see cref="T:System.Type"/> that represents the type you want to convert from. 
-                            </param>
+            <param name="sourceType">A <see cref="T:System.Type"/> that represents the type you want to convert from.</param>
         </member>
         <member name="M:Raven.Client.Converters.GuidConverter.ConvertFrom(System.String,System.Object,System.Boolean)">
             <summary>
@@ -2066,6 +2064,12 @@
             <summary>
               EXPERT ONLY: Instructs the query to wait for non stale results.
               This shouldn't be used outside of unit tests unless you are well aware of the implications
+            </summary>
+        </member>
+        <member name="M:Raven.Client.Document.IAbstractDocumentQuery`1.Search(System.String,System.String)">
+            <summary>
+            Perform a search for documents which fields that match the searchTerms.
+            If there is more than a single term, each of them will be checked independently.
             </summary>
         </member>
         <member name="M:Raven.Client.Document.IAbstractDocumentQuery`1.ToString">
@@ -2634,6 +2638,12 @@
             <param name = "query">The query.</param>
             <returns></returns>
         </member>
+        <member name="M:Raven.Client.Document.AbstractDocumentQuery`2.Search(System.String,System.String)">
+            <summary>
+            Perform a search for documents which fields that match the searchTerms.
+            If there is more than a single term, each of them will be checked independently.
+            </summary>
+        </member>
         <member name="M:Raven.Client.Document.AbstractDocumentQuery`2.ToString">
             <summary>
               Returns a <see cref="T:System.String"/> that represents this instance.
@@ -3005,6 +3015,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Raven.Client.IDocumentQueryBase`2.Search(System.String,System.String)">
+            <summary>
+            Perform a search for documents which fields that match the searchTerms.
+            If there is more than a single term, each of them will be checked independently.
+            </summary>
+        </member>
         <member name="M:Raven.Client.IDocumentQueryBase`2.GroupBy(Raven.Abstractions.Data.AggregationOperation,System.String[])">
             <summary>
               Instruct the index to group by the specified fields using the specified aggregation operation
@@ -3347,6 +3363,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IAsyncDocumentQuery{T}}#Search(System.String,System.String)">
+            <summary>
+            Perform a search for documents which fields that match the searchTerms.
+            If there is more than a single term, each of them will be checked independently.
+            </summary>
+        </member>
         <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IAsyncDocumentQuery{T}}#CloseSubclause">
             <summary>
             Simplified method for closing a clause within the query
@@ -3545,6 +3567,16 @@
         <member name="M:Raven.Client.Document.InMemoryDocumentSessionOperations.Store(System.Object,System.Guid)">
             <summary>
             Stores the specified entity in the session. The entity will be saved when SaveChanges is called.
+            </summary>
+        </member>
+        <member name="M:Raven.Client.Document.InMemoryDocumentSessionOperations.Store(System.Object,System.String)">
+            <summary>
+            Stores the specified entity in the session, explicitly specifying its Id. The entity will be saved when SaveChanges is called.
+            </summary>
+        </member>
+        <member name="M:Raven.Client.Document.InMemoryDocumentSessionOperations.Store(System.Object,System.Guid,System.String)">
+            <summary>
+            Stores the specified entity in the session, explicitly specifying its Id. The entity will be saved when SaveChanges is called.
             </summary>
         </member>
         <member name="M:Raven.Client.Document.InMemoryDocumentSessionOperations.GetOrGenerateDocumentKey(System.Object)">
@@ -4739,6 +4771,17 @@
             in async manner
             </summary>
         </member>
+        <member name="P:Raven.Client.Document.DocumentConvention.FindIdValuePartForValueTypeConversion">
+            <summary>
+            When RavenDB needs to convert between a string id to a value type like int or guid, it calls
+            this to perform the actual work
+            </summary>
+        </member>
+        <member name="P:Raven.Client.Document.DocumentConvention.SaveEnumsAsIntegers">
+            <summary>
+            Saves Enums as integers and instruct the Linq provider to query enums as integer values.
+            </summary>
+        </member>
         <member name="T:Raven.Client.Document.ConsistencyOptions">
             <summary>
             The consistency options for all queries, fore more details about the consistency options, see:
@@ -4851,6 +4894,12 @@
             Simplified method for closing a clause within the query
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#Search(System.String,System.String)">
+            <summary>
+            Perform a search for documents which fields that match the searchTerms.
+            If there is more than a single term, each of them will be checked independently.
+            </summary>
         </member>
         <member name="M:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#GroupBy(Raven.Abstractions.Data.AggregationOperation,System.String[])">
             <summary>
@@ -5224,11 +5273,23 @@
             Stores the specified entity with the specified etag
             </summary>
         </member>
+        <member name="M:Raven.Client.IDocumentSession.Store(System.Object,System.Guid,System.String)">
+            <summary>
+            Stores the specified entity with the specified etag, under the specified id
+            </summary>
+        </member>
         <member name="M:Raven.Client.IDocumentSession.Store(System.Object)">
             <summary>
             Stores the specified dynamic entity.
             </summary>
             <param name="entity">The entity.</param>
+        </member>
+        <member name="M:Raven.Client.IDocumentSession.Store(System.Object,System.String)">
+            <summary>
+            Stores the specified dynamic entity, under the specified id
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="id">The id to store this entity under. If other entity exists with the same id it will be overridden.</param>
         </member>
         <member name="P:Raven.Client.IDocumentSession.Advanced">
             <summary>
@@ -5894,6 +5955,12 @@
             Gets or sets the identifier for this store.
             </summary>
             <value>The identifier.</value>
+        </member>
+        <member name="P:Raven.Client.Document.DocumentStore.ApiKey">
+            <summary>
+            The API Key to use when authenticating against a RavenDB server that
+            supports API Key authentication
+            </summary>
         </member>
         <member name="P:Raven.Client.Document.DocumentStore.ConnectionStringName">
             <summary>
@@ -6679,6 +6746,12 @@
             Simplified method for opening a new clause within the query
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:Raven.Client.Document.ShardedDocumentQuery`1.Search(System.String,System.String)">
+            <summary>
+            Perform a search for documents which fields that match the searchTerms.
+            If there is more than a single term, each of them will be checked independently.
+            </summary>
         </member>
         <member name="M:Raven.Client.Document.ShardedDocumentQuery`1.GroupBy(Raven.Abstractions.Data.AggregationOperation,System.String[])">
             <summary>
@@ -7685,7 +7758,7 @@
             Generate index defintion from linq expressions
             </summary>
         </member>
-        <member name="M:Raven.Client.Indexes.IndexDefinitionHelper.PruneToFailureLinqQueryAsStringToWorkableCode``1(System.Linq.Expressions.LambdaExpression,Raven.Client.Document.DocumentConvention,System.String,System.Boolean)">
+        <member name="M:Raven.Client.Indexes.IndexDefinitionHelper.PruneToFailureLinqQueryAsStringToWorkableCode``2(System.Linq.Expressions.LambdaExpression,Raven.Client.Document.DocumentConvention,System.String,System.Boolean)">
             <summary>
             Perform the actual generation
             </summary>
@@ -8160,6 +8233,12 @@
         <member name="M:Raven.Client.Linq.LinqExtensions.SuggestAsync(System.Linq.IQueryable)">
             <summary>
             Suggest alternative values for the queried term
+            </summary>
+        </member>
+        <member name="M:Raven.Client.Linq.LinqExtensions.Search``1(Raven.Client.Linq.IRavenQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.String)">
+            <summary>
+            Perform a search for documents which fields that match the searchTerms.
+            If there is more than a single term, each of them will be checked independently.
             </summary>
         </member>
         <member name="M:Raven.Client.Linq.LinqExtensions.WhereEntityIs``1(System.Collections.Generic.IEnumerable{System.Object},System.String[])">
