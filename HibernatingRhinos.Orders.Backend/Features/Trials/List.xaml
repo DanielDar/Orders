@@ -23,10 +23,6 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <TextBox Name="SearchBlock"
                  Text="{Binding Search, Mode=TwoWay}"
@@ -42,25 +38,35 @@
                          HorizontalAlignment="Stretch"
                          Margin="5,0,5,0"
                          Command="{Binding SearchUrl}" />
-        <HyperlinkButton Grid.Column="3"
-                         Content="&lt;"
-                         FontSize="14"
-                         Width="Auto"
-                         HorizontalAlignment="Stretch"
-                         Margin="5,0,5,0"
-                         Command="{Binding PreviousPage}" />
-        <TextBlock FontSize="14"
-                   Grid.Column="4"
-                   Width="Auto"
-                   Text="{Binding Path=Paging, Converter={StaticResource PageDataConverter}}" />
-        <HyperlinkButton Grid.Column="5"
-                         Content="&gt;"
-                         FontSize="14"
-                         Width="Auto"
-                         HorizontalAlignment="Stretch"
-                         Margin="5,0,5,0"
-                         Command="{Binding NextPage}" />
-        <HyperlinkButton Grid.Column="7"
+            <Grid Grid.ColumnSpan="4"
+                  HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <HyperlinkButton Grid.Column="1"
+                                 Content="&lt;"
+                                 FontSize="14"
+                                 Width="Auto"
+                                 HorizontalAlignment="Stretch"
+                                 Margin="5,0,5,0"
+                                 Command="{Binding PreviousPage}" />
+                <TextBlock FontSize="14"
+                           Grid.Column="2"
+                           Width="Auto"
+                           Text="{Binding Path=Paging, Converter={StaticResource PageDataConverter}}" />
+                <HyperlinkButton Grid.Column="3"
+                                 Content="&gt;"
+                                 FontSize="14"
+                                 Width="Auto"
+                                 HorizontalAlignment="Stretch"
+                                 Margin="5,0,5,0"
+                                 Command="{Binding NextPage}" />
+            </Grid>
+            <HyperlinkButton Grid.Column="4"
                          Content="Add"
                          FontSize="14"
                          HorizontalAlignment="Left"
