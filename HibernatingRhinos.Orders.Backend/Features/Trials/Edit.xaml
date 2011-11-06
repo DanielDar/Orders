@@ -7,11 +7,12 @@
                  xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
                  xmlns:Infrastructure="clr-namespace:HibernatingRhinos.Orders.Backend.Infrastructure"
                  xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+                 xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
                  Infrastructure:ModelResolver.AttachModel="EditTrialsModel"
                  d:DesignWidth="640"
                  d:DesignHeight="480"
                  Title="Trial Edit Page">
-
+<toolkit:WhistlerBlueTheme>
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.902*" />
@@ -110,4 +111,5 @@
                         IsTodayHighlighted="False"
                         VerticalAlignment="Top" />
     </Grid>
+    </toolkit:WhistlerBlueTheme>
 </navigation:Page>

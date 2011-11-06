@@ -12,6 +12,7 @@
                  d:DesignWidth="640"
                  d:DesignHeight="480"
                  Title="List Page">
+    <toolkit:WhistlerBlueTheme>
     <StackPanel>
         <Grid x:Name="LayoutRoot">
             <Grid.RowDefinitions>
@@ -87,4 +88,5 @@
             </toolkit:Chart.Series>
         </toolkit:Chart>
     </StackPanel>
+    </toolkit:WhistlerBlueTheme>
 </navigation:Page>

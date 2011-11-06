@@ -5,14 +5,15 @@
                  xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
                  xmlns:Infrastructure="clr-namespace:HibernatingRhinos.Orders.Backend.Infrastructure"
                  xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+                 xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
                  x:Class="HibernatingRhinos.Orders.Backend.Features.Orders.Edit"
                  mc:Ignorable="d"
                  Infrastructure:ModelResolver.AttachModel="EditOrdersModel"
                  d:DesignWidth="800"
                  d:DesignHeight="600"
                  Title="Order Edit Page">
-
-    <Grid x:Name="LayoutRoot">
+    <toolkit:WhistlerBlueTheme>
+        <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="32" />
             <RowDefinition Height="32" />
@@ -329,4 +330,5 @@
             </sdk:DataGrid.Columns>
         </sdk:DataGrid>
     </Grid>
+    </toolkit:WhistlerBlueTheme>
 </navigation:Page>

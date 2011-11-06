@@ -8,11 +8,12 @@
                  mc:Ignorable="d"
                  xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
                  xmlns:Infrastructure="clr-namespace:HibernatingRhinos.Orders.Backend.Infrastructure"
+                 xmlns:Theming="clr-namespace:System.Windows.Controls.Theming;assembly=System.Windows.Controls.Theming.WhistlerBlue"
                  Infrastructure:ModelResolver.AttachModel="ProductsListModel"
                  d:DesignWidth="640"
                  d:DesignHeight="480"
                  Title="Products Page">
-    
+    <Theming:WhistlerBlueTheme>
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -79,4 +80,5 @@
             </sdk:DataGrid>
         </toolkit:DockPanel>
     </Grid>
+    </Theming:WhistlerBlueTheme>
 </navigation:Page>

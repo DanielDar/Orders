@@ -6,11 +6,12 @@
                  mc:Ignorable="d"
                  xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
                  xmlns:Infrastructure="clr-namespace:HibernatingRhinos.Orders.Backend.Infrastructure"
+                 xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
                  Infrastructure:ModelResolver.AttachModel="EditProductsModel"
                  d:DesignWidth="640"
                  d:DesignHeight="480"
                  Title="Product Edit Page">
-
+<toolkit:WhistlerBlueTheme>
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.902*" />
@@ -99,4 +100,5 @@
                              CommandParameter="{Binding Product.Value}" />
         </Grid>
     </Grid>
+    </toolkit:WhistlerBlueTheme>
 </navigation:Page>

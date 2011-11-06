@@ -12,6 +12,7 @@
                  d:DesignHeight="480"
                  Infrastructure:ModelResolver.AttachModel="TrialsListModel"
                  Title="Trials Page">
+    <toolkit:WhistlerBlueTheme>
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -98,4 +99,5 @@
             </sdk:DataGrid>
         </toolkit:DockPanel>
     </Grid>
+    </toolkit:WhistlerBlueTheme>
 </navigation:Page>

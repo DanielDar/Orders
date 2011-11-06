@@ -13,6 +13,7 @@
                  d:DesignHeight="480"
                  Infrastructure:ModelResolver.AttachModel="OrdersListModel"
                  Title="List Page">
+    <toolkit:WhistlerBlueTheme>
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -104,4 +105,5 @@
             </sdk:DataGrid>
         </toolkit:DockPanel>
     </Grid>
+    </toolkit:WhistlerBlueTheme>
 </navigation:Page>
