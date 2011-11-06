@@ -27,6 +27,7 @@
             </Grid.ColumnDefinitions>
             <TextBox Name="SearchBlock"
                      Text="{Binding Search, Mode=TwoWay}"
+                     KeyDown="SearchByEnter"
                      Grid.Column="0"
                      FontSize="14"
                      Width="200"

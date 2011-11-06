@@ -25,5 +25,16 @@ namespace HibernatingRhinos.Orders.Backend.Features.Trials
         {
         }
 
+        private void SearchByEnter(object sender, KeyEventArgs e)
+        {
+            var searchBox = sender as TextBox;
+
+            if (e.Key == Key.Enter && searchBox != null)
+            {
+                var location = string.Format("/Trials/List?search={0}", searchBox.Text);
+                Application.Current.Host.NavigationState = location;
+            }
+        }
+
     }
 }

@@ -13,31 +13,32 @@
                  Infrastructure:ModelResolver.AttachModel="TrialsListModel"
                  Title="Trials Page">
     <toolkit:WhistlerBlueTheme>
-    <Grid x:Name="LayoutRoot">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-        <TextBox Name="SearchBlock"
-                 Text="{Binding Search, Mode=TwoWay}"
-                 Grid.Column="0"
-                 FontSize="14"
-                 Width="200"
-                 Margin="5,0,5,0">
-        </TextBox>
-        <HyperlinkButton Grid.Column="1"
-                         Content="Go"
-                         FontSize="14"
-                         Width="Auto"
-                         HorizontalAlignment="Stretch"
-                         Margin="5,0,5,0"
-                         Command="{Binding SearchUrl}" />
+        <Grid x:Name="LayoutRoot">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBox Name="SearchBlock"
+                     Text="{Binding Search, Mode=TwoWay}"
+                     KeyDown="SearchByEnter"
+                     Grid.Column="0"
+                     FontSize="14"
+                     Width="200"
+                     Margin="5,0,5,0">
+            </TextBox>
+            <HyperlinkButton Grid.Column="1"
+                             Content="Go"
+                             FontSize="14"
+                             Width="Auto"
+                             HorizontalAlignment="Stretch"
+                             Margin="5,0,5,0"
+                             Command="{Binding SearchUrl}" />
             <Grid Grid.ColumnSpan="4"
                   HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
@@ -67,43 +68,43 @@
                                  Command="{Binding NextPage}" />
             </Grid>
             <HyperlinkButton Grid.Column="4"
-                         Content="Add"
-                         FontSize="14"
-                         HorizontalAlignment="Left"
-                         Margin="5,0,5,0"
-                         NavigateUri="/trials/edit" />
-        <toolkit:DockPanel Grid.Row="1"
-                           Grid.ColumnSpan="8">
-            <sdk:DataGrid ItemsSource="{Binding Trials}"
-                          IsReadOnly="True"
-                          AutoGenerateColumns="false"
-                          CanUserSortColumns="true"
-                          CellStyle="{StaticResource NonSelectableDataGridCellStyle}"
-                          Name="OrdersGrid">
-                <sdk:DataGrid.Columns>
-                    <sdk:DataGridTextColumn Header="Id"
-                                            Binding="{Binding Id}" />
-                    <sdk:DataGridTextColumn Header="Name"
-                                            Binding="{Binding Name}" />
-                    <sdk:DataGridTextColumn Header="Company"
-                                            Binding="{Binding Company}" />
-                    <sdk:DataGridTextColumn Header="License End Date"
-                                            Binding="{Binding EndsAt}" 
-                                            Width="*"/>
-                    <sdk:DataGridTemplateColumn Header=""
-                                                Width="50">
-                        <sdk:DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <HyperlinkButton Content="Edit"
-                                                 VerticalAlignment="Center"
-                                                 IsEnabled="True"
-                                                 NavigateUri="{Binding Id, StringFormat='/trials/edit?id={0}'}" />
-                            </DataTemplate>
-                        </sdk:DataGridTemplateColumn.CellTemplate>
-                    </sdk:DataGridTemplateColumn>
-                </sdk:DataGrid.Columns>
-            </sdk:DataGrid>
-        </toolkit:DockPanel>
-    </Grid>
+                             Content="Add"
+                             FontSize="14"
+                             HorizontalAlignment="Left"
+                             Margin="5,0,5,0"
+                             NavigateUri="/trials/edit" />
+            <toolkit:DockPanel Grid.Row="1"
+                               Grid.ColumnSpan="8">
+                <sdk:DataGrid ItemsSource="{Binding Trials}"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="false"
+                              CanUserSortColumns="true"
+                              CellStyle="{StaticResource NonSelectableDataGridCellStyle}"
+                              Name="OrdersGrid">
+                    <sdk:DataGrid.Columns>
+                        <sdk:DataGridTextColumn Header="Id"
+                                                Binding="{Binding Id}" />
+                        <sdk:DataGridTextColumn Header="Name"
+                                                Binding="{Binding Name}" />
+                        <sdk:DataGridTextColumn Header="Company"
+                                                Binding="{Binding Company}" />
+                        <sdk:DataGridTextColumn Header="License End Date"
+                                                Binding="{Binding EndsAt}"
+                                                Width="*" />
+                        <sdk:DataGridTemplateColumn Header=""
+                                                    Width="50">
+                            <sdk:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <HyperlinkButton Content="Edit"
+                                                     VerticalAlignment="Center"
+                                                     IsEnabled="True"
+                                                     NavigateUri="{Binding Id, StringFormat='/trials/edit?id={0}'}" />
+                                </DataTemplate>
+                            </sdk:DataGridTemplateColumn.CellTemplate>
+                        </sdk:DataGridTemplateColumn>
+                    </sdk:DataGrid.Columns>
+                </sdk:DataGrid>
+            </toolkit:DockPanel>
+        </Grid>
     </toolkit:WhistlerBlueTheme>
 </navigation:Page>
