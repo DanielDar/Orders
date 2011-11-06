@@ -32,7 +32,7 @@
         <Grid x:Name="NavigationGrid"
               Style="{StaticResource NavigationGridStyle}">
             <Border x:Name="BrandingBorder"
-                    Style="{StaticResource ContentBorderStyle}">
+                    Style="{StaticResource BrandingBorderStyle}">
                 <StackPanel x:Name="BrandingStackPanel"
                             Style="{StaticResource BrandingStackPanelStyle}">
                     <ContentControl Style="{StaticResource LogoIcon}" />
