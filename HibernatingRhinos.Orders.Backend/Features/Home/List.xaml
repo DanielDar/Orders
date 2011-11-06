@@ -13,80 +13,80 @@
                  d:DesignHeight="480"
                  Title="List Page">
     <toolkit:WhistlerBlueTheme>
-    <StackPanel>
-        <Grid x:Name="LayoutRoot">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <HyperlinkButton Grid.Column="1"
-                             Content="&lt;"
-                             FontSize="14"
-                             Width="Auto"
-                             HorizontalAlignment="Stretch"
-                             Margin="5,0,5,0"
-                             Command="{Binding PreviousMonth}" />
-            <TextBlock FontSize="14"
-                       Grid.Column="2"
-                       Width="Auto"
-                       Text="{Binding LookAtDate, StringFormat=MMM yyyy}" />
-            <HyperlinkButton Grid.Column="3"
-                             Content="&gt;"
-                             FontSize="14"
-                             Width="Auto"
-                             HorizontalAlignment="Stretch"
-                             Margin="5,0,5,0"
-                             Command="{Binding NextMonth}" />
-            <toolkit:DockPanel Grid.Row="1"
-                               Grid.ColumnSpan="8">
-                <sdk:DataGrid ItemsSource="{Binding ProductStats}"
-                              IsReadOnly="True"
-                              AutoGenerateColumns="false"
-                              CanUserSortColumns="true"
-                              Name="OrdersGrid"
-                              CellStyle="{StaticResource NonSelectableDataGridCellStyle}"
-                              Height="184"
-                              VerticalAlignment="Top">
-                    <sdk:DataGrid.Columns>
-                        <sdk:DataGridTextColumn Header="Product"
-                                                Binding="{Binding ProductId, Converter={StaticResource RemovePrefixConverter}, ConverterParameter=9}" />
-                        <sdk:DataGridTextColumn Header="Amount"
-                                                Binding="{Binding Total,Converter={StaticResource MoneyConverter}}" />
-                        <sdk:DataGridTextColumn Header="Life Time"
-                                                Binding="{Binding Converter={StaticResource ProductTypeCount}, ConverterParameter=Lifetime}" />
-                        <sdk:DataGridTextColumn Header="Yearly"
-                                                Binding="{Binding Converter={StaticResource ProductTypeCount}, ConverterParameter=Yearly}" />
-                        <sdk:DataGridTextColumn Header="Monthly"
-                                                Binding="{Binding Converter={StaticResource ProductTypeCount}, ConverterParameter=Monthly}" />
-                        <sdk:DataGridTextColumn Header="Total Licenses"
-                                                Binding="{Binding Converter={StaticResource ProductTypeCount}, ConverterParameter=Total}" />
-                    </sdk:DataGrid.Columns>
-                </sdk:DataGrid>
-            </toolkit:DockPanel>
-        </Grid>
-
-        <toolkit:Chart Height="274">
-            <toolkit:Chart.Series>
-                <toolkit:LineSeries Title="Euro"
-                                    ItemsSource="{Binding OrderStatsEuro}"
-                                    IndependentValueBinding="{Binding Date, StringFormat='MMM yy'}"
-                                    DependentValueBinding="{Binding Amount}">
-                </toolkit:LineSeries>
-                <toolkit:LineSeries Title="USD"
-                                    ItemsSource="{Binding OrderStatsUsd}"
-                                    IndependentValueBinding="{Binding Date, StringFormat='MMM yy'}"
-                                    DependentValueBinding="{Binding Amount}">
-                </toolkit:LineSeries>
-            </toolkit:Chart.Series>
-        </toolkit:Chart>
-    </StackPanel>
+        <toolkit:DockPanel>
+            <Grid x:Name="LayoutRoot"
+                  toolkit:DockPanel.Dock="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <HyperlinkButton Grid.Column="1"
+                                 Content="&lt;"
+                                 FontSize="14"
+                                 Width="Auto"
+                                 HorizontalAlignment="Stretch"
+                                 Margin="5,0,5,0"
+                                 Command="{Binding PreviousMonth}" />
+                <TextBlock FontSize="14"
+                           Grid.Column="2"
+                           Width="Auto"
+                           Text="{Binding LookAtDate, StringFormat=MMM yyyy}" />
+                <HyperlinkButton Grid.Column="3"
+                                 Content="&gt;"
+                                 FontSize="14"
+                                 Width="Auto"
+                                 HorizontalAlignment="Stretch"
+                                 Margin="5,0,5,0"
+                                 Command="{Binding NextMonth}" />
+                <toolkit:DockPanel Grid.Row="1"
+                                   Grid.ColumnSpan="8">
+                    <sdk:DataGrid ItemsSource="{Binding ProductStats}"
+                                  IsReadOnly="True"
+                                  AutoGenerateColumns="false"
+                                  CanUserSortColumns="true"
+                                  Name="OrdersGrid"
+                                  CellStyle="{StaticResource NonSelectableDataGridCellStyle}"
+                                  Height="184"
+                                  VerticalAlignment="Top"
+                                  Margin="0,0,0,10">
+                        <sdk:DataGrid.Columns>
+                            <sdk:DataGridTextColumn Header="Product"
+                                                    Binding="{Binding ProductId, Converter={StaticResource RemovePrefixConverter}, ConverterParameter=9}" />
+                            <sdk:DataGridTextColumn Header="Amount"
+                                                    Binding="{Binding Total,Converter={StaticResource MoneyConverter}}" />
+                            <sdk:DataGridTextColumn Header="Life Time"
+                                                    Binding="{Binding Converter={StaticResource ProductTypeCount}, ConverterParameter=Lifetime}" />
+                            <sdk:DataGridTextColumn Header="Yearly"
+                                                    Binding="{Binding Converter={StaticResource ProductTypeCount}, ConverterParameter=Yearly}" />
+                            <sdk:DataGridTextColumn Header="Monthly"
+                                                    Binding="{Binding Converter={StaticResource ProductTypeCount}, ConverterParameter=Monthly}" />
+                            <sdk:DataGridTextColumn Header="Total Licenses"
+                                                    Binding="{Binding Converter={StaticResource ProductTypeCount}, ConverterParameter=Total}" />
+                        </sdk:DataGrid.Columns>
+                    </sdk:DataGrid>
+                </toolkit:DockPanel>
+            </Grid>
+            <toolkit:Chart>
+                <toolkit:Chart.Series>
+                    <toolkit:LineSeries Title="Euro"
+                                        ItemsSource="{Binding OrderStatsEuro}"
+                                        IndependentValueBinding="{Binding Date, StringFormat='MMM yy'}"
+                                        DependentValueBinding="{Binding Amount}">
+                    </toolkit:LineSeries>
+                    <toolkit:LineSeries Title="USD"
+                                        ItemsSource="{Binding OrderStatsUsd}"
+                                        IndependentValueBinding="{Binding Date, StringFormat='MMM yy'}"
+                                        DependentValueBinding="{Binding Amount}">
+                    </toolkit:LineSeries>
+                </toolkit:Chart.Series>
+            </toolkit:Chart>
+        </toolkit:DockPanel>
     </toolkit:WhistlerBlueTheme>
 </navigation:Page>
