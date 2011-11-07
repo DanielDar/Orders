@@ -18,19 +18,5 @@ namespace HibernatingRhinos.Orders.Backend.Converters
         {
             throw new NotImplementedException();
         }
-
-        private static string GetCurrencySymbol(Payment payment)
-        {
-            switch (payment.Total.Currency)
-            {
-                case "EUR":
-                    return "€";
-                case "USD":
-                    return "$";
-                default:
-                    return "???";
-            }
-        }
-
     }
 }

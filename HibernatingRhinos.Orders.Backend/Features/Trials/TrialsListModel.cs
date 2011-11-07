@@ -63,11 +63,9 @@ namespace HibernatingRhinos.Orders.Backend.Features.Trials
         public ICommand Edit { get { return new EditCommand(Session, Location); } }
         public ICommand EditByDoubleClickCommand { get { return new EditByDoubleClickCommand(typeof(Trial)); } }
 
-
         protected override string CreateUrl(int pageNumber)
         {
             return string.Format("{0}?search={1}&pageNumber={2}", Location, Search, pageNumber);
         }
-
     }
 }
