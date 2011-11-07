@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using HibernatingRhinos.Orders.Backend.Features.Orders;
 using HibernatingRhinos.Orders.Backend.Features.Products;
-using Raven.Client.Document;
 using Raven.Client.Indexes;
 
 namespace HibernatingRhinos.Orders.Backend.Indexes
@@ -27,7 +26,6 @@ namespace HibernatingRhinos.Orders.Backend.Indexes
             {
                 public decimal Amount { get; set; }
                 public string Currency { get; set; }
-
             }
         }
 

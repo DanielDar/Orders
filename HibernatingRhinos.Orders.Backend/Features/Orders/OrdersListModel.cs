@@ -1,6 +1,5 @@
 ﻿using System.Windows.Input;
 using HibernatingRhinos.Orders.Backend.Commands;
-using HibernatingRhinos.Orders.Backend.Features.Products;
 using HibernatingRhinos.Orders.Backend.Indexes;
 using HibernatingRhinos.Orders.Backend.Infrastructure;
 using Raven.Client.Linq;

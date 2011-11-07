@@ -45,7 +45,6 @@ namespace HibernatingRhinos.Orders.Backend.Infrastructure
                     Value(sender, e);
                 else
                     dispatcher.InvokeAsync(() => Value(sender, e));
-
             }
         }
 

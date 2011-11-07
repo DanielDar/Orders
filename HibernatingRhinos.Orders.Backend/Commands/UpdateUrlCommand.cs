@@ -26,6 +26,5 @@ namespace HibernatingRhinos.Orders.Backend.Commands
         }
 
         public event EventHandler CanExecuteChanged = delegate { };
-
     }
 }

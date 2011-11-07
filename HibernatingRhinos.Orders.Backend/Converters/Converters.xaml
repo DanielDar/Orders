@@ -3,8 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Converters="clr-namespace:HibernatingRhinos.Orders.Backend.Converters">
 
-    <Converters:ArrayListToMultiLineStringConverter x:Key="ListToMultiString"/>
-    <Converters:ArrayListToStringConverter x:Key="ListToString"/>
+    <Converters:ArrayListToMultiLineStringConverter x:Key="ListToMultiString" />
     <Converters:NullToBoolConverter x:Key="NullToBool" />
     <Converters:StringToProductsTypesEnumConverter x:Key="StringToProductType" />
     <Converters:AddressToMultiLineStringConverter x:Key="AddressToMultiString" />

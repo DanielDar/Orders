@@ -16,7 +16,6 @@ namespace HibernatingRhinos.Orders.Backend.Infrastructure
             {
                 NumberOfPages = new Observable<int>();
                 NumberOfItems = new Observable<int>();
-
             }
 
             public int PageNumber { get; set; }
@@ -50,9 +49,6 @@ namespace HibernatingRhinos.Orders.Backend.Infrastructure
         public ICommand NextPage { get { return new UpdateUrlCommand(CreateUrl(Paging.PageNumber + 1), Paging.PageNumber < Paging.NumberOfPages.Value); } }
         public ICommand SearchUrl { get { return new UpdateUrlCommand(CreateUrl(0), true); } }
 
-
-
         protected abstract string CreateUrl(int pageNumber);
-
     }
 }

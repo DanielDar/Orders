@@ -33,6 +33,5 @@ namespace HibernatingRhinos.Orders.Backend.Converters
                     return "???";
             }
         }
-
     }
 }

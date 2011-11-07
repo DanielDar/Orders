@@ -30,6 +30,5 @@ namespace HibernatingRhinos.Orders.Backend.Features.Trials
         public ICommand AddWeek { get { return new AddTimeCommand(Session, time => time.AddDays(7)); } }
         public ICommand Add2Weeks { get { return new AddTimeCommand(Session, time => time.AddDays(14)); } }
         public ICommand Delete { get { return new DeleteCommand(Session, Location); } }
-
     }
 }

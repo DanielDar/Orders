@@ -59,7 +59,6 @@ namespace HibernatingRhinos.Orders.Backend.Infrastructure
 
         public void RegisterOnce(Action act)
         {
-
             actions += act;
         }
     }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Input;
 using HibernatingRhinos.Orders.Backend.Infrastructure;
 using Raven.Client;

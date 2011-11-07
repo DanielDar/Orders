@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Input;
 using HibernatingRhinos.Orders.Backend.Features.Orders;
 using HibernatingRhinos.Orders.Backend.Features.Trials;
@@ -12,8 +11,6 @@ namespace HibernatingRhinos.Orders.Backend.Commands
     {
         private readonly IAsyncDocumentSession session;
         private readonly Func<DateTime, DateTime> modifyDate;
-        private Order order;
-        private Trial trial;
 
         public AddTimeCommand(IAsyncDocumentSession session, Func<DateTime, DateTime>  modifyDate)
         {
@@ -38,6 +35,5 @@ namespace HibernatingRhinos.Orders.Backend.Commands
         }
 
         public event EventHandler CanExecuteChanged = delegate { };
-
     }
 }

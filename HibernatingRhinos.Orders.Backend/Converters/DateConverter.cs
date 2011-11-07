@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Data;
-using HibernatingRhinos.Orders.Backend.Features.Orders;
 
 namespace HibernatingRhinos.Orders.Backend.Converters
 {

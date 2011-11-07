@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
-using HibernatingRhinos.Orders.Backend.Features.Orders;
-using HibernatingRhinos.Orders.Backend.Infrastructure;
-using Raven.Client;
 
 namespace HibernatingRhinos.Orders.Backend.Commands
 {
@@ -25,7 +22,6 @@ namespace HibernatingRhinos.Orders.Backend.Commands
 
         public void Execute(object parameter)
         {
-            date.AddMonths(monthToAdd);
             Application.Current.Host.NavigationState = "/Home/List?date=" + date.AddMonths(monthToAdd) + Guid.NewGuid();
         }
 

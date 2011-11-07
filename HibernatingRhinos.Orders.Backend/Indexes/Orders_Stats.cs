@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using HibernatingRhinos.Orders.Backend.Features.Orders;
-using Raven.Client.Document;
 using Raven.Client.Indexes;
 using DateTime = System.DateTime;
 
