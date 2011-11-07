@@ -60,7 +60,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
         public BindableCollection<Order> Orders { get; set; }
 
         public ICommand Edit { get { return new EditCommand(Session, Location); } }
-        public ICommand EditByDoubleClickCommand {get{return new EditByDoubleClickCommand(typeof(Order));}}
+        public ICommand EditByDoubleClickCommand { get { return new EditByDoubleClickCommand("orders"); } }
 
         protected override string CreateUrl(int pageNumber)
         {

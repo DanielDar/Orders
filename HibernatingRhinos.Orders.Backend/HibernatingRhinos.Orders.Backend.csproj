@@ -122,7 +122,6 @@
     <Compile Include="Commands\DeleteCommand.cs" />
     <Compile Include="Commands\EditCommand.cs" />
     <Compile Include="Converters\ArrayListToMultiLineStringConverter.cs" />
-    <Compile Include="Converters\ArrayListToStringConverter.cs" />
     <Compile Include="Converters\AddressToMultiLineStringConverter.cs" />
     <Compile Include="Converters\ComboBoxItemToStringConverter.cs" />
     <Compile Include="Converters\MoneyConverter.cs" />
@@ -139,6 +138,7 @@
     </Compile>
     <Compile Include="Features\Home\HomeListModel.cs" />
     <Compile Include="Features\Orders\Address.cs" />
+    <Compile Include="Features\Orders\IEditable.cs" />
     <Compile Include="Features\Orders\Edit.xaml.cs">
       <DependentUpon>Edit.xaml</DependentUpon>
     </Compile>

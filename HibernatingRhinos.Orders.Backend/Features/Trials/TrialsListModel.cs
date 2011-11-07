@@ -60,7 +60,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Trials
         public BindableCollection<Trial> Trials { get; set; }
 
         public ICommand Edit { get { return new EditCommand(Session, Location); } }
-        public ICommand EditByDoubleClickCommand { get { return new EditByDoubleClickCommand(typeof(Trial)); } }
+        public ICommand EditByDoubleClickCommand { get { return new EditByDoubleClickCommand("trials"); } }
 
         protected override string CreateUrl(int pageNumber)
         {

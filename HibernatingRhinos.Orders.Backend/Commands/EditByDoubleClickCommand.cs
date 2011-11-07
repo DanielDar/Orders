@@ -9,24 +9,26 @@ namespace HibernatingRhinos.Orders.Backend.Commands
     public class EditByDoubleClickCommand : ICommand
     {
         private string location;
-        private Type type;
-        public EditByDoubleClickCommand(Type type)
+
+        public EditByDoubleClickCommand(string type)
         {
-            location = type == typeof(Order) ? "/orders/edit?id=" : "/trials/edit?id=";
-            this.type = type;
+            location = string.Format("/{0}/edit?id=", type);
         }
 
         public bool CanExecute(object parameter)
         {
-            return parameter is Order;
+            return parameter is IEditable;
         }
 
         public void Execute(object parameter)
         {
-            var id = type == typeof(Order) ? (parameter as Order).Id : (parameter as Trial).Id;
+            var item = parameter as IEditable;
 
-            location += id;
-            Application.Current.Host.NavigationState = location;
+            if (item != null)
+            {
+                location += item.Id;
+                Application.Current.Host.NavigationState = location;
+            }
         }
 
         public event EventHandler CanExecuteChanged = delegate { };

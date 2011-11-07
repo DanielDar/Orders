@@ -4,52 +4,78 @@ using HibernatingRhinos.Orders.Backend.Features.Products;
 
 namespace HibernatingRhinos.Orders.Backend.Features.Orders
 {
-    public class Order 
-    {
+	public class Order : IEditable, IEnd
+	{
 		public ProductTypes Type { get; set; }
 
-    	public string Id { get; set; }
+		public string Id { get; set; }
 
-        public string OrderNumber { get; set; }
+		public string OrderNumber { get; set; }
 
-        public int Quantity { get; set; }
+		public int Quantity { get; set; }
 
-        public string ProductId { get; set; }
+		public string ProductId { get; set; }
 
-        public string FirstName { get; set; }
+		public string FirstName { get; set; }
 
-        public string LastName { get; set; }
+		public string LastName { get; set; }
 
-        public string CompanyName { get; set; }
+		public string CompanyName { get; set; }
 
-        public string PhoneNumber { get; set; }
+		public string PhoneNumber { get; set; }
 
-        public string Email { get; set; }
+		public string Email { get; set; }
 
-        public Address Address { get; set; }
+		public Address Address { get; set; }
 
-        public List<string> Log { get; set; }
+		public List<string> Log { get; set; }
 
-        public DateTime OrderedAt { get; set; }
+		public DateTime OrderedAt { get; set; }
 
-        public string LicenseFor { get; set; }
+	    private DateTime endsAt;
+	    public DateTime EndsAt
+	    {
+	        get
+	        {
+	            switch (Type)
+	            {
+	                    case ProductTypes.LifeTime:
+	                    return DateTime.MaxValue;
+                        break;
+	                    
+                        case ProductTypes.Monthly:
+	                    return OrderedAt.AddMonths(1);
+	                    break;
 
-    	public string LinkForReceipt { get; set; }
+                        case ProductTypes.Yearly:
+	                    return OrderedAt.AddYears(1);
+	                    break;
 
-    	public string IpAddress { get; set; }
+                    default:
+	                    return DateTime.MinValue;
+	            }
+	        }
+            set { endsAt = value; } 
+        }
+
+		public string LicenseFor { get; set; }
+
+		public string LinkForReceipt { get; set; }
+
+		public string IpAddress { get; set; }
 
 		public List<Payment> Payments { get; set; }
 
 		public List<Guid> LicenseIds { get; set; }
 
-    	public Order()
-        {
-            Address = new Address();
+		public Order()
+		{
+			Address = new Address();
 			Payments = new List<Payment>();
 			LicenseIds = new List<Guid>();
 			Log = new List<string>();
-        }
-    }
+		}
+	}
 
 	public class Payment
 	{

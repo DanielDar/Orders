@@ -3,7 +3,7 @@ using HibernatingRhinos.Orders.Backend.Features.Orders;
 
 namespace HibernatingRhinos.Orders.Backend.Features.Trials
 {
-    public class Trial : IEnd
+    public class Trial : IEnd, IEditable
     {
         public string Id { get; set; }
         

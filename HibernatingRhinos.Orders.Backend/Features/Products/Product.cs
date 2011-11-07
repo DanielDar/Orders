@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
+using HibernatingRhinos.Orders.Backend.Features.Orders;
 
 namespace HibernatingRhinos.Orders.Backend.Features.Products
 {
-    public class Product
+    public class Product : IEditable
     {
         public string Id
         {
             get { return "products/" + Name; }
+            set {}
         }
 
         public string Name { get; set; }

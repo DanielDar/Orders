@@ -9,6 +9,8 @@
                  xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
                  xmlns:Infrastructure="clr-namespace:HibernatingRhinos.Orders.Backend.Infrastructure"
                  xmlns:Theming="clr-namespace:System.Windows.Controls.Theming;assembly=System.Windows.Controls.Theming.WhistlerBlue"
+                 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                 xmlns:behaviors="clr-namespace:HibernatingRhinos.Orders.Backend.Behaviors"
                  Infrastructure:ModelResolver.AttachModel="ProductsListModel"
                  d:DesignWidth="640"
                  d:DesignHeight="480"
@@ -49,7 +51,11 @@
                           AutoGenerateColumns="false"
                           CanUserSortColumns="true"
                           Name="ProductsGrid">
-                <sdk:DataGrid.Columns>
+                    <i:Interaction.Behaviors>
+                        <behaviors:DataGridDoubleClickBehavior DoubleClickCommand="{Binding EditByDoubleClickCommand}"
+                                                               CommandParameter="{Binding SelectedItem, ElementName=ProductsGrid}" />
+                    </i:Interaction.Behaviors>
+                    <sdk:DataGrid.Columns>
                     <sdk:DataGridTextColumn Header="Id"
                                             Binding="{Binding Id, Mode=TwoWay}" />
                     <sdk:DataGridTextColumn Header="Title"

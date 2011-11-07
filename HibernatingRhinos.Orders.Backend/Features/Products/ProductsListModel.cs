@@ -19,5 +19,7 @@ namespace HibernatingRhinos.Orders.Backend.Features.Products
         public BindableCollection<Product> Products { get; set; }
 
         public ICommand Edit { get { return new EditCommand(Session, Location); } }
+        public ICommand EditByDoubleClickCommand { get { return new EditByDoubleClickCommand("products"); } }
+
     }
 }
