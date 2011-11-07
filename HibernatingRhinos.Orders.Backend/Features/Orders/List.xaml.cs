@@ -37,6 +37,5 @@ namespace HibernatingRhinos.Orders.Backend.Features.Orders
                 Application.Current.Host.NavigationState = location;
             }
         }
-
     }
 }

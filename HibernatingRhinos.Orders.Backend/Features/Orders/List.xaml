@@ -9,6 +9,8 @@
                  xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
                  xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
                  xmlns:Infrastructure="clr-namespace:HibernatingRhinos.Orders.Backend.Infrastructure"
+                 xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                 xmlns:behaviors="clr-namespace:HibernatingRhinos.Orders.Backend.Behaviors;assembly=HibernatingRhinos.Orders.Backend"
                  d:DesignWidth="640"
                  d:DesignHeight="480"
                  Infrastructure:ModelResolver.AttachModel="OrdersListModel"
@@ -81,6 +83,10 @@
                               CanUserSortColumns="true"
                               Name="OrdersGrid"
                               CellStyle="{StaticResource NonSelectableDataGridCellStyle}">
+                    <i:Interaction.Behaviors>
+                        <behaviors:DataGridDoubleClickBehavior DoubleClickCommand="{Binding EditByDoubleClickCommand}"
+                                                               CommandParameter="{Binding SelectedItem, ElementName=OrdersGrid}"/>
+                    </i:Interaction.Behaviors>
                     <sdk:DataGrid.Columns>
                         <sdk:DataGridTextColumn Header="Order Number"
                                                 Binding="{Binding OrderNumber}" />
