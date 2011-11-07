@@ -81,10 +81,10 @@
                               AutoGenerateColumns="false"
                               CanUserSortColumns="true"
                               CellStyle="{StaticResource NonSelectableDataGridCellStyle}"
-                              Name="OrdersGrid">
+                              Name="TrialsGrid">
                     <i:Interaction.Behaviors>
                         <behaviors:DataGridDoubleClickBehavior DoubleClickCommand="{Binding EditByDoubleClickCommand}"
-                                                               CommandParameter="{Binding SelectedItem, ElementName=OrdersGrid}" />
+                                                               CommandParameter="{Binding SelectedItem, ElementName=TrialsGrid}" />
                     </i:Interaction.Behaviors>
                     <sdk:DataGrid.Columns>
                         <sdk:DataGridTextColumn Header="Id"
